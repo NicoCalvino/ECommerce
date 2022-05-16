@@ -1,0 +1,22 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "Sitio de E-Commerce destinado a la venta de bicicletas y accesorios de ciclismo.\r Se apunta tanto al ciclismo como actividad recreativa de niños a adultos como asi tambien al ciclismo de alta competencia y aventura",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicoCalvino/grupo_6_ecommerce.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicoCalvino/grupo_6_ecommerce/issues"
+  },
+  "homepage": "https://github.com/NicoCalvino/grupo_6_ecommerce#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
