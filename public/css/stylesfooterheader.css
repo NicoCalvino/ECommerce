@@ -1,0 +1,161 @@
+/*Celeste: 01adff
+negro:333333
+blanco:ffffff
+Azul Oscuro: 08355A
+Azul Claro: 0f6992
+verde: 70bb49
+*/ 
+
+*{
+    margin: 0px;
+    padding: 0px;   
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #ebebeb;
+}
+
+ul{
+    list-style: none;
+}
+
+/*Estilos del header*/
+
+header{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    background-color:white;
+    border-bottom: solid 2px #08355A;
+}
+
+/*Estilos de logos*/
+header .main-head{
+    display:flex;
+    width:15%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+header .main-head .logo-imagen{
+    width:100%;
+}
+
+header .main-head .logo-palabra{
+    display:none
+}
+
+/*menu hamburguesa*/
+.burger-menu{
+    width:10%;
+    background-color:rgb(211, 207, 207);
+    border-radius:5px;
+    padding:5px;
+}
+
+.fa-bars{
+    color:black;
+    font-size: 24px;
+    text-align:center;
+    width:100%
+}
+
+/*barra de busqueda*/
+header .input{
+    display:flex;
+    width:40%;
+    margin:5px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .input input{
+    width:100%;
+    font-size: 16px;
+}
+
+
+/*barra de navegacion*/
+header .log-bar{
+    width:25%
+}
+
+header .log-bar ul{
+    display:flex;
+    justify-content: space-around;
+    font-size: 24px;
+}
+
+header .log-bar ul li{
+    color:#08355A
+}
+
+/*estilos del footer*/
+
+footer{
+    display:flex;
+    color:white;
+    background-color:#08355A;
+    justify-content: space-around;
+}
+
+footer .comunidad{
+    width:25%;
+    line-height: 32px;
+}
+
+footer .contacto{
+    width:40%;
+    line-height: 32px;
+}
+
+footer div .redes-sociales{
+    font-size: 24px;
+    width:20%;
+    display:flex;
+    margin:5px;
+}
+
+footer .redes-sociales i{
+    margin:5px;
+    width:20%
+}
+
+@media(min-width:481px){
+    /*media queries del header*/
+    header .main-head{
+        width:20%;
+        align-items:center
+    }
+
+    header .main-head .logo-imagen{
+        display:block;
+        width:30%
+    }
+
+    header .main-head .logo-palabra{
+        display:block;
+        width:70%
+    }
+
+    header .log-bar{
+        width:10%
+    }
+
+    header .burger-menu{
+        display:none
+    }
+
+    header .input input{
+        width:100%;
+        font-size: 24px;
+    }
+
+    /*media queries del footer*/
+    footer div .redes-sociales{
+        font-size:34px;
+    }
+}
