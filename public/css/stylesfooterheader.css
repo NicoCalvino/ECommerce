@@ -6,10 +6,16 @@ Azul Claro: 0f6992
 verde: 70bb49
 */ 
 
+@font-face {
+    font-family: "MyriadPro";
+    src: url('fonts/MYRIADPRO-REGULAR.OTF');
+}
+
 *{
     margin: 0px;
     padding: 0px;   
     box-sizing: border-box;
+    font-family: "MyriadPro";
 }
 
 body{
@@ -21,50 +27,53 @@ ul{
 }
 
 /*Estilos del header*/
-
 header{
+    background-color: white;
+}
+
+
+header .main-head{
     display:flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width:100%;
     background-color:white;
-    border-bottom: solid 2px #08355A;
+    border-bottom: solid 2px #70bb49;
 }
 
 /*Estilos de logos*/
-header .main-head{
+header .main-head .logos{
     display:flex;
     width:15%;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-header .main-head .logo-imagen{
+header .main-head .logos .logo-imagen{
     width:100%;
 }
 
-header .main-head .logo-palabra{
+header .main-head .logos .logo-palabra{
     display:none
 }
 
 /*menu hamburguesa*/
-.burger-menu{
-    width:10%;
+header .main-head .burger-menu{
+    width:8%;
     background-color:rgb(211, 207, 207);
     border-radius:5px;
     padding:5px;
 }
 
-.fa-bars{
+header .main-head .burger-menu .fa-bars{
     color:black;
-    font-size: 24px;
+    font-size: 20px;
     text-align:center;
     width:100%
 }
 
 /*barra de busqueda*/
-header .input{
+header .main-head .input{
     display:flex;
     width:40%;
     margin:5px;
@@ -72,25 +81,36 @@ header .input{
     align-items: center;
 }
 
-header .input input{
+header .main-head .input input{
     width:100%;
     font-size: 16px;
 }
 
 
-/*barra de navegacion*/
-header .log-bar{
-    width:25%
+/*barra de navegacion usuario*/
+header .main-head .log-bar{
+    width:30%
 }
 
-header .log-bar ul{
+header .main-head .log-bar ul{
     display:flex;
+    font-size: 18px;
     justify-content: space-around;
-    font-size: 24px;
+    width:100%
 }
 
-header .log-bar ul li{
-    color:#08355A
+header .main-head .log-bar ul li{
+    margin:5px;
+}
+
+header .main-head .log-bar ul li a{
+    color:#08355A;
+}
+
+
+/*barra de navegacion categorias*/
+header .cat-bar{
+    display:none
 }
 
 /*estilos del footer*/
@@ -124,38 +144,82 @@ footer .redes-sociales i{
     width:20%
 }
 
-@media(min-width:481px){
+@media(min-width:576px){
     /*media queries del header*/
-    header .main-head{
+    header .main-head {
+        border-bottom: none;
+    }
+    header .main-head div,nav {
+        margin:10px
+    }
+
+    header .main-head .logos{
         width:20%;
         align-items:center
     }
 
-    header .main-head .logo-imagen{
+    header .main-head .logos .logo-imagen{
         display:block;
         width:30%
     }
 
-    header .main-head .logo-palabra{
+    header .main-head .logos .logo-palabra{
         display:block;
         width:70%
     }
 
-    header .log-bar{
-        width:10%
-    }
-
-    header .burger-menu{
+    /*menu hamburguesa*/
+    header .main-head .burger-menu{
         display:none
     }
 
-    header .input input{
+    /*barra de busqueda*/
+    header .main-head .input input{
         width:100%;
         font-size: 24px;
+    }
+    
+    /*barra de navegacion usuario*/
+   header .main-head .log-bar ul li{
+       font-size: 24px;
+   }
+
+    /*barra de navegacion categorias*/
+    header .cat-bar{
+        display:block;
+        width:100%;
+        background-color: #08355A;
+        margin:0px;
+        border-top: solid 2px #70bb49;
+    }
+
+    header .cat-bar ul{
+        display:flex;
+        width:100%;
+        justify-content: center;
+    }
+    
+    header .cat-bar li {
+        margin:10px 20px
+    }
+    header .cat-bar li a{
+        color:white;
+        text-decoration: none;
     }
 
     /*media queries del footer*/
     footer div .redes-sociales{
         font-size:34px;
+    }
+}
+
+@media(min-width:768px){
+    header .main-head{
+        width:80%;
+        margin:auto;
+    }
+
+    header .main-head .log-bar{
+        width:10%
     }
 }
