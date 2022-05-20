@@ -1,0 +1,341 @@
+/*Celeste: 01adff
+negro:333333
+blanco:ffffff
+Azul Oscuro: 08355A
+Azul Claro: 0f6992
+verde: 70bb49
+*/ 
+
+/*estilos del main*/
+
+main{
+    width:90%;
+    margin:auto;
+    color:#333333
+}
+
+/*Seccion del Producto*/
+main .producto{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:center
+}
+
+main .producto .encabezado-producto{
+    display:flex;
+    width:100%;
+    flex-wrap:wrap
+}
+
+main .producto .encabezado-producto .titulo-producto{
+    width:100%;
+    margin:10px 0px 5px 0px
+}
+
+main section .encabezado-producto .calificacion{
+    width:100%;
+    color:goldenrod;
+    margin:0px 0px 5px 0px
+}
+
+/*imagenes*/
+main .producto .imagenes{
+    display:flex;
+    width:100%;
+    flex-wrap:wrap;
+    margin-bottom:10px
+}
+
+main section .imagenes .imagen-principal{
+    width:100%;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+main section .imagenes .imagen-principal img {
+    width:100%;
+    border-radius: 20px;
+}
+
+main section .imagenes .imagenes-secundarias{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+main section .imagenes .imagenes-secundarias img{
+    width:20%;
+    border-radius: 5px;
+}
+
+.imagenes-seleccionables:hover{
+    border:#08355A solid 2px
+}
+
+/*Informacion del producto*/
+
+/*Precio*/
+main section p.precio-producto{
+    font-size: 35px;
+    text-align: center;
+    width:100%;
+    margin-bottom:5px;
+}
+
+/*Opciones*/
+main section article .opciones{
+    display:flex;
+    justify-content:center;
+    margin-bottom:10px
+}
+
+main section article .opciones div{
+    font-size: 16px;
+    width:30%;
+    text-align: center;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+main section article .opciones div label{
+    width:100%
+}
+
+/*Caracteristicas Secundarias*/
+main section article .caracteristicas{
+    border:#cac5c5 solid 3px;
+    border-radius: 5px;
+    padding:5px;
+    font-size: 10px;
+    width:100%;
+    margin:auto;
+    margin-bottom:5px;
+    background-color: #ffffff;
+}
+
+main section article .caracteristicas h3{
+    font-size: 14px;
+}
+
+main section article .caracteristicas h3{
+    width:100%
+}
+
+main section article .caracteristicas span{
+    font-weight: bold;
+}
+
+/*Botones*/
+main .botones{
+    display:flex;
+    justify-content:center;
+    flex-wrap: WRAP;
+    width:100%;
+}
+
+main .botones button{
+    width:80%;
+    background-color:#0f6992 ;
+    color:white;
+    font-size: 16px;
+    padding:5px;
+    border-radius:5px;
+    margin:5px;
+}
+
+main .botones button:hover{
+    background-color:#08355A ;
+}
+
+/*opiniones*/
+main .titulo-seccion{
+    font-size: 24px;
+    margin:10px
+}
+
+main .valoraciones .opiniones{
+    display:flex;
+    flex-wrap:wrap;
+    width:90%;
+    margin:auto;
+    border:#333333 1px solid;
+    border-radius: 5px;
+    background-color: #ebebeb;
+}
+
+main .valoraciones .opiniones li{
+    width:100%;
+    margin:5px
+}
+
+main .valoraciones .opiniones li .opinion-usuario{
+    font-size: 14px;
+}
+
+main .valoraciones .opiniones li .calificacion-usuario{
+    color:goldenrod
+}
+
+/*productos similares*/
+
+main .otros-productos h3{
+    margin:10px
+}
+
+main .otros-productos .vinculos-productos{
+    display:flex;
+    width:90%;
+    margin:10px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main .otros-productos .vinculos-productos li{
+    width:15%;
+    border-radius: 2px;
+}
+
+main .otros-productos .vinculos-productos li img{
+    width:100%;
+}
+
+@media(min-width:576px){
+    /*Precio*/
+    main section p.precio-producto{
+        font-size: 50px;
+    }
+    
+    main section article .opciones div{
+        font-size: 24px;
+    }
+
+    /*Caracteristicas*/
+    main section article .caracteristicas{
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    main section article .caracteristicas h3{
+        font-size: 22px;
+    }
+
+    /*opiniones*/
+    main .valoraciones h4{
+        font-size:20px
+    }
+
+    main .valoraciones .opiniones{
+        width:100%;
+    }
+
+    main .valoraciones .opiniones li{
+        margin:8px
+    }
+
+    main .valoraciones .opiniones li .opinion-usuario{
+        font-size:18px
+    }
+}
+
+@media(min-width:768px){
+    /*Seccion del Producto*/
+    main .producto{
+        justify-content:flex-start
+    }
+
+    main .producto .encabezado-producto .titulo-producto{
+        font-size: 30px;
+        width:75%;
+        margin:auto
+    }
+
+    main .producto .encabezado-producto  .calificacion{
+        font-size: 30px;
+        width:75%;
+        margin:auto;
+        margin-bottom:10px
+    }
+
+    /*imagenes*/
+    main .producto .imagenes{
+        width:60%;
+    }
+
+    main section .imagenes .imagen-principal{
+        width:79%;
+        justify-content: center;
+        border-radius: 20px;
+        display:flex;
+        align-self: center;
+        justify-self: center;
+    }
+
+    main section .imagenes .imagen-principal img {
+        width:100%;
+        border-radius: 20px;
+    }
+
+    main section .imagenes .imagenes-secundarias{
+        width:20%;
+        justify-content: space-between;
+        order:-1;
+        flex-direction: column;
+    }
+
+    main section .imagenes .imagenes-secundarias img{
+        width:90%;
+    }
+
+    /*Precio*/
+    main section .informacion{
+        display:flex;
+        flex-wrap: wrap;
+        width:40%;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    main section p.precio-producto{
+        font-size: 40px;
+        text-align: left;
+        margin-bottom: 0px;
+        height:10%;
+    }
+
+    /*Opciones*/
+    main section article .opciones{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content:flex-start;
+        margin:5px;
+        height:25%
+    }
+
+    main section article .opciones div{
+        font-size: 24px;
+        width:100%;
+        text-align: left;
+        display:block;
+    }
+
+    /*Caracteristicas*/
+    main section article .caracteristicas{
+        height:55%;
+        margin:0px
+    }
+
+    /*Botones*/
+    main .botones{
+        display:flex;
+        justify-content:flex-end;
+        flex-wrap: WRAP;
+        width:100%;
+    }
+
+    main .botones button{
+        width:20%;
+        font-size: larger;
+    }
+}

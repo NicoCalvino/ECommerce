@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Producto Detail</title>
     <link rel="stylesheet" href="/css/stylesfooterheader.css">
+    <link rel="stylesheet" href="/css/stylesProdDet.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -42,7 +43,129 @@
         </nav>
     </header>
     <main>
-        <br>
+        <div class="espacio-header"></div>
+        <section class="producto">
+            <div class="encabezado-producto">
+                <h3 class="titulo-producto">BICICLETA DE MONTAÑA</h3>
+                <div class="calificacion">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+            </div>
+            <article class=imagenes>
+                <div class="imagen-principal">
+                    <img src="images/Imagen Bici 1.jpg" alt="Imagen 1">
+                </div>
+                <div class="imagenes-secundarias">
+                    <img src="images/Imagen Bici 2.jpg" alt="Imagen 2" class="imagenes-seleccionables">
+                    <img src="images/Imagen Bici 3.jpg" alt="Imagen 3" class="imagenes-seleccionables">
+                    <img src="images/Imagen Bici 4.jpeg" alt="Imagen 4" class="imagenes-seleccionables">
+                    <img src="images/Imagen Bici 5.jpg" alt="Imagen 5" class="imagenes-seleccionables">
+                </div>
+            </article>
+            <article class="informacion">
+                <p class="precio-producto">$ 87.000,00</p>
+                <form class="opciones">
+                    <div class="cantidad">
+                        <label for="cantidad">CANTIDAD</label>
+                        <select name="cantidad" id="cantidad">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="color">
+                        <label for="color" id="color">COLOR</label>
+                        <select name="color" id="color">
+                            <option value="rojo">ROJO</option>
+                            <option value="azul">AZUL</option>
+                            <option value="negro">NEGRO</option>
+                            <option value="blanco">BLANCO</option>
+                            <option value="verde">VERDE</option>
+                        </select>
+                    </div>
+                    <div class="tamano">
+                        <label for="tamano" id="tamano">TAMAÑO</label>
+                        <select name="tamano" id="tamano">
+                            <option value="rojo">CHICO</option>
+                            <option value="azul">MEDIANO</option>
+                            <option value="negro">GRANDE</option>
+                        </select>
+                    </div>
+                </form>
+                <div class="caracteristicas">
+                    <h3>CARACTERISTICAS</h3>
+                    <ul>
+                        <li><span class="titulo-caract">CUADRO: </span>Slp de Aluminio</li>
+                        <li><span class="titulo-caract">HORQUILLA: </span>Slp con Suspension</li>
+                        <li><span class="titulo-caract">SHIFTERS: </span>Shimano ST-EF41</li>
+                        <li><span class="titulo-caract">CADENA: </span>Comun Mtb 7v</li>
+                        <li><span class="titulo-caract">PIÑON: </span>Shimano MF-TZ500-7</li>
+                        <li><span class="titulo-caract">FRENOS: </span>Disco Mecanico</li>
+                        <li><span class="titulo-caract">NEUMÁTICOS: </span>Wanda MTB 29×2.10</li>
+                        <li><span class="titulo-caract">MANUBRIO: </span>Slp MTB de Aluminio</li>
+                        <li><span class="titulo-caract">ASIENTO: </span>Slp MTB</li>
+                        <li><span class="titulo-caract">JUEGO DE DIRECCIÓN: </span>Integrado</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+        <section class="botones">
+            <button>AGREGAR AL CARRITO</button>
+            <button>COMPRAR</i></button>
+        </section>
+        <section class="valoraciones">
+            <h3 class="titulo-seccion">OPINIONES</h3>
+            <ul class="opiniones">
+                <li>
+                    <h4>Lorem ipsum, dolor sit amet consectetur</h4>
+                    <p class="calificacion-usuario">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </p>
+                    <p class="opinion-usuario">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio magni ex recusandae praesentium et, ea aliquid saepe aspernatur voluptates impedit, nam dignissimos. Nobis error, quaerat sunt quidem sed necessitatibus. Ratione?   </p>
+                </li>
+                <li>
+                    <h4>Lorem ipsum, dolor sit amet consectetur</h4>
+                    <p class="calificacion-usuario">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half"></i>
+                    </p>
+                    <p class="opinion-usuario">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio magni ex recusandae praesentium et, ea aliquid saepe aspernatur voluptates impedit, nam dignissimos. Nobis error, quaerat sunt quidem sed necessitatibus. Ratione?   </p>
+                </li>
+                <li>
+                    <h4>Lorem ipsum, dolor sit amet consectetur</h4>
+                    <p class="calificacion-usuario">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half"></i>
+                    </p>
+                    <p class="opinion-usuario">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio magni ex recusandae praesentium et, ea aliquid saepe aspernatur voluptates impedit, nam dignissimos. Nobis error, quaerat sunt quidem sed necessitatibus. Ratione?   </p>
+                </li>
+            </ul>
+        </section>
+        <section class="otros-productos">
+            <h3 class="titulo-seccion">PRODUCTOS SIMILARES</h3>
+            <ul class="vinculos-productos">
+                <li><a href="#"><img src="images/OtroProd1.jpg" alt="Otro Producto 1" class="imagenes-seleccionables"></a></li>
+                <li><a href="#"><img src="images/OtroProd2.jpg" alt="Otro Producto 2" class="imagenes-seleccionables"></a></li>
+                <li><a href="#"><img src="images/OtroProd3.jpg" alt="Otro Producto 3" class="imagenes-seleccionables"></a></li>
+                <li><a href="#"><img src="images/OtroProd4.jpg" alt="Otro Producto 4" class="imagenes-seleccionables"></a></li>
+                <li><a href="#"><img src="images/OtroProd5.jpg" alt="Otro Producto 5" class="imagenes-seleccionables"></a></li>
+            </ul>
+        </section>
     </main>
     <footer>
         <div class="comunidad">

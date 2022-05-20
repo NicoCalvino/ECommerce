@@ -19,16 +19,24 @@ verde: 70bb49
 }
 
 body{
-    background-color: #ebebeb;
+    background-color:#ebebeb
 }
 
 ul{
     list-style: none;
 }
 
+main .espacio-header{
+    margin-top:75px;
+    width:100%
+}
+
 /*Estilos del header*/
 header{
     background-color: white;
+    position:fixed;
+    top:0px;
+    left:0px
 }
 
 
@@ -146,6 +154,10 @@ footer .redes-sociales i{
 
 @media(min-width:576px){
     /*media queries del header*/
+    main .espacio-header{
+        margin-top:100px
+    }
+
     header .main-head {
         border-bottom: none;
     }
@@ -186,6 +198,7 @@ footer .redes-sociales i{
 
     /*barra de navegacion categorias*/
     header .cat-bar{
+        font-size: 12px;
         display:block;
         width:100%;
         background-color: #08355A;
@@ -214,6 +227,14 @@ footer .redes-sociales i{
 }
 
 @media(min-width:768px){
+    header{
+        position:static
+    }
+
+    main .espacio-header{
+        display:none
+    }
+
     header .main-head{
         width:80%;
         margin:auto;
@@ -221,5 +242,10 @@ footer .redes-sociales i{
 
     header .main-head .log-bar{
         width:10%
+    }
+
+    /*barra de navegacion categorias*/
+    header .cat-bar{
+        font-size: 16px;
     }
 }
