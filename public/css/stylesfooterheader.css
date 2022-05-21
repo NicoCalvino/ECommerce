@@ -35,6 +35,7 @@ main .espacio-header{
 header{
     background-color: white;
     position:fixed;
+    z-index: 1;
     top:0px;
     left:0px
 }
@@ -118,7 +119,7 @@ header .main-head .log-bar ul li a{
 
 /*barra de navegacion categorias*/
 header .cat-bar{
-    display:none
+    display:none;
 }
 
 /*estilos del footer*/
@@ -133,6 +134,15 @@ footer{
 footer .comunidad{
     width:25%;
     line-height: 32px;
+}
+
+footer .cat-bar{
+    display:none;
+}
+
+footer .cat-bar li a {
+    color:white;
+    line-height: 24px;
 }
 
 footer .contacto{
@@ -248,4 +258,14 @@ footer .redes-sociales i{
     header .cat-bar{
         font-size: 16px;
     }
+
+    footer .comunidad{
+        width:10%
+    }
+
+    footer .cat-bar{
+        display:flex;
+        flex-direction: column;
+    }
+
 }
