@@ -80,7 +80,7 @@ main section .imagenes .imagenes-secundarias img{
 
 /*Precio*/
 main section p.precio-producto{
-    font-size: 35px;
+    font-size: 40px;
     text-align: center;
     width:100%;
     margin-bottom:5px;
@@ -89,8 +89,10 @@ main section p.precio-producto{
 /*Opciones*/
 main section article .opciones{
     display:flex;
+    flex-wrap:wrap;
     justify-content:center;
-    margin-bottom:10px
+    margin-bottom:10px;
+    width:100%
 }
 
 main section article .opciones div{
@@ -106,39 +108,16 @@ main section article .opciones div label{
     width:100%
 }
 
-/*Caracteristicas Secundarias*/
-main section article .caracteristicas{
-    border:#cac5c5 solid 3px;
-    border-radius: 5px;
-    padding:5px;
-    font-size: 10px;
-    width:100%;
-    margin:auto;
-    margin-bottom:5px;
-    background-color: #ffffff;
-}
-
-main section article .caracteristicas h3{
-    font-size: 14px;
-}
-
-main section article .caracteristicas h3{
-    width:100%
-}
-
-main section article .caracteristicas span{
-    font-weight: bold;
-}
-
 /*Botones*/
-main .botones{
+main section article div.botones{
     display:flex;
+    width:100%;
     justify-content:center;
     flex-wrap: WRAP;
     width:100%;
 }
 
-main .botones button{
+main .botones input{
     width:80%;
     background-color:#0f6992 ;
     color:white;
@@ -149,9 +128,35 @@ main .botones button{
     transition: all 450ms;
 }
 
-main .botones button:hover{
+main .botones input:hover{
     background-color:#08355A ;
 }
+
+
+/*Caracteristicas Secundarias*/
+main section article.caracteristicas{
+    border:#cac5c5 solid 3px;
+    border-radius: 5px;
+    padding:5px;
+    font-size: 10px;
+    width:100%;
+    margin:auto;
+    margin-bottom:5px;
+    background-color: #ffffff;
+}
+
+main section article.caracteristicas h3{
+    font-size: 14px;
+}
+
+main section article.caracteristicas h3{
+    width:100%
+}
+
+main section article.caracteristicas span{
+    font-weight: bold;
+}
+
 
 /*opiniones*/
 main .titulo-seccion{
@@ -252,12 +257,12 @@ main .productos-similares ul li :hover img{
     }
 
     /*Caracteristicas*/
-    main section article .caracteristicas{
+    main section article.caracteristicas{
         font-size: 16px;
         line-height: 24px;
     }
 
-    main section article .caracteristicas h3{
+    main section article.caracteristicas h3{
         font-size: 22px;
     }
 
@@ -339,18 +344,16 @@ main .productos-similares ul li :hover img{
     }
 
     main section p.precio-producto{
-        font-size: 40px;
+        font-size: 60px;
         text-align: left;
         margin-bottom: 0px;
-        height:10%;
     }
 
     /*Opciones*/
     main section article .opciones{
         flex-wrap: wrap;
-        justify-content:flex-start;
+        justify-content:space-between;
         margin:5px;
-        height:25%
     }
 
     main section article .opciones div{
@@ -361,21 +364,18 @@ main .productos-similares ul li :hover img{
     }
 
     /*Caracteristicas*/
-    main section article .caracteristicas{
-        height:55%;
+    main section article.caracteristicas{
         margin:0px;
-        flex-grow: 1;
     }
 
     /*Botones*/
-    main .botones{
+    main section article div.botones{
         justify-content:flex-end;
         width:100%;
     }
 
-    main .botones button{
-        width:19%;
-        font-size: larger;
+    main .botones input{
+        width:45%;
     }
 
     

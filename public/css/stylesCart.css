@@ -1,0 +1,261 @@
+/*Celeste: 01adff
+negro:333333
+blanco:ffffff
+Azul Oscuro: 08355A
+Azul Claro: 0f6992
+verde: 70bb49
+*/
+
+/*ESTILOS GENERALES DEL MAIN*/
+main{
+    width:95%;
+    margin:auto
+}
+
+main section {
+    border-bottom: 2px solid #333333;
+}
+
+/*Estilos del titulo de la pagina*/
+main .titulo{
+    display:flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+main .titulo a{
+    margin-left:10px
+}
+
+main .titulo a button{
+    margin-left:10px;
+    background-color:#0f6992;
+    color:white;
+    font-size: 16px;
+    padding:5px;
+    border-radius:5px;
+    margin:5px;
+    transition: all 450ms;
+}
+
+main .titulo button:hover{
+    background-color:#08355A ;
+}
+
+/*ESTILOS GENERALES DE LOS PRODUCTOS*/
+main section article{
+    display:flex;
+    flex-wrap: wrap;
+    margin:5px 0px
+}
+
+main section article img {
+    width:20%;
+    display:flex;
+    align-self: flex-start;
+    margin-right:5px;
+}
+
+/*Estilo del Producto*/
+main section article.producto{
+    border-bottom: 1px solid #70bb49;
+}
+
+/*ESTILOS DEL DETALLE DEL PEDIDO*/
+main section article div.detalle-pedido{
+    display:flex;
+    flex-wrap: wrap;
+    width:55%;
+    line-height: 24px;
+}
+
+main section article div.detalle-pedido .nombre-producto, .precio-producto, .cantidad{
+    width:100%
+}
+
+/*Estilos de la cantidad*/
+main section article div.detalle-pedido .cantidad{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+main section article div.detalle-pedido .cantidad select{
+    margin-left: 5px;
+}
+
+/*Estilos de colores y tamaño*/
+main section article div.detalle-pedido .color-tamano{
+    width:100%
+}
+
+main section article div.detalle-pedido .color-tamano .titulo-estetica{
+    font-weight: bold;
+}
+
+main section article div.detalle-pedido .edicion{
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+main section article div.detalle-pedido .edicion i{
+    margin-left:10px;
+    color:#333333
+}
+
+/*Estilos del total por producto*/
+main section article .total-producto{
+    display: flex;
+    align-self: center;
+    width:23%
+}
+
+/*Estilos del envio*/
+main section.envio{
+    margin-top:10px;
+    line-height: 24px;
+}
+
+main section.envio i{
+    color:#0f6992;
+    margin-left: 5px;
+}
+
+main section.envio a{
+    color:#000dca;
+    text-decoration: underline;
+}
+
+/*Estilos del final*/
+main section.total .items-totales{
+    display:flex;
+    flex-wrap: wrap;
+    width:100%;
+    padding:10px 0px
+}
+
+main section.total .items-totales span{
+    width:50%
+}
+
+main section.total .items-totales span.total-pedido{
+    font-weight: bold;
+    font-size: 24px;
+}
+
+/*Estilo Boton Pagar*/
+main .final{
+    display:flex;
+    justify-content: flex-end;
+    margin:10px 0px
+}
+
+main #pagar{
+    margin-left:10px;
+    background-color:#70bb49;
+    color:white;
+    font-size: 16px;
+    padding:5px;
+    border-radius:5px;
+    width:40%;
+    margin:5px;
+    transition: all 450ms;
+}
+
+main .titulo button:hover{
+    background-color:#4c6b3b ;
+}
+
+@media(min-width:576px){
+    main .titulo{
+        margin-top: 110px;
+    }
+
+    main section article div.detalle-pedido{
+        width:45%
+    }
+
+    main section article p.total-producto{
+        font-size: 30px;
+        width:30%
+    }
+
+    main section.total .items-totales span{
+        font-size: 24px;
+    }
+
+    main section.total .items-totales span.total-pedido{
+        font-size: 30px;
+    }
+
+}
+
+@media(min-width:768px){
+    main .titulo{
+        margin-top: 0px;
+    }
+
+    main form{
+        display:flex;
+        flex-wrap:wrap;
+    }
+
+    main section.grupo-productos{
+        width:70%
+    }
+
+    main section.envio{
+        width:30%
+    }
+
+    main section article div.detalle-pedido{
+        width:40%;
+        font-size: 24px;
+    }
+
+    main section article p.total-producto{
+        font-size: 40px;
+        width:30%
+    }
+
+    /*Estilos del envio*/
+    main section.envio h3{
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+    main section.envio{
+        margin-top:0px; 
+    }
+
+    main section.envio i{
+        font-size: 24px;
+        margin-left: 10px;
+    }
+
+    main section.envio .direccion-envio{
+        font-size: 20px;
+    }
+
+    /*Estilo de Total*/
+    main form section.total{
+        display: flex;
+        width:100%;
+        justify-content: flex-end;
+    }
+
+    main form section.total .items-totales{
+        width:40%
+    }
+
+    main div.final{
+        width:100%
+    }
+
+    /*Estilo Boton Pagar*/
+
+    main #pagar{
+        font-size: 24px;
+        width:20%;
+    }
+
+}

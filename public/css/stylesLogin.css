@@ -1,0 +1,93 @@
+/*Celeste: 01adff
+negro:333333
+blanco:ffffff
+Azul Oscuro: 08355A
+Azul Claro: 0f6992
+verde: 70bb49
+*/ 
+
+/*estilos del main*/
+a{text-decoration: none;}
+
+main{
+    width:90%;
+    margin:auto;
+    color:#333333
+}
+
+main form {
+    margin-bottom: 10px;
+}
+
+main form div {
+    display:flex;
+    flex-wrap:wrap
+}
+
+main form div .titulo-seccion{
+    font-size: 24px;
+    width: 100%;
+}
+
+
+/*Informacion Personal*/
+main form div.info-personal input {
+    width:100%;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+main form div.info-personal input{
+    padding:0px 5px
+}
+
+/*Botones*/
+main .botones{
+    display:flex;
+    justify-content:center;
+    flex-wrap: WRAP;
+    width:100%;
+    margin: 10px 0px
+}
+
+main .botones input{
+    width:80%;
+    background-color:#0f6992 ;
+    color:white;
+    font-size: 16px;
+    padding:5px;
+    border-radius:5px;
+    margin:5px;
+    transition: all 450ms;
+}
+
+main .botones input:hover{
+    background-color:#08355A ;
+}
+
+
+
+@media(min-width:576px){
+    main form {
+        width:70%;
+        border:#a09f9f 1px solid;
+        padding:10px;
+        margin:auto;
+        margin-top: 120px;
+        margin-bottom: 10px;
+    }
+}
+
+@media(min-width:768px){
+    main .titulo-seccion{
+        font-size: 24px;
+    }
+
+    main form {
+        width:30%;
+        margin-top: 10px;
+    }
+}
