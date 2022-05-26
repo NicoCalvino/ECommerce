@@ -29,7 +29,6 @@ main form div .titulo-seccion{
     width: 100%;
 }
 
-
 /*Informacion Personal*/
 main form div.info-personal input, .fecha-de-nacimiento, .contrasena input {
     width:100%;
@@ -164,7 +163,7 @@ main .login a button:hover{
     }
 
     main form {
-        width:30%;
+        width:40%;
         margin-top: 10px;
     }
 

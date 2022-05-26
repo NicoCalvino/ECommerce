@@ -8,7 +8,7 @@ verde: 70bb49
 
 /*ESTILOS GENERALES DEL MAIN*/
 main{
-    width:95%;
+    width:90%;
     margin:auto
 }
 
@@ -36,6 +36,10 @@ main .titulo a button{
     border-radius:5px;
     margin:5px;
     transition: all 450ms;
+}
+
+main .titulo a button i{
+    margin-right:5px;
 }
 
 main .titulo button:hover{
@@ -94,6 +98,7 @@ main section article div.detalle-pedido .color-tamano .titulo-estetica{
 
 main section article div.detalle-pedido .edicion{
     width:100%;
+    text-decoration: underline;
     display:flex;
     flex-wrap: wrap;
 }
@@ -233,6 +238,10 @@ main .titulo button:hover{
     }
 
     main section.envio .direccion-envio{
+        font-size: 20px;
+    }
+
+    main section.envio a{
         font-size: 20px;
     }
 

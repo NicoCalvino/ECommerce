@@ -52,8 +52,10 @@
                     <div class="fecha-de-nacimiento">
                         <input type="date" name="fecha-de-nacimiento" id="fecha-de-nacimiento" required>
                         <label for="fecha-de-nacimiento">FECHA DE NACIMIENTO</label>
+                        <span class="feedback">Debe ser mayor de 18 años</span>
                     </div>
                     <input type="email" name="email" placeholder="Correo Electrónico" required>
+                    <span class="feedback">El correo ingresado no es válido</span>
                 </div>
                 <div class="intereses-principales">
                     <h3 class="titulo-seccion">Intereses Principales</h3>
@@ -63,18 +65,22 @@
                         <li><label for="mountain"><input type="checkbox" class="opcion" name="intereses" id="mountain">MOUNTAIN-BIKE</label></li>
                         <li><label for="bmx"><input type="checkbox" class="opcion" name="intereses" id="bmx">BMX</label></li>
                     </ul>
+                    <span class="feedback">Debe Elegir al menos una opción</span>
                 </div>
                 <div class="contrasena">
                     <input type="password" name="contrasena" placeholder="Contraseña" required>
                     <input type="password" name="conf-contrasena" placeholder="Confirmar Contraseña" required>
+                    <span class="feedback">Las contraseñas no coinciden</span>
                 </div>
                 <div class="disclaimer">
                     <label for="term-cond"><input type="checkbox" name="term-cond" id="term-cond">ACEPTO LOS TERMINOS Y CONDICIONES</label>
                     <label for="newsletter"><input type="checkbox" name="newsletter" id="newsletter">SUBSCRIBIRSE A NEWSLETTER</label>
+                    <span class="feedback">Debe aceptar los terminos y condiciones</span>
                 </div>
                 <div class="captcha">
                     <img src="/images/Captcha.png" alt="captcha" class="imagen-captcha">
                     <input type="text" name="captcha" placeholder="Ingresar captcha" required>
+                    <span class="feedback">El código ingresado es incorrecto</span>
                 </div>
                 <div class="botones">
                     <input type="submit" value="CREAR CUENTA">

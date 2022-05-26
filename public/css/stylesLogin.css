@@ -44,6 +44,11 @@ main form div.info-personal input{
     padding:0px 5px
 }
 
+main form div.recordar{
+    display: flex;
+    align-items: center;
+}
+
 /*Botones*/
 main .botones{
     display:flex;
@@ -68,7 +73,10 @@ main .botones input:hover{
     background-color:#08355A ;
 }
 
-
+main form  a{
+    margin:auto;
+    text-decoration: underline;
+}
 
 @media(min-width:576px){
     main form {
