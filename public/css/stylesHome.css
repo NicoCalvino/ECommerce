@@ -12,6 +12,10 @@ main{
   margin:auto
 }
 
+a.chat-consulta{
+  display:none
+}
+
 /*Banner*/
 main .banner {
   width:100%
@@ -65,16 +69,19 @@ main section.categorias{
 main section article.categoria-principal{
   width:100%;
   position:relative;
-  display:flex
+  display:flex;
+  align-items: center;
 }
 
 main section article.categoria-principal img{
-  width:100%
+  width:100%;
+  transition:all 450ms
 }
 
-main section article.categoria-principal h2{
+main section h2.titulo-categoria{
   width:100%;
   position:absolute;
+  font-size: 20px;
   bottom:3px;
   left:0px;
   padding-left:5px;
@@ -91,7 +98,7 @@ main section article.categorias-secundarias{
 }
 
 main section article.categorias-secundarias a{
-  width:45%;
+  width:47%;
   margin:5px 0px;
   position:relative;
   border:1px solid rgb(150, 150, 150)
@@ -100,17 +107,7 @@ main section article.categorias-secundarias a{
 main section article.categorias-secundarias a img{
   width:100%;
   justify-content: space-around;
-}
-
-main section article.categorias-secundarias a h2{
-  width:100%;
-  font-size: 20px;
-  position:absolute;
-  bottom:0px;
-  left:0px;
-  padding-left:5px;
-  background-color: rgba(0,0,0,0.7);
-  color:WHITE;
+  transition:all 450ms
 }
 
 /*Estilos Generales de las Secciones*/
@@ -130,18 +127,11 @@ main section.seccion-body {
 }
 
 main section.seccion-body a{
-  width:45%;
+  width:100%;
   margin:10px 0px;
   background-color: white;
-  display:flex;
-  position:relative;
-  border:1px solid rgb(200, 200, 200);
+  border:1px solid #70bb49;
   border-radius: 5%;
-}
-
-main section.seccion-body a  p span.precio-anterior{
-  text-decoration: line-through;
-  font-size: 8px;
 }
 
 main section.seccion-body a.articulo-oculto{
@@ -150,16 +140,34 @@ main section.seccion-body a.articulo-oculto{
 
 main section.seccion-body a img{
   width:100%;
-  padding:10px
+  padding:10px;
 }
 
 main section.seccion-body a div.titulo-precio{
-  position:absolute;
-  bottom:0px;
-  left:0px;
-  background-color: rgba(0,0,0,0.7);
+  background-color: white;
+  padding: 10px;
+  font-size: 24px;
   width:100%;
-  color:WHITE;
+  color:#08355A;
+  border-top: #70bb49 1px solid;
+  position: relative;
+}
+
+main section.seccion-body a div p.precio-anterior{
+  text-decoration: line-through;
+  font-size: 20px;
+  color: red;
+  position:absolute;
+  top:1px;
+  right:10px
+}
+
+main section.seccion-body a div i.fa-bolt{
+  font-size: 28px;
+  color: goldenrod;
+  position:absolute;
+  top:10px;
+  right:10px
 }
 
 /*Comunidad*/
@@ -195,6 +203,7 @@ main section.comunidad p.detalle-comunidad{
 }
 
 @media(min-width:576px){
+  /*Barra de Pagos*/
   main nav.payment-bar{
     margin: 0 0 5px 0;
     width: 100vw;
@@ -205,6 +214,7 @@ main section.comunidad p.detalle-comunidad{
     line-height: 36px;
   }
 
+  /*Categorias*/
   main section.categorias h2{
     font-size: 38px;
   }
@@ -221,9 +231,42 @@ main section.comunidad p.detalle-comunidad{
     font-size: 24px;
   }
 
+  main section.seccion-body a{
+    width:45%;
+  }
+
+  main section.seccion-body a div.titulo-precio{
+    font-size: 20px;
+  }
 }
 
 @media(min-width:768px){
+  /*Chat de Consulta*/
+  main a.chat-consulta{
+    display:flex;
+    flex-wrap:wrap ;
+    position: fixed;
+    bottom:10px;
+    right:10px;
+    border-radius: 5%;
+    border: #70bb49 solid 1px;
+    background-color: white;
+    color:#08355A;
+    z-index: 1;
+    padding:10px;
+  }
+
+  main a.chat-consulta .fa-comments{
+    width: 100%;
+    text-align: center;
+    font-size: 60px;
+  }
+
+  main a.chat-consulta .texto-consulta{
+    width: 100%;
+    text-align: center;
+  }
+
   /*Barra de Envio y Tipos de Pago*/
   main nav.payment-bar{
     margin: 50px auto ;
@@ -255,21 +298,17 @@ main section.comunidad p.detalle-comunidad{
 
   /*Categorias*/
   main section.categorias{
-    width:80%;
-    justify-content: space-between;
+    width:90%;
+    justify-content: space-between; 
   }
 
   /*Categoria Principal*/
   main section article.categoria-principal{
     width:50%;
+    transition: all 450ms
   }
 
-  main section article.categoria-principal a{
-    transition: all 200ms;
-  }
-
-  main section article.categoria-principal a h2{
-    top:0px;
+  main section h2.titulo-categoria{
     display:none;
   }
 
@@ -278,7 +317,11 @@ main section.comunidad p.detalle-comunidad{
   }
 
   main section article.categoria-principal a:hover h2{
-    display:block;
+    display:flex;
+  }
+
+  main section article.categoria-principal a:hover img{
+    opacity:0.5;  
   }
 
   /*Categorias Secundarias*/
@@ -291,21 +334,19 @@ main section.comunidad p.detalle-comunidad{
   main section article.categorias-secundarias a{
     width:45%;
     border:none;
-    transition: all 200ms;
-  }
-
-  main section article.categorias-secundarias a h2{
-    top:0px;
-    display:none;
+    transition: all 450ms;
   }
 
   main section article.categorias-secundarias a:hover {
     box-shadow: 5px 5px 5px rgb(100, 100, 100);
   }
 
-
   main section article.categorias-secundarias a:hover h2{
-    display:block;
+    display:flex;
+  }
+
+  main section article.categorias-secundarias a:hover img{
+    opacity: 0.5;
   }
 
   /*Secciones*/
@@ -326,23 +367,24 @@ main section.comunidad p.detalle-comunidad{
     display:flex
   }
   
-  main section.seccion-body a div.titulo-precio{
-    position: static;
-    border-top:1px solid #70bb49;
-    background-color:initial;
-    padding: 5px;
-    color:#08355A;
-    display:block;
-    transition: all 900ms;
+  .imagenes-seleccionables{
+    transition: all 450ms;
+  }
+
+  main section.seccion-body a div.titulo-precio p.titulo-producto{
+    font-size:16px;
+    opacity:0;
+    transition: all 450ms;
   }
 
   main section.seccion-body a.imagenes-seleccionables:hover {
     box-shadow: 5px 5px 5px rgb(100, 100, 100);
   }
 
-  main section.seccion-body a:hover div.titulo-precio{
-    display:block;
+  main section.seccion-body a.imagenes-seleccionables:hover p.titulo-producto {
+    opacity: 1;
   }
+
 
   /*Comunidad*/
   main section.comunidad{
