@@ -4,7 +4,7 @@
   "description": "Sitio de E-Commerce destinado a la venta de bicicletas y accesorios de ciclismo.\r Se apunta tanto al ciclismo como actividad recreativa de niños a adultos como asi tambien al ciclismo de alta competencia y aventura",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
