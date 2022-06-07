@@ -1,0 +1,16 @@
+{
+    "nombre":"",
+    "imagenes":[],
+    "categoria":"",
+    "subCategoria":"",
+    "precio":"",
+    "precioAnt":"",
+    "colores":[""],
+    "tamanos":[""],
+    "calif":"",
+    "caract":[""],
+    "opiniones":[""],
+    "codigo":"",
+    "stock":"",
+    "estado":""
+}

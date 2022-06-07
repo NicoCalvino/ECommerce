@@ -1,0 +1,35 @@
+[
+    {
+        "nombre":"Spark 26 Alloy Mountain Bike",
+        "imagenes":"Spark26_1.jpg",
+        "categoria":"bicicletas",
+        "subCategoria":"",
+        "precio":"81.256",
+        "colores":"NEGRO",
+        "tamanos":"UNICO",
+        "codigo":"bm00001",
+        "cantidad":"1"  
+    },
+    {
+        "nombre":"INFLADOR PIE DE PVC REFORZADO GIYO",
+        "imagenes":"InfladorPie_1.webp",
+        "categoria":"accesorios",
+        "subCategoria":"",
+        "precio":"1.500",
+        "colores":"NEGRO",
+        "tamanos":"UNICO",
+        "codigo":"acc00004",
+        "cantidad":"1" 
+    },
+    {
+        "nombre":"BALIZA SET D/T SILICONA REDOND 1 LED 4 FUNCIONES C/SUJETADOR",
+        "imagenes":"luces_1.webp",
+        "categoria":"accesorios",
+        "subCategoria":"",
+        "precio":"1.185",
+        "colores":"ROJO",
+        "tamanos":"GRANDE",
+        "codigo":"acc00002",
+        "cantidad":"3"  
+    }
+]

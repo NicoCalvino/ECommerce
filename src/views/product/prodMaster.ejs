@@ -1,0 +1,26 @@
+<%- include('../partials/header',{hojaDeEstilo:"/css/stylesProdMaster.css",titulo:"MAESTRO DE PRODUCTOS"}) %>
+
+<main>
+    <div class="espacio-header"></div>
+    <div class="boton-nuevo">
+        <a href="/products/prodMaster/newProduct" class="nuevo-producto"><button>NUEVO PRODUCTO</button></a>
+    </div>
+    <ul>
+        <% for (let i = 0; i < catalogo.length ; i++) { %>
+            <li>
+                <div class="imagen">
+                    <img src="/images/<%= catalogo[i].categoria %>/<%= catalogo[i].imagenes[0] %>" class="imagen-producto" alt="imagen">
+                </div>
+                <div class="detalle">
+                    <p><%= catalogo[i].nombre.slice(0,30) %></p>
+                    <p>PRECIO: $ <%= catalogo[i].precio %></p>
+                    <p>STOCK: <%= catalogo[i].stock %></p>
+                    <p>ESTADO: <%= catalogo[i].estado %></p>
+                    <a href="/products/prodMaster/<%= catalogo[i].codigo %>">Editar</a>
+                </div>
+            </li>
+        <% } %>
+    </ul>
+</main>
+
+<%- include ("../partials/footer") %>

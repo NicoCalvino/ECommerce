@@ -1,0 +1,74 @@
+<% let titulo = "EDICION " + producto.nombre %>
+<% if(producto.nombre == ""){ %>
+    <% titulo = "NUEVO PRODUCTO" %>
+<% } %>    
+
+<%- include('../partials/header',{hojaDeEstilo:"/css/stylesProdEdit.css",titulo:titulo}) %>
+
+<main>
+    <div class="espacio-header"></div>
+    <a href="/products/prodMaster/list" class="boton-volver"><button><i class="fa-solid fa-arrow-left"></i>VOLVER</button></a>
+    <form action="/" method="GET">
+        <h2><%= producto.nombre %> </h2>
+        <h2>( <%= producto.codigo %> )</h2>
+        <div class="info-prod">
+            <label class="titulo-campo" for="nombreProducto">NOMBRE:</label>
+            <input type="text" class="campo-informacion" name="nombreProducto" id="nombreProducto" value="<%= producto.nombre %>">
+        </div>
+        <div class="info-prod">
+            <label class="titulo-campo" for="categoria">CATEGORIA GENERAL:</label>
+            <input type="text" class="campo-informacion" name="categoria" id="categoria" value="<%= producto.categoria %>">
+        </div>
+        <div class="info-prod">
+            <label class="titulo-campo" for="sub-categoria">SUB CATEGORIA:</label>
+            <input type="text" class="campo-informacion" name="sub-categoria" id="sub-categoria" value="<%= producto.subCategoria %>">
+        </div>
+        <div class="info-prod">
+            <label class="titulo-campo" for="precio">PRECIO: $</label>
+            <input type="text" class="campo-informacion" name="precio" id="precio" value="<%= producto.precio %>">
+        </div>
+        <div class="info-prod">
+            <label class="titulo-campo" for="precioAnt">PRECIO ANTERIOR: $</label>
+            <input type="text" class="campo-informacion" name="precioAnt" id="precioAnt" value="<%= producto.precioAnt %>">
+        </div>
+        <div class="info-prod">
+            <% let colores = "" %>
+            <% producto.colores.forEach (function(color){ %>
+                <% colores = colores + "," + color %>
+            <% }) %>
+            <label class="titulo-campo" for="colores">COLORES:</label>
+            <textarea name="colores" class="campo-informacion" id="colores"><%= colores.slice(1,colores.length) %></textarea>
+        </div>
+        <div class="info-prod">
+            <% let tamanos = "" %>
+            <% producto.tamanos.forEach (function(tamano){ %>
+                <% tamanos = tamanos + "," + tamano %>
+            <% }) %>
+            <label class="titulo-campo" for="tamanos">TAMAÑOS:</label>
+            <textarea name="tamanos" class="campo-informacion" id="tamanos"><%= tamanos.slice(1,tamanos.length) %></textarea>
+        </div>
+        <div class="info-prod">
+            <label class="titulo-campo" for="stock">STOCK:</label>
+            <input type="text" class="campo-informacion" name="stock" id="stock" value="<%= producto.stock %>">
+        </div>
+        <div class="imagenes">
+            <% for (let i = 0; i < producto.imagenes.length; i++) { %>
+                <div class="info-imagen">
+                    <img src="/images/<%= producto.categoria %>/<%= producto.imagenes[i] %>">
+                    <div class="datos-imagen">
+                        <p><%= producto.imagenes[i] %></p>
+                        <input type="file" name="imagen <%= i %>" id="imagen <%= i %>">
+                    </div>
+                </div>
+            <% } %>
+            <label class="titulo-campo" for="nueva-imagen">AGREGAR IMAGEN</label>
+            <input type="file" name="nueva-imagen" id="nueva-imagen">
+        </div>
+        <div class="botones">
+            <input type="submit" value="Confirmar">
+            <input type="reset" value="Deshacer">
+        </div>
+    </form>
+</main>
+
+<%- include ("../partials/footer") %>

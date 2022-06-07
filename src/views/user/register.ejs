@@ -1,0 +1,53 @@
+<%- include('../partials/header',{hojaDeEstilo:"/css/stylesRegister.css",titulo:"REGISTER"}) %>
+
+<main>
+    <div class="espacio-header"></div>
+    <form action="/" method="POST">
+        <div class="info-personal">
+            <h3 class="titulo-seccion">Información Personal</h3>
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="text" name="apellido" placeholder="Apellido" required>
+            <div class="fecha-de-nacimiento">
+                <input type="date" name="fecha-de-nacimiento" id="fecha-de-nacimiento" required>
+                <label for="fecha-de-nacimiento">FECHA DE NACIMIENTO</label>
+                <span class="feedback">Debe ser mayor de 18 años</span>
+            </div>
+            <input type="email" name="email" placeholder="Correo Electrónico" required>
+            <span class="feedback">El correo ingresado no es válido</span>
+        </div>
+        <div class="intereses-principales">
+            <h3 class="titulo-seccion">Intereses Principales</h3>
+            <ul>
+                <li><label for="recreativo"><input type="checkbox" class="opcion" name="intereses" id="recreativo">RECREATIVO</label></li>
+                <li><label for="pista"><input type="checkbox" class="opcion" name="intereses" id="pista">PISTA</label></li>
+                <li><label for="mountain"><input type="checkbox" class="opcion" name="intereses" id="mountain">MOUNTAIN-BIKE</label></li>
+                <li><label for="bmx"><input type="checkbox" class="opcion" name="intereses" id="bmx">BMX</label></li>
+            </ul>
+            <span class="feedback">Debe Elegir al menos una opción</span>
+        </div>
+        <div class="contrasena">
+            <input type="password" name="contrasena" placeholder="Contraseña" required>
+            <input type="password" name="conf-contrasena" placeholder="Confirmar Contraseña" required>
+            <span class="feedback">Las contraseñas no coinciden</span>
+        </div>
+        <div class="disclaimer">
+            <label for="term-cond"><input type="checkbox" name="term-cond" id="term-cond">ACEPTO LOS TERMINOS Y CONDICIONES</label>
+            <label for="newsletter"><input type="checkbox" name="newsletter" id="newsletter">SUBSCRIBIRSE A NEWSLETTER</label>
+            <span class="feedback">Debe aceptar los terminos y condiciones</span>
+        </div>
+        <div class="captcha">
+            <img src="/images/Captcha.png" alt="captcha" class="imagen-captcha">
+            <input type="text" name="captcha" placeholder="Ingresar captcha" required>
+            <span class="feedback">El código ingresado es incorrecto</span>
+        </div>
+        <div class="botones">
+            <input type="submit" value="CREAR CUENTA">
+            <input type="reset" value="COMENZAR DE NUEVO">
+        </div>
+    </form>
+    <div class="login">
+        <label> ¿Ya tenes cuenta?</label>
+        <a href="/login"><button>INGRESAR</button></a>
+    </div>
+</main>
+<%- include ("../partials/footer") %>

@@ -1,0 +1,103 @@
+<%- include('../partials/header',{hojaDeEstilo:"/css/stylesHome.css",titulo:"BiciPal"}) %>
+
+<main>
+    <div class="espacio-header"></div>
+    <a href="#" class="chat-consulta">
+        <i class="fa-regular fa-comments"></i>
+        <p class="texto-consulta">¿Necesitas ayuda?</p>
+    </a>
+    <div class="banner">
+        <img src="images/mountain_banner_1000250.jpg" alt="imagen_banner">
+    </div>
+    <nav class="payment-bar">
+        <ul>
+            <li class="entrega"><a href="#"><i class="fa-solid fa-truck"></i><span class="info-ent-pago">Entrega Inmediata</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-credit-card"></i><span class="info-ent-pago">Tarjeta de Crédito</span></a></li>
+            <li><a href="#"><i class="fa-regular fa-credit-card"></i><span class="info-ent-pago">Tarjeta de Débito</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-qrcode"></i><span class="info-ent-pago">QR</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-money-bill-1"></i><span class="info-ent-pago">Efectivo</span></a></li>
+        </ul>
+    </nav>
+    <section class="categorias">
+        <article class="categoria-principal">
+            <a href="/products/bm00001">
+                <img src="images/biciurbana1.jpg" alt="Bicicletas Urbanas">
+                <h2 class="titulo-categoria">BICICLETAS URBANAS</h2>
+            </a>
+        </article>
+        <article class="categorias-secundarias">
+            <a href="/productDetail">
+                <img src="images/Imagen Bici 3 E.jpg" alt="bicicletas de Montaña">
+                <h2 class="titulo-categoria">BICICLETAS DE MONTAÑA</h2>
+            </a>
+            <a href="#">
+                <img src="images/kids_park E.jpg" alt="Bicicletas de Niños">
+                <h2 class="titulo-categoria">BICICLETAS DE NIÑOS</h2>
+            </a>
+            <a href="#">
+                <img src="images/componentesimg E.jpg" alt="Componentes">
+                <h2 class="titulo-categoria">COMPONENTES</h2>
+            </a>
+            <a href="#">
+                <img src="images/componentes.jpg" alt="Accesorios">
+                <h2 class="titulo-categoria">ACCESORIOS</h2>
+            </a>
+        </article>
+    </section>
+    <section class="seccion-body">
+        <h2 class="titulo-seccion">OFERTAS DESTACADAS</h2>
+        <% for (let i = 0 ; i < ofertas.length;i++){ %>
+            <% if (i == 5){ %>
+                <a href="/products/<%= ofertas[i].codigo %>" class="articulo-oculto imagenes-seleccionables">
+            <% } else { %>
+                <a href="/products/<%= ofertas[i].codigo %>" class="imagenes-seleccionables">
+            <% } %>
+                <img src="/images/<%= ofertas[i].categoria %>/<%= ofertas[i].imagenes[0] %>" alt="Oferta 1">
+                <div class="titulo-precio">
+                    <p class="precio-anterior">$ <%= ofertas[i].precioAnt %></p>
+                    <p class="precio-producto">$ <%= ofertas[i].precio %></p>
+                    <p class="titulo-producto"><%= ofertas[i].nombre %></p>
+                </div>
+            </a>
+            <% if (i == 6 ){i=ofertas.length} %>
+        <% } %>
+    </section>
+    <section class="seccion-body">
+        <h2 class="titulo-seccion">NOVEDADES</h2>
+        <% for (let i = 0 ; i < novedades.length;i++){ %>
+            <% if (i == 5){ %>
+                <a href="/products/<%= novedades[i].codigo %>" class="articulo-oculto imagenes-seleccionables">
+            <% } else { %>
+                <a href="/products/<%= novedades[i].codigo %>" class="imagenes-seleccionables">
+            <% } %>
+                <img src="/images/<%= novedades[i].categoria %>/<%= novedades[i].imagenes[0] %>" alt="Oferta 1">
+                <div class="titulo-precio">
+                    <i class="fa-solid fa-bolt"></i>
+                    <p class="precio-producto">$ <%= novedades[i].precio %></p>
+                    <p class="titulo-producto"><%= novedades[i].nombre %></p>
+                </div>
+            </a>
+            <% if (i == 6 ){i=novedades.length} %>
+        <% } %>
+    </section>
+    <section class="comunidad">
+        <h2 class="titulo-seccion">COMUNIDAD BICIPAL</h2>
+        <a href="#" class="imagenes-seleccionables">
+            <img src="images/hardtrail.jpg" alt="Oferta 1" class="imagenes-seleccionables">
+            <p class="titulo-categoria-principal">AVENTURA DE MONTAÑA</p>
+            <p class="detalle-comunidad">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, autem architecto quaerat, nobis aut nemo sunt fugiat facilis in sapiente enim veritatis minima officia! A illum quod quo dignissimos earum. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus neque odio maxime aperiam, commodi, velit quis modi ipsa facilis ducimus aliquid doloremque praesentium assumenda minus ex molestiae veritatis! Excepturi, esse!</p>
+        </a>
+        <a href="#" class="imagenes-seleccionables">
+            <img src="images/paseosdenoche.jpg" alt="Imagen 1" class="imagenes-seleccionables">
+            <p class="titulo-categoria-principal">PASEOS NOCTURNOS</p>
+            <p class="detalle-comunidad">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, autem architecto quaerat, nobis aut nemo sunt fugiat facilis in sapiente enim veritatis minima officia! A illum quod quo dignissimos earum. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus neque odio maxime aperiam, commodi, velit quis modi ipsa facilis ducimus aliquid doloremque praesentium assumenda minus ex molestiae veritatis! Excepturi, esse!</p>
+        </a>
+        <a href="#" class="imagenes-seleccionables">
+            <img src="images/bicikids.jpg" alt="Imagen 1" class="imagenes-seleccionables">
+            <p class="titulo-categoria-principal">BICI KIDS</p>
+            <p class="detalle-comunidad">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, autem architecto quaerat, nobis aut nemo sunt fugiat facilis in sapiente enim veritatis minima officia! A illum quod quo dignissimos earum. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus neque odio maxime aperiam, commodi, velit quis modi ipsa facilis ducimus aliquid doloremque praesentium assumenda minus ex molestiae veritatis! Excepturi, esse!</p>
+        </a>
+    </section>
+</main>
+
+<%- include ("../partials/footer") %>

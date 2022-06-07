@@ -1,0 +1,144 @@
+/*Celeste: 01adff
+negro:333333
+blanco:ffffff
+Azul Oscuro: 08355A
+Azul Claro: 0f6992
+verde: 70bb49
+*/ 
+
+/*estilos del main*/
+a{text-decoration: none;}
+
+main{
+    width:90%;
+    margin:auto;
+    color:#333333
+}
+
+main a.boton-volver{
+    width:20%;
+    margin-left:50px
+}
+
+main a.boton-volver button{
+    background-color:#0f6992;
+    color:white;
+    font-size: 16px;
+    padding:5px;
+    border-radius:5px;
+    margin:5px;
+    transition: all 450ms;
+}
+
+main a.boton-volver button i{
+    margin-right:5px;
+}
+
+main a.boton-volver button:hover{
+    background-color:#08355A ;
+}
+
+main form {
+    display:flex;
+    flex-wrap: wrap;
+    margin-bottom:10px
+}
+
+main form h2{
+    font-size: 20px;
+    width:100%
+}
+
+/*Estilo Campos*/
+main form div.info-prod{
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+    margin-top: 10px
+}
+
+main form div.info-prod label{
+    width:25%;
+    font-size: 14px;
+}
+
+main form div.info-prod .campo-informacion{
+    width:70%;
+}
+
+/*Estilos Imagenes*/
+main form div.imagenes{
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+main form div.imagenes div.info-imagen{
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+main form div.imagenes div.info-imagen img{
+    width:25%;
+}
+
+main form div.imagenes div.info-imagen div.datos-imagen{
+    width:70%;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+main form div.imagenes div.datos-imagen p,main form div.imagenes div.datos-imagen input {
+    width:100%;
+    margin:5px 0
+}
+
+/*estilos de Botones*/
+main form div.botones {
+    width:70%;
+    display:flex;
+    flex-wrap: wrap;
+    margin:10px auto;
+    justify-content: space-between;
+}
+
+main form div.botones input{
+    width:40%;
+    background-color: #70bb49;
+    color:white;
+    font-size: 16px;
+    padding:5px;
+    border-radius:5px;
+    transition: all 450ms;
+}
+
+main form div.botones input:hover{
+    background-color: #4c6b3b;
+}
+
+@media(min-width:576px){
+    main div.espacio-header{
+        margin-top: 125px;
+    }
+    main form h2{
+        font-size: 24px;
+    }
+    /*Estilos Imagenes*/
+    main form div.imagenes div.info-imagen{
+        width:50%;
+    }
+}
+
+@media(min-width:768px){
+    main form{
+        width:60%;
+        margin:10px auto;
+        border: #70bb49 1px solid;
+        border-radius: 2%;
+        padding: 10px;
+    }
+}

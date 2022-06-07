@@ -1,0 +1,91 @@
+/*Celeste: 01adff
+negro:333333
+blanco:ffffff
+Azul Oscuro: 08355A
+Azul Claro: 0f6992
+verde: 70bb49
+*/ 
+
+/*estilos del main*/
+a{text-decoration: none;}
+
+main{
+    width:90%;
+    margin:auto;
+    color:#333333
+}
+
+main div.boton-nuevo{
+    display: flex;
+    justify-content: center;
+}
+
+main a.nuevo-producto{
+    width:20%;
+    margin:auto
+}
+
+main a.nuevo-producto button{
+    background-color:#0f6992;
+    color:white;
+    font-size: 16px;
+    padding:5px;
+    border-radius:5px;
+    margin:5px;
+    transition: all 450ms;
+}
+
+main a.nuevo-producto button i{
+    margin-right:5px;
+}
+
+main a.nuevo-producto button:hover{
+    background-color:#08355A ;
+}
+
+/*Estilos de la lista*/
+main ul li {
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom:1px solid #70bb49
+}
+
+/*Estilos de la imagen de cada producto*/
+main ul li div.imagen{
+    width:20%;
+    height:50%
+}
+
+main ul li div img.imagen-producto{
+    width:100%;
+    height:50%;
+    object-fit:contain;
+}
+
+/*Estilos del detalle del producto*/
+main ul li div.detalle{
+    display:flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+}
+main ul li div.detalle p, main ul li div.detalle a{
+    width:100%;
+    font-size: 12px;
+}
+
+@media(min-width:576px){
+    main ul li div.detalle p, main ul li div.detalle a{
+        font-size: 20px;
+    }
+}
+
+@media(min-width:768px){
+    main ul{
+        width:60%;
+        margin:10px auto;
+        border: #70bb49 1px solid;
+        border-radius: 10px;
+        padding: 10px;
+    }
+}
