@@ -23,4 +23,18 @@ En este caso, lo que nos atrae son la estética, los colores, la selección de i
 https://www.bertolinabikes.com.ar/
 De este sitio destacamos lo amistosa que resulta la navegación, con un menú sencillo y claro.
 
+------------------------------
+Paleta de colores
+https://coolors.co/01adff-333333-ffffff-08355a-0f6992-70bb49
+
+Estilos de fuente
+Myriad-Pro sans serif
+se encuantra guardada en src\public\css\fonts
+
+Wireframes
+Realizados con WireframeCC.
+Almacenados en carpeta wireframes.
+
+Tablero de trabajo
+https://trello.com/invite/b/UVIZAr2F/748472956465f280a2d6e29176a46ba1/e-commerce
 
