@@ -19,15 +19,16 @@
             <div class="burger-menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
-            <div class="input">
-                <input type="text" placeholder="Buscar productos, marcas"><i class="fas fa-search"></i>
-            </div>
+            <form action="/search" method="GET" class="input">
+                <input type="text" placeholder="Buscar productos, marcas">
+                <button type="sumbmit"><i class="fas fa-search"></i></button>
+            </form>
             <nav class="log-bar">
                 <ul>
                     <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
                     <li><a href="/user/login"><i class="fa-solid fa-circle-user"></i></a></li>
                     <li><a href="/user/register"><i class="fa-solid fa-right-to-bracket"></i></a></li>
-                    <li><a href="/products/productCart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a href="/user/productCart"><i class="fa-solid fa-cart-shopping"></i></a></li>
                     <li><a href="/products/prodMaster/list"><i class="fa-solid fa-gear"></i></a></li>
                 </ul>
             </nav>

@@ -1,0 +1,105 @@
+[
+  {
+    "id": 1,
+    "nombre": "Nicolas",
+    "apellido": "Calviño",
+    "fechaDeNacimiento": "1988-06-21",
+    "email": "nicolascalvino@hotmail.com",
+    "intereses": [
+      "on",
+      "on"
+    ],
+    "categoria": "NUEVO",
+    "imagen": "1655254864376_img_.JPG"
+  },
+  {
+    "id": 2,
+    "nombre": "Martin",
+    "apellido": "Bianchi",
+    "fechaDeNacimiento": "1978-05-04",
+    "email": "martin@dsdf.com",
+    "intereses": [
+      "on",
+      "on"
+    ],
+    "categoria": "NUEVO",
+    "imagen": "Anonimo.png"
+  },
+  {
+    "id": 3,
+    "nombre": "Roberto",
+    "apellido": "Mendez",
+    "fechaDeNacimiento": "1985-04-25",
+    "email": "robertomendez@hotmail.com",
+    "intereses": [
+      "on",
+      "on"
+    ],
+    "categoria": "NUEVO",
+    "imagen": "1655339201458_img_.JPG"
+  },
+  {
+    "id": 4,
+    "nombre": "Martin",
+    "apellido": "Calviño",
+    "fechaDeNacimiento": "1988-06-21",
+    "email": "nicolascalvino@gmail.com",
+    "intereses": [
+      "on",
+      "on"
+    ],
+    "password": "asfsd",
+    "categoria": "NUEVO",
+    "imagen": "Anonimo.png"
+  },
+  {
+    "id": 5,
+    "nombre": "Nicolas",
+    "apellido": "Bianchi",
+    "fechaDeNacimiento": "1956-12-14",
+    "email": "nicolascalvino@hotmail.com",
+    "intereses": [
+      "on",
+      "on",
+      "on"
+    ],
+    "password": "fgdhfd",
+    "categoria": "NUEVO",
+    "imagen": "Anonimo.png"
+  },
+  {
+    "id": 6,
+    "nombre": "Nicolas",
+    "apellido": "Calviño",
+    "fechaDeNacimiento": "1988-05-12",
+    "email": "pcalvino@estrellapatagonica.com.ar",
+    "password": "asgf",
+    "categoria": "NUEVO",
+    "imagen": "Anonimo.png"
+  },
+  {
+    "id": 7,
+    "nombre": "Nicolas",
+    "apellido": "Calviño",
+    "fechaDeNacimiento": "1988-05-12",
+    "email": "pcalvino@estrellapatagonica.com.ar",
+    "intereses": "recreativo",
+    "password": "asgf",
+    "categoria": "NUEVO",
+    "imagen": "Anonimo.png"
+  },
+  {
+    "id": 8,
+    "nombre": "Nicolas",
+    "apellido": "Calviño",
+    "fechaDeNacimiento": "1988-05-12",
+    "email": "pcalvino@estrellapatagonica.com.ar",
+    "intereses": [
+      "recreativo",
+      "mountain"
+    ],
+    "password": "asgf",
+    "categoria": "NUEVO",
+    "imagen": "Anonimo.png"
+  }
+]

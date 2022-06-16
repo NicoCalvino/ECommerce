@@ -6,11 +6,11 @@
         <div class="encabezado-producto">
             <h3 class="titulo-producto"><%= producto.nombre %></h3>
             <div class="calificacion">
-                <% let nroEnt = producto.calif.split(".")[0] %>
+                <% let nroEnt = parseInt(califProm) %>
                 <% for (let i = 1; i<=nroEnt; i++) { %>
                     <i class="fa-solid fa-star"></i>
                 <% } %>
-                <% let nroDec = producto.calif.split(".")[1] %>
+                <% let nroDec = califProm-nroEnt %>
                 <% if (nroDec != 0) { %>
                     <i class="fa-solid fa-star-half"></i></i>
                 <% } %>
@@ -18,13 +18,13 @@
         </div>
         <article class=imagenes>
             <div class="imagen-principal">
-                <img src="/images/<%= producto.categoria %>/<%= producto.imagenes[0] %>" alt="Imagen 1">
+                <img src="/images/productos/<%= producto.imagenes[0] %>" alt="Imagen 1">
             </div>
             <div class="imagenes-secundarias">
-                <img src="/images/<%= producto.categoria %>/<%= producto.imagenes[1] %>" alt="Imagen 2" class="imagenes-seleccionables">
-                <img src="/images/<%= producto.categoria %>/<%= producto.imagenes[2] %>" alt="Imagen 3" class="imagenes-seleccionables">
-                <img src="/images/<%= producto.categoria %>/<%= producto.imagenes[3] %>" alt="Imagen 4" class="imagenes-seleccionables">
-                <img src="/images/<%= producto.categoria %>/<%= producto.imagenes[4] %>" alt="Imagen 5" class="imagenes-seleccionables">
+                <img src="/images/productos/<%= producto.imagenes[1] %>" alt="Imagen 2" class="imagenes-seleccionables">
+                <img src="/images/productos/<%= producto.imagenes[2] %>" alt="Imagen 3" class="imagenes-seleccionables">
+                <img src="/images/productos/<%= producto.imagenes[3] %>" alt="Imagen 4" class="imagenes-seleccionables">
+                <img src="/images/productos/<%= producto.imagenes[4] %>" alt="Imagen 5" class="imagenes-seleccionables">
             </div>
         </article>
         <article class="informacion">
@@ -75,23 +75,20 @@
     <section class="valoraciones">
         <h3 class="titulo-seccion">OPINIONES</h3>
         <ul class="opiniones">
-            <% for (let i = 0;i < producto.opiniones.length;i++){ %>
-                <% let tituloOpinion = producto.opiniones[i].split("_")[0] %>
-                <% let califOpinion = producto.opiniones[i].split("_")[1] %>
-                <% let detalleOpinion = producto.opiniones[i].split("_")[2] %>
+            <% for (let i = 0;i < opinionesProd.length;i++){ %>
                 <li>
-                    <h4><%= tituloOpinion %></h4>
+                    <h4><%= opinionesProd[i].titulo %></h4>
                     <p class="calificacion-usuario">
-                        <% let nroEnt = califOpinion.split(".")[0] %>
+                        <% let nroEnt = parseInt(opinionesProd[i].calificacion) %>
                         <% for (let i = 1; i<=nroEnt; i++) { %>
                             <i class="fa-solid fa-star"></i>
                         <% } %>
-                        <% let nroDec = califOpinion.split(".")[1] %>
+                        <% let nroDec = opinionesProd[i].calificacion - nroEnt %>
                         <% if (nroDec != 0) { %>
                             <i class="fa-solid fa-star-half"></i></i>
                         <% } %>
                     </p>
-                    <p class="opinion-usuario"><%= detalleOpinion %></p>
+                    <p class="opinion-usuario"><%= opinionesProd[i].opinion %></p>
                 </li>
             <% } %>
         </ul>
@@ -108,7 +105,7 @@
                 <% if (catalogoCategoria[i].codigo != producto.codigo){ %>
                     <li>
                         <a href="/products/<%= catalogoCategoria[i].codigo %>">
-                            <img src="/images/<%= catalogoCategoria[i].categoria %>/<%= catalogoCategoria[i].imagenes[0] %>" alt="Otro Producto 1" class="imagenes-seleccionables">
+                            <img src="/images/productos/<%= catalogoCategoria[i].imagenes[0] %>" alt="Otro Producto 1" class="imagenes-seleccionables">
                             <h3 class="precio-producto"> $ <%= catalogoCategoria[i].precio %></h3>
                             <h3 class="titulo-imagen"><%= catalogoCategoria[i].nombre %></h3>
                         </a>
@@ -128,7 +125,7 @@
             <% for (let i=0;i < cantProd ;i++){ %>
                 <li>
                     <a href="/products/<%= otrosProd[i].codigo %>">
-                        <img src="/images/<%= otrosProd[i].categoria %>/<%= otrosProd[i].imagenes[0] %>" alt="Otro Producto 1" class="imagenes-seleccionables">
+                        <img src="/images/productos/<%= otrosProd[i].imagenes[0] %>" alt="Otro Producto 1" class="imagenes-seleccionables">
                         <h3 class="precio-producto"> $ <%= otrosProd[i].precio %></h3>
                         <h3 class="titulo-imagen"><%= otrosProd[i].nombre %></h3>
                     </a>

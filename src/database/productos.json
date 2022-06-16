@@ -1,0 +1,434 @@
+[
+  {
+    "nombre": "",
+    "imagenes": "",
+    "categoria": "",
+    "subCategoria": "",
+    "precio": "",
+    "descuento": "",
+    "colores": [
+      ""
+    ],
+    "tamanos": [
+      ""
+    ],
+    "caract": [
+      ""
+    ],
+    "codigo": "newProd",
+    "stock": "",
+    "estado": ""
+  },
+  {
+    "nombre": "Spark 26 Alloy Mountain Bike Re Buena",
+    "imagenes": [
+      "Spark26_1.jpg",
+      "Spark26_2.jpg",
+      "Spark26_3.jpg",
+      "Spark26_4.jpg",
+      "Spark26_5.jpg"
+    ],
+    "categoria": "bicicletas",
+    "subCategoria": "Montaña",
+    "precio": "81256",
+    "descuento": "0",
+    "colores": [
+      "AZUL",
+      "ROJO",
+      "VERDE",
+      "AMARILLO",
+      "NEGRO"
+    ],
+    "tamanos": [
+      "UNICO"
+    ],
+    "caract": [
+      "CUADRO: Slp de Aluminio",
+      "HORQUILLA: Slp con Suspension",
+      "SHIFTERS: Shimano ST-EF41",
+      "CADENA: Comun Mtb 7v",
+      "PIÑON: Shimano MF-TZ500-7",
+      "FRENOS: Disco Mecanico",
+      "NEUMÁTICOS: Wanda MTB 29×2.10",
+      "MANUBRIO: Slp MTB de Aluminio",
+      "ASIENTO: Slp MTB",
+      "JUEGO DE DIRECCIÓN: Integrado"
+    ],
+    "codigo": "b1",
+    "stock": "95",
+    "estado": "NOVEDAD"
+  },
+  {
+    "nombre": "MTB Sunshine R29",
+    "imagenes": [
+      "MTB_1.jpg",
+      "MTB_2.jpg",
+      "MTB_3.jpg",
+      "MTB_4.jpg",
+      "MTB_5.jpg"
+    ],
+    "categoria": "bicicletas",
+    "subCategoria": "Montaña",
+    "precio": "45090",
+    "descuento": 15,
+    "colores": [
+      "AZUL/ROJO",
+      "AMARILLO/NEGRO",
+      "CELESTE/NEGRO",
+      "ROSA/BLANCO"
+    ],
+    "tamanos": [
+      "UNICO"
+    ],
+    "caract": [
+      "Marca:TOPMEGA",
+      "Neumáticos:29 x 2.10",
+      "Forma:Topmega MTB Aluminio 31.8x720mm",
+      "Mazas:Ruleman 36 Agujeros",
+      "Horquilla:Topmega Acero con Suspensión",
+      "Engranaje:Topmega 24-34-42X170",
+      "Llantas:Doble pared Aluminio",
+      "Manija de Freno:Shimano EF41",
+      "Manija de Cambio:Shimano EF41",
+      "Descarrilador:Shimano",
+      "Cambios:Shimano TY300",
+      "Piñon:7 coronas 14/28T",
+      "Portasilla (mm):Topmega Aluminio 27.2",
+      "Velocidades:21",
+      "Suspensión Delantera:Si",
+      "Frenos:Disco Mecánico"
+    ],
+    "codigo": "b2",
+    "stock": "17",
+    "estado": "OFERTA"
+  },
+  {
+    "nombre": "MTB Thor R29 24 Vel",
+    "imagenes": [
+      "MTB_Thor_1.webp",
+      "MTB_Thor_2.webp",
+      "MTB_Thor_3.webp",
+      "MTB_Thor_4.webp",
+      "MTB_Thor_5.webp"
+    ],
+    "categoria": "bicicletas",
+    "subCategoria": "Montaña",
+    "precio": "74560",
+    "descuento": 0,
+    "colores": [
+      "CELESTE",
+      "NEGRO",
+      "ROJO",
+      "VIOLETA"
+    ],
+    "tamanos": [
+      "UNICO"
+    ],
+    "caract": [
+      "Talle:S",
+      "Color:Celeste",
+      "Marca:TOPMEGA",
+      "Neumáticos:Arisun Mount Graham",
+      "Forma:Aluminio",
+      "Mazas:Ruleman 36 Agujeros",
+      "Horquilla:Con suspension Topmega by zoom",
+      "Engranaje:TRIPLE 24-34-42X175mm SHIMANO FCTY301",
+      "Llantas:Doble pared Aluminio",
+      "Manija de Freno:Shimano",
+      "Manija de Cambio:Shimano",
+      "Descarrilador:Shimano",
+      "Cambios:Shimano Tourney",
+      "Piñon:8C CASSETTE SHIMANO ALTUS 11-34T HG31 MEGARANGE",
+      "Portasilla (mm):Topmega Aluminio 30.4 mm",
+      "Velocidades:24",
+      "Suspensión Delantera:Si",
+      "Frenos:V-Brake"
+    ],
+    "codigo": "b3",
+    "stock": "105",
+    "estado": "NOVEDAD"
+  },
+  {
+    "nombre": "MTB Regal 21 Vel. R29",
+    "imagenes": [
+      "MTB_Regal_1.jpg",
+      "MTB_Regal_2.webp",
+      "MTB_Regal_3.jfif",
+      "MTB_Regal_4.jfif",
+      "MTB_Regal_5.webp"
+    ],
+    "categoria": "bicicletas",
+    "subCategoria": "Montaña",
+    "precio": "47120",
+    "descuento": 20,
+    "colores": [
+      "NARANJA/NEGRO",
+      "ROSA/NEGRO",
+      "NEGRO/AMARILLO"
+    ],
+    "tamanos": [
+      "UNICO"
+    ],
+    "caract": [
+      "Marca:TOPMEGA",
+      "Neumáticos:29 x 2.10",
+      "Forma:Topmega MTB Aluminio 31.8x720mm",
+      "Mazas:Ruleman 36 Agujeros",
+      "Horquilla:Topmega Acero con Suspensión",
+      "Engranaje:Topmega 24-34-42X170",
+      "Llantas:Doble pared Aluminio",
+      "Manija de Freno:Shimano EF41",
+      "Manija de Cambio:Shimano EF41",
+      "Descarrilador:Shimano",
+      "Cambios:Sensah MX7",
+      "Piñon:7 coronas 14/28T",
+      "Portasilla (mm):Topmega Aluminio 27.2",
+      "Velocidades:21",
+      "Suspensión Delantera:Si",
+      "Frenos:Disco Mecánico"
+    ],
+    "codigo": "b4",
+    "stock": "32",
+    "estado": "OFERTA"
+  },
+  {
+    "nombre": "MTB Neptune R26",
+    "imagenes": [
+      "MTB_Neptune_1.webp",
+      "MTB_Neptune_2.jpg",
+      "MTB_Neptune_3.jfif",
+      "MTB_Neptune_4.webp",
+      "MTB_Neptune_5.jpg"
+    ],
+    "categoria": "bicicletas",
+    "subCategoria": "Montaña",
+    "precio": "45644",
+    "descuento": "0",
+    "colores": [
+      "ROJO/NEGRO",
+      "ROSA/NEGRO",
+      "AMARILLO/ROJO"
+    ],
+    "tamanos": [
+      "UNICO"
+    ],
+    "caract": [
+      "Marca:TOPMEGA",
+      "Neumáticos:26x2.20",
+      "Forma:Topmega MTB Aluminio 31.8x720mm",
+      "Mazas:Ruleman 36 Agujeros",
+      "Horquilla:Topmega Acero con Suspensión",
+      "Engranaje:Topmega 24-34-42X170",
+      "Llantas:Doble pared Aluminio",
+      "Manija de Freno:Shimano EF41",
+      "Manija de Cambio:Shimano EF41",
+      "Descarrilador:Shimano",
+      "Cambios:Sensah MX7",
+      "Piñon:7 coronas 14/28T",
+      "Portasilla (mm):Topmega Aluminio 27.2",
+      "Velocidades:21",
+      "Suspensión Delantera:Si",
+      "Frenos:Disco Mecánico"
+    ],
+    "codigo": "b5",
+    "stock": "3",
+    "estado": "NORMAL"
+  },
+  {
+    "nombre": "MTB Flamingo R29",
+    "imagenes": [
+      "MTB_Flamingo_1.jfif",
+      "MTB_Flamingo_2.jfif",
+      "MTB_Flamingo_3.webp",
+      "MTB_Flamingo_4.webp",
+      "MTB_Flamingo_5.jpg"
+    ],
+    "categoria": "bicicletas",
+    "subCategoria": "Montaña",
+    "precio": "45644",
+    "descuento": 0,
+    "colores": [
+      "NEGRO/ROSA",
+      "ROSA/NEGRO"
+    ],
+    "tamanos": [
+      "UNICO"
+    ],
+    "caract": [
+      "Marca:TOPMEGA",
+      "Neumáticos:29 x 2.10",
+      "Forma:Topmega MTB Aluminio 31.8x720mm",
+      "Mazas:Ruleman 36 Agujeros",
+      "Horquilla:Topmega Acero con Suspensión",
+      "Engranaje:Topmega 24-34-42X170",
+      "Llantas:Doble pared Aluminio",
+      "Manija de Freno:Shimano EF41",
+      "Manija de Cambio:Shimano EF41",
+      "Descarrilador:Shimano",
+      "Cambios:Sensah MX7",
+      "Piñon:7 coronas 14/28T",
+      "Portasilla (mm):Topmega Aluminio 27.2",
+      "Velocidades:21",
+      "Suspensión Delantera:Si",
+      "Frenos:Disco Mecánico"
+    ],
+    "codigo": "b6",
+    "stock": "5",
+    "estado": "NORMAL"
+  },
+  {
+    "nombre": "ESLINGA C/CERROJO TUBULAR ACERO",
+    "imagenes": [
+      "candado_1.jpg",
+      "candado_2.jpg",
+      "candado_3.jpg",
+      "candado_4.jpg",
+      "candado_5.jpg"
+    ],
+    "categoria": "accesorios",
+    "subCategoria": "Candado",
+    "precio": "2950",
+    "descuento": "0",
+    "colores": [
+      "NEGRO",
+      "BLANCO",
+      "AMARILLO"
+    ],
+    "tamanos": [
+      "1 METRO",
+      "1.5 METROS"
+    ],
+    "caract": [
+      "Alarma:No",
+      "Marca:FORTE",
+      "Cerradura:No"
+    ],
+    "codigo": "a1",
+    "stock": "35",
+    "estado": "NOVEDAD"
+  },
+  {
+    "nombre": "BALIZA SET D/T SILICONA REDOND 1 LED 4 FUNCIONES C/SUJETADOR",
+    "imagenes": [
+      "luces_1.webp",
+      "luces_2.webp",
+      "luces_3.jpg",
+      "luces_4.jpg",
+      "luces_5.jpg"
+    ],
+    "categoria": "accesorios",
+    "subCategoria": "Luces",
+    "precio": "1185",
+    "descuento": 0,
+    "colores": [
+      "ROJO",
+      "NEGRO"
+    ],
+    "tamanos": [
+      "GRANDE",
+      "CHICO"
+    ],
+    "caract": [
+      "MARCA:TOPMEGA",
+      "PROGRAMAS:3",
+      "LARGO:20CM"
+    ],
+    "codigo": "a2",
+    "stock": "1600",
+    "estado": "NOVEDAD"
+  },
+  {
+    "nombre": "INFLADOR MINI COMPACTO 30X230MM D/VALVULA",
+    "imagenes": [
+      "inflador_1.webp",
+      "Inflador_2.webp",
+      "Inflador_3.jpg",
+      "Inflador_4.jpg",
+      "Inflador_5.jpg"
+    ],
+    "categoria": "accesorios",
+    "subCategoria": "Inflador",
+    "precio": "900",
+    "descuento": 7,
+    "colores": [
+      "NEGRO"
+    ],
+    "tamanos": [
+      "UNICO"
+    ],
+    "caract": [
+      "MARCA:KUEST",
+      "MODELO:IMI-002",
+      "PRESION MAXIMA:60psi",
+      "MATERIAL: POLIAMIDA",
+      "MEDIDAS: 22 MM × 230 MM"
+    ],
+    "codigo": "a3",
+    "stock": "150",
+    "estado": "OFERTA"
+  },
+  {
+    "nombre": "INFLADOR PIE DE PVC REFORZADO GIYO",
+    "imagenes": [
+      "InfladorPie_1.webp",
+      "InfladorPie_2.webp",
+      "InfladorPie_3.jpg",
+      "InfladorPie_4.webp",
+      "InfladorPie_5.jpg"
+    ],
+    "categoria": "accesorios",
+    "subCategoria": "Inflador",
+    "precio": "3360",
+    "descuento": 0,
+    "colores": [
+      "NEGRO",
+      "CELESTE",
+      "BLANCO"
+    ],
+    "tamanos": [
+      "UNICO"
+    ],
+    "caract": [
+      "Marca:TopMega",
+      "Modelo:1001221",
+      "Altura:61cm",
+      "Presión Máxima:160 psi",
+      "Cuerpo:Plástico reforzado"
+    ],
+    "codigo": "a4",
+    "stock": "136",
+    "estado": "NOVEDAD"
+  },
+  {
+    "nombre": "Silla Para Bicicleta Niño Bebé Polisport Guppy Rs Reclinable",
+    "imagenes": [
+      "Silla_1.webp",
+      "Silla_2.webp",
+      "Silla_3.webp",
+      "Silla_4.webp",
+      "Silla_5.webp"
+    ],
+    "categoria": "accesorios",
+    "subCategoria": "Asiento",
+    "precio": "21885",
+    "descuento": 20,
+    "colores": [
+      "NEGRO",
+      "GRIS"
+    ],
+    "tamanos": [
+      "UNICO"
+    ],
+    "caract": [
+      "Marca:Polisport",
+      "Modelo:Guppy",
+      "Posición:Trasera",
+      "Peso máximo soportado: 22 kg",
+      "Características adicionales: Reposapiés",
+      "Seguridad:Cinturón de seguridad extra"
+    ],
+    "codigo": "a5",
+    "stock": "15",
+    "estado": "OFERTA"
+  }
+]

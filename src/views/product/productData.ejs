@@ -7,68 +7,101 @@
 
 <main>
     <div class="espacio-header"></div>
-    <a href="/products/prodMaster/list" class="boton-volver"><button><i class="fa-solid fa-arrow-left"></i>VOLVER</button></a>
-    <form action="/" method="GET">
-        <h2><%= producto.nombre %> </h2>
-        <h2>( <%= producto.codigo %> )</h2>
-        <div class="info-prod">
-            <label class="titulo-campo" for="nombreProducto">NOMBRE:</label>
-            <input type="text" class="campo-informacion" name="nombreProducto" id="nombreProducto" value="<%= producto.nombre %>">
-        </div>
-        <div class="info-prod">
-            <label class="titulo-campo" for="categoria">CATEGORIA GENERAL:</label>
-            <input type="text" class="campo-informacion" name="categoria" id="categoria" value="<%= producto.categoria %>">
-        </div>
-        <div class="info-prod">
-            <label class="titulo-campo" for="sub-categoria">SUB CATEGORIA:</label>
-            <input type="text" class="campo-informacion" name="sub-categoria" id="sub-categoria" value="<%= producto.subCategoria %>">
-        </div>
-        <div class="info-prod">
-            <label class="titulo-campo" for="precio">PRECIO: $</label>
-            <input type="text" class="campo-informacion" name="precio" id="precio" value="<%= producto.precio %>">
-        </div>
-        <div class="info-prod">
-            <label class="titulo-campo" for="precioAnt">PRECIO ANTERIOR: $</label>
-            <input type="text" class="campo-informacion" name="precioAnt" id="precioAnt" value="<%= producto.precioAnt %>">
-        </div>
-        <div class="info-prod">
-            <% let colores = "" %>
-            <% producto.colores.forEach (function(color){ %>
-                <% colores = colores + "," + color %>
-            <% }) %>
-            <label class="titulo-campo" for="colores">COLORES:</label>
-            <textarea name="colores" class="campo-informacion" id="colores"><%= colores.slice(1,colores.length) %></textarea>
-        </div>
-        <div class="info-prod">
-            <% let tamanos = "" %>
-            <% producto.tamanos.forEach (function(tamano){ %>
-                <% tamanos = tamanos + "," + tamano %>
-            <% }) %>
-            <label class="titulo-campo" for="tamanos">TAMAÑOS:</label>
-            <textarea name="tamanos" class="campo-informacion" id="tamanos"><%= tamanos.slice(1,tamanos.length) %></textarea>
-        </div>
-        <div class="info-prod">
-            <label class="titulo-campo" for="stock">STOCK:</label>
-            <input type="text" class="campo-informacion" name="stock" id="stock" value="<%= producto.stock %>">
-        </div>
-        <div class="imagenes">
-            <% for (let i = 0; i < producto.imagenes.length; i++) { %>
-                <div class="info-imagen">
-                    <img src="/images/<%= producto.categoria %>/<%= producto.imagenes[i] %>">
-                    <div class="datos-imagen">
-                        <p><%= producto.imagenes[i] %></p>
-                        <input type="file" name="imagen <%= i %>" id="imagen <%= i %>">
+    <div class="volver-tachito">
+        <a href="/products/prodMaster/list" class="boton-volver"><button><i class="fa-solid fa-arrow-left"></i>VOLVER</button></a>
+        <form action="/products/delete/<%= producto.codigo %>?_method=DELETE" class="boton-eliminar" method="POST">
+            <button type="submit" class=""><i class="fa-solid fa-trash-can"></i></button>
+        </form>
+    </div>
+    <div class="info-producto">
+        <% if (producto.codigo == "newProd") { %>
+            <form action="/products/prodMaster/newProduct" method="POST" enctype="multipart/form-data">
+        <% } else { %>
+            <form action="/products/prodMaster/edit/<%= producto.codigo %>?_method=PUT" method="POST">
+        <% } %>
+            <h2><%= producto.nombre %> </h2>
+            <h2>( <%= producto.codigo %> )</h2>
+            <div class="info-prod">
+                <label class="titulo-campo" for="nombreProducto">NOMBRE:</label>
+                <input type="text" class="campo-informacion" name="nombreProducto" id="nombreProducto" value="<%= producto.nombre %>" required placeholder="NOMBRE DE PRODUCTO">
+            </div>
+            <div class="info-prod">
+                <label class="titulo-campo" for="categoria">CATEGORIA:</label>
+                <select class="campo-informacion" name="categoria" id="categoria">
+                    <option value="bicicletas" <%= producto.categoria == "bicicletas" ? "selected" : null %>>BICICLETAS</option>
+                    <option value="accesorios" <%= producto.categoria == "accesorios" ? "selected" : null %>>ACCESORIOS</option>
+                    <option value="componentes" <%= producto.categoria == "componentes" ? "selected" : null %>>COMPONENTES</option>
+                    <option value="indumentaria" <%= producto.categoria == "indumentaria" ? "selected" : null %>>INDUMENTARIA</option>
+                </select>
+            </div>
+            <div class="info-prod">
+                <label class="titulo-campo" for="sub-categoria">SUB CATEGORIA:</label>
+                <input type="text" class="campo-informacion" name="subCategoria" id="sub-categoria" value="<%= producto.subCategoria %>" required placeholder="SUB CATEGORIA">
+            </div>
+            <div class="info-prod">
+                <label class="titulo-campo" for="precio">PRECIO: $</label>
+                <input type="text" class="campo-informacion" name="precio" id="precio" value="<%= producto.precio %>" required placeholder="PRECIO">
+            </div>
+            <div class="info-prod">
+                <label class="titulo-campo" for="precioAnt">DESCUENTO: % </label>
+                <input type="text" class="campo-informacion" name="precioAnt" id="precioAnt" value="<%= producto.descuento %>" placeholder="DESCUENTO">
+            </div>
+            <div class="info-prod">
+                <% let colores = "" %>
+                <% producto.colores.forEach (function(color){ %>
+                    <% colores = colores + "," + color %>
+                <% }) %>
+                <label class="titulo-campo" for="colores">COLORES:</label>
+                <textarea name="colores" class="campo-informacion" id="colores" required placeholder="COLOR 1, COLOR 2, ..."><%= colores.slice(1,colores.length) %></textarea>
+            </div>
+            <div class="info-prod">
+                <% let tamanos = "" %>
+                <% producto.tamanos.forEach (function(tamano){ %>
+                    <% tamanos = tamanos + "," + tamano %>
+                <% }) %>
+                <label class="titulo-campo" for="tamanos">TAMAÑOS:</label>
+                <textarea name="tamanos" class="campo-informacion" id="tamanos" required placeholder="TAMAÑO 1, TAMAÑO 2, ..."><%= tamanos.slice(1,tamanos.length) %></textarea>
+            </div>
+            <div class="info-prod">
+                <% let caracteristicas = "" %>
+                <% producto.caract.forEach (function(caracteristica){ %>
+                    <% caracteristicas = caracteristicas + "," + caracteristica %>
+                <% }) %>
+                <label class="titulo-campo" for="caracteristicas">CARACTERISTICAS:</label>
+                <textarea name="caracteristicas" class="campo-informacion campo-caracteristicas" id="caracteristicas" required placeholder="TITULO1:DESCRIPCION1, TITULO2:DESCRIPCION2, ..."><%= caracteristicas.slice(1,caracteristicas.length) %></textarea>
+            </div>
+            <div class="info-prod">
+                <label class="titulo-campo" for="stock">STOCK:</label>
+                <input type="text" class="campo-informacion" name="stock" id="stock" value="<%= producto.stock %>" required placeholder="STOCK">
+            </div>
+            <div class="info-prod">
+                <label class="titulo-campo" for="estado">ESTADO:</label>
+                <select class="campo-informacion" name="estado" id="estado">
+                    <option value="" <%= producto.estado == "" ? "selected" : null %>>ELEGIR</option>
+                    <option value="NORMAL" <%= producto.estado == "NORMAL" ? "selected" : null %>>NORMAL</option>
+                    <option value="OFERTA" <%= producto.estado == "OFERTA" ? "selected" : null %>>OFERTA</option>
+                    <option value="NOVEDAD" <%= producto.estado == "NOVEDAD" ? "selected" : null %>>NOVEDAD</option>
+                </select>
+            </div>
+            <div class="imagenes">
+                <% for (let i = 0; i < producto.imagenes.length; i++) { %>
+                    <div class="info-imagen">
+                        <img src="/images/productos/<%= producto.imagenes[i] %>">
+                        <div class="datos-imagen">
+                            <p><%= producto.imagenes[i] %></p>
+                            <input type="file" name="imagen <%= i %>" id="imagen <%= i %>">
+                        </div>
                     </div>
-                </div>
-            <% } %>
-            <label class="titulo-campo" for="nueva-imagen">AGREGAR IMAGEN</label>
-            <input type="file" name="nueva-imagen" id="nueva-imagen">
-        </div>
-        <div class="botones">
-            <input type="submit" value="Confirmar">
-            <input type="reset" value="Deshacer">
-        </div>
-    </form>
+                <% } %>
+                <label class="titulo-campo" for="nuevaImagen">AGREGAR IMAGEN</label>
+                <input type="file" name="nuevaImagen" id="nuevaImagen">
+            </div>
+            <div class="botones">
+                <input type="reset" value="Deshacer">
+                <input type="submit" value="Confirmar">
+            </div>
+        </form>
+    </div>
 </main>
 
 <%- include ("../partials/footer") %>

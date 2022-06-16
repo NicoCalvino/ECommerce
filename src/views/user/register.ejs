@@ -2,13 +2,13 @@
 
 <main>
     <div class="espacio-header"></div>
-    <form action="/" method="POST">
+    <form action="/user/register" method="POST" enctype="multipart/form-data">
         <div class="info-personal">
             <h3 class="titulo-seccion">Información Personal</h3>
             <input type="text" name="nombre" placeholder="Nombre" required>
             <input type="text" name="apellido" placeholder="Apellido" required>
             <div class="fecha-de-nacimiento">
-                <input type="date" name="fecha-de-nacimiento" id="fecha-de-nacimiento" required>
+                <input type="date" name="fechaDeNacimiento" id="fecha-de-nacimiento" required>
                 <label for="fecha-de-nacimiento">FECHA DE NACIMIENTO</label>
                 <span class="feedback">Debe ser mayor de 18 años</span>
             </div>
@@ -18,12 +18,15 @@
         <div class="intereses-principales">
             <h3 class="titulo-seccion">Intereses Principales</h3>
             <ul>
-                <li><label for="recreativo"><input type="checkbox" class="opcion" name="intereses" id="recreativo">RECREATIVO</label></li>
-                <li><label for="pista"><input type="checkbox" class="opcion" name="intereses" id="pista">PISTA</label></li>
-                <li><label for="mountain"><input type="checkbox" class="opcion" name="intereses" id="mountain">MOUNTAIN-BIKE</label></li>
-                <li><label for="bmx"><input type="checkbox" class="opcion" name="intereses" id="bmx">BMX</label></li>
+                <li><label for="recreativo"><input type="checkbox" class="opcion" name="intereses" id="recreativo" value="recreativo">RECREATIVO</label></li>
+                <li><label for="pista"><input type="checkbox" class="opcion" name="intereses" id="pista" value="pista">PISTA</label></li>
+                <li><label for="mountain"><input type="checkbox" class="opcion" name="intereses" id="mountain" value="mountain">MOUNTAIN-BIKE</label></li>
+                <li><label for="bmx"><input type="checkbox" class="opcion" name="intereses" id="bmx" value="bmx">BMX</label></li>
             </ul>
             <span class="feedback">Debe Elegir al menos una opción</span>
+        </div>
+        <div class="imagen">
+            <input type="file" name="avatar">
         </div>
         <div class="contrasena">
             <input type="password" name="contrasena" placeholder="Contraseña" required>

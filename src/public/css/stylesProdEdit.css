@@ -15,9 +15,24 @@ main{
     color:#333333
 }
 
+main div.info-producto{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .volver-tachito{
+    width:90%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
 main a.boton-volver{
-    width:20%;
-    margin-left:50px
+    width:30%;
 }
 
 main a.boton-volver button{
@@ -30,12 +45,25 @@ main a.boton-volver button{
     transition: all 450ms;
 }
 
-main a.boton-volver button i{
+main  a.boton-volver button i{
     margin-right:5px;
 }
 
 main a.boton-volver button:hover{
     background-color:#08355A ;
+}
+
+/*Estilos boton eliminar*/
+main .boton-eliminar{
+    width:20%;
+    display:flex;
+    justify-content: flex-end;
+
+}
+
+main .boton-eliminar button{
+    width:55%;
+    font-size: 32px;
 }
 
 main form {
@@ -58,12 +86,16 @@ main form div.info-prod{
 }
 
 main form div.info-prod label{
-    width:25%;
+    width:100%;
     font-size: 14px;
 }
 
 main form div.info-prod .campo-informacion{
-    width:70%;
+    width:100%;
+}
+
+main form div.info-prod .campo-caracteristicas{
+    min-height: 150px;
 }
 
 /*Estilos Imagenes*/
@@ -140,5 +172,12 @@ main form div.botones input:hover{
         border: #70bb49 1px solid;
         border-radius: 2%;
         padding: 10px;
+    }
+
+    main .boton-eliminar{
+        width:20%;
+        margin:0px;
+        border:none;
+        max-width: 300px;
     }
 }

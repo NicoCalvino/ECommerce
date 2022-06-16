@@ -2,6 +2,8 @@ const path = require("path");
 const express =require("express");
 const app = express();
 const PORT = process.env.PORT || 4000;
+const methodOverride = require("method-override")
+
 const productsRoutes = require("./routes/productsRoutes")
 const userRoutes = require("./routes/userRoutes")
 const mainRoutes = require("./routes/mainRoutes")
@@ -10,7 +12,11 @@ const comuRoutes = require("./routes/comuRoutes")
 app.set("view engine","ejs")
 app.set("views", path.join(__dirname,"views"))
 
+app.use(methodOverride("_method")) 
 app.use(express.static(path.join(__dirname,"public")));
+app.use(express.urlencoded({extended:false}))
+app.use(express.json())
+
 
 app.use("/user", userRoutes)
 app.use("/products", productsRoutes)

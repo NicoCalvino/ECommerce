@@ -106,6 +106,15 @@ header .main-head .input input{
     font-size: 16px;
 }
 
+header .main-head .input button {
+    display:flex;
+    width:5%;
+    align-self: stretch;
+}
+
+header .main-head .input button i{
+    margin:auto
+}
 
 /*barra de navegacion usuario*/
 header .main-head .log-bar{
