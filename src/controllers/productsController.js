@@ -5,7 +5,7 @@ let rutaBase = "product"
 
 const dbProductos = path.join(__dirname, "../database/productos.json")
 const dbCalif = path.join(__dirname, "../database/calificaciones.json")
-
+const dbCarrito = path.join(__dirname, "../database/carrito.json")
 
 const readJsonFile = (rutaArchivo) => {
     const data = fs.readFileSync(rutaArchivo,"utf-8")
@@ -31,6 +31,19 @@ function Producto(nombre,imagen,categoria,subCategoria,precio,descuento,colores,
     this.codigo=codigo
     this.stock=stock
     this.estado=estado
+}
+
+function ProductoEnCarrito(nombre,imagen,categoria,subCategoria,precio,descuento,color,tamano,codigo,cantidad){
+    this.nombre=nombre
+    this.imagenes=imagen
+    this.categoria=categoria
+    this.subCategoria=subCategoria
+    this.precio=precio
+    this.descuento=descuento
+    this.color=color
+    this.tamano=tamano
+    this.cantidad=cantidad
+    this.codigo=codigo
 }
 
 
@@ -60,7 +73,6 @@ const controller={
         let califTotal = 0
         for (let i=0; i<opinionesProd.length;i++){
             califTotal = califTotal + opinionesProd[i].calificacion
-            console.log(califTotal)
         }
 
         let califProm = califTotal/(opinionesProd.length)
@@ -159,8 +171,6 @@ const controller={
         let arrayTamanos = tamanos.split(",")
         let arrayCaract = caracteristicas.split(",")
         
-        console.log(req.body.nombreProducto)
-        
         const catalogo = readJsonFile(dbProductos)
         //Asignacion de Codigo
         catalogo.forEach( prod =>{
@@ -187,8 +197,6 @@ const controller={
     delete:(req,res)=>{
         const catalogo = readJsonFile(dbProductos)
         const idProd = req.params.idProd
-
-        console.log(idProd)
 
         const nuevoCatalogo = catalogo.filter(prod => {
             return prod.codigo !=idProd

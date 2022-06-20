@@ -53,15 +53,20 @@ main section article{
     margin:5px 0px
 }
 
-main section article a {
+main section article a.imagen{
     width:20%;
     display:flex;
     align-self: flex-start;
     margin-right:5px;
 }
 
+main section article .titulo-precio {
+    width:75%;
+}
+
 main section article img {
     width:100%;
+    object-fit: contain;
 }
 
 /*Estilo del Producto*/
@@ -73,12 +78,9 @@ main section article.producto{
 main section article div.detalle-pedido{
     display:flex;
     flex-wrap: wrap;
-    width:55%;
+    width:60%;
     line-height: 24px;
-}
-
-main section article div.detalle-pedido .nombre-producto, .precio-producto, .cantidad{
-    width:100%
+    margin:5px 0px
 }
 
 /*Estilos de la cantidad*/
@@ -100,23 +102,37 @@ main section article div.detalle-pedido .color-tamano .titulo-estetica{
     font-weight: bold;
 }
 
-main section article div.detalle-pedido .edicion{
-    width:100%;
-    text-decoration: underline;
-    display:flex;
-    flex-wrap: wrap;
-}
-
-main section article div.detalle-pedido .edicion i{
-    margin-left:10px;
-    color:#333333
-}
-
 /*Estilos del total por producto*/
 main section article .total-producto{
     display: flex;
     align-self: center;
-    width:23%
+    width:40%;
+    font-size: 24px;
+}
+
+/*Estilos de Edicion*/
+main section article .edicion{
+    width:100%;
+    text-decoration: underline;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    line-height: 24px;
+    margin:5px 5px;
+    justify-content: space-between;
+}
+
+main section article .edicion .eliminar i{
+    width:100%;
+    font-size: 20px;
+    padding:2px;
+    text-decoration: none;
+    margin:auto;
+    color:#333333
+}
+
+main section article .eliminar{
+    margin: 0px 5px
 }
 
 /*Estilos del envio*/
@@ -181,7 +197,7 @@ main .final input:hover{
     }
 
     main section article div.detalle-pedido{
-        width:45%
+        width:65%
     }
 
     main section article p.total-producto{
@@ -210,30 +226,65 @@ main .final input:hover{
     }
 
     main section.grupo-productos{
-        width:70%
+        width:60%
     }
 
-    main section.envio{
+    /*Estilos Titulo y Precio*/
+    main section article .titulo-precio{
+        display:flex;
+        flex-wrap: wrap;
+        order:-1;
+        width:100%;
+        font-size: 20px;
+        align-items: center;
+    }
+
+    main section article .titulo-precio .nombre-producto{
+        width:initial; 
+    }
+
+    main section article .titulo-precio .precio-producto{
+        width:initial;
+        margin-left: 10px;
+    }
+
+    /*Estilos Detalle Pedido*/
+    main section article div.detalle-pedido{
         width:30%
     }
 
-    main section article div.detalle-pedido{
-        width:40%;
+    main section article div.detalle-pedido .color-tamano{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    main section article div.detalle-pedido .color-tamano p{
+        width:100%;
         font-size: 24px;
     }
 
+    main section article div.detalle-pedido .cantidad select{
+        height: 24px;
+    }
+
     main section article p.total-producto{
-        font-size: 40px;
-        width:30%
+        font-size: 32px
+    }
+
+    main section article .edicion{
+        justify-content: space-between;
     }
 
     /*Estilos del envio*/
+    main section.envio{
+        width:35%;
+        margin:0px
+    }
+
     main section.envio h3{
         font-size: 30px;
         margin-bottom: 10px;
-    }
-    main section.envio{
-        margin-top:0px; 
     }
 
     main section.envio i{

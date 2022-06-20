@@ -101,7 +101,7 @@ main section article.categorias-secundarias a{
   width:47%;
   margin:5px 0px;
   position:relative;
-  border:1px solid rgb(150, 150, 150)
+  /*border:1px solid rgb(150, 150, 150)*/
 }
 
 main section article.categorias-secundarias a img{
@@ -127,8 +127,8 @@ main section.seccion-body {
 }
 
 main section.seccion-body a{
-  width:100%;
-  margin:10px 0px;
+  width:80%;
+  margin:10px auto;
   background-color: white;
   border:1px solid #70bb49;
   border-radius: 5%;
@@ -146,7 +146,7 @@ main section.seccion-body a img{
 }
 
 main section.seccion-body a div.titulo-precio{
-  background-color: white;
+  /*background-color: white;*/
   padding: 10px;
   font-size: 24px;
   width:100%;

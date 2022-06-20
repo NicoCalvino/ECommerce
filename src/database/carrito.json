@@ -1,35 +1,38 @@
 [
-    {
-        "nombre":"Spark 26 Alloy Mountain Bike",
-        "imagenes":"Spark26_1.jpg",
-        "categoria":"bicicletas",
-        "subCategoria":"",
-        "precio":"81256",
-        "colores":"NEGRO",
-        "tamanos":"UNICO",
-        "codigo":"bm00001",
-        "cantidad":"1"  
-    },
-    {
-        "nombre":"INFLADOR PIE DE PVC REFORZADO GIYO",
-        "imagenes":"InfladorPie_1.webp",
-        "categoria":"accesorios",
-        "subCategoria":"",
-        "precio":"1500",
-        "colores":"NEGRO",
-        "tamanos":"UNICO",
-        "codigo":"acc00004",
-        "cantidad":"1" 
-    },
-    {
-        "nombre":"BALIZA SET D/T SILICONA REDOND 1 LED 4 FUNCIONES C/SUJETADOR",
-        "imagenes":"luces_1.webp",
-        "categoria":"accesorios",
-        "subCategoria":"",
-        "precio":"1185",
-        "colores":"ROJO",
-        "tamanos":"GRANDE",
-        "codigo":"acc00002",
-        "cantidad":"3"  
-    }
+  {
+    "nombre": "MTB Regal 21 Vel. R29",
+    "imagen": "MTB_Regal_1.jpg",
+    "categoria": "bicicletas",
+    "subCategoria": "Montaña",
+    "precio": "47120",
+    "descuento": 20,
+    "color": "NARANJA/NEGRO",
+    "tamano": "UNICO",
+    "cantidad": "1",
+    "codigo": "b4"
+  },
+  {
+    "nombre": "MTB Sunshine R29",
+    "imagen": "MTB_1.jpg",
+    "categoria": "bicicletas",
+    "subCategoria": "Montaña",
+    "precio": "45090",
+    "descuento": 15,
+    "color": "AZUL/ROJO",
+    "tamano": "UNICO",
+    "cantidad": "1",
+    "codigo": "b2"
+  },
+  {
+    "nombre": "ESLINGA C/CERROJO TUBULAR ACERO",
+    "imagen": "candado_1.jpg",
+    "categoria": "accesorios",
+    "subCategoria": "Candado",
+    "precio": "2950",
+    "descuento": "0",
+    "color": "NEGRO",
+    "tamano": "1 METRO",
+    "cantidad": "1",
+    "codigo": "a1"
+  }
 ]

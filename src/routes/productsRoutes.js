@@ -28,7 +28,7 @@ router.get("/prodMaster/list", productsController.master)
 
 /*** EDITAR PRODUCTO ***/ 
 router.get("/prodMaster/edit/:idProd", productsController.editProduct)
-router.put("/prodMaster/edit/:idProd", productsController.update); 
+router.put("/prodMaster/edit/:idProd", fileUpload.single("nuevaImagen"),productsController.update); 
 
 /*** CREAR PRODUCTO ***/
 router.get("/prodMaster/newProduct", productsController.newProduct)

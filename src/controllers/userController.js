@@ -3,6 +3,7 @@ const fs = require("fs")
 
 let rutaBase = "user"
 
+const dbProductos = path.join(__dirname, "../database/productos.json")
 const dbUsuarios = path.join(__dirname, "../database/usuarios.json")
 const dbCarrito = path.join(__dirname, "../database/carrito.json")
 
@@ -27,6 +28,19 @@ function Usuario(id, nombre, apellido, fechaDeNacimiento, email, intereses, pass
     this.password=password
     this.categoria=categoria
     this.imagen=imagen
+}
+
+function ProductoEnCarrito(nombre,imagen,categoria,subCategoria,precio,descuento,color,tamano,codigo,cantidad){
+    this.nombre=nombre
+    this.imagen=imagen
+    this.categoria=categoria
+    this.subCategoria=subCategoria
+    this.precio=precio
+    this.descuento=descuento
+    this.color=color
+    this.tamano=tamano
+    this.cantidad=cantidad
+    this.codigo=codigo
 }
 
 const controller = {
@@ -72,6 +86,32 @@ const controller = {
     cart:(req,res) => {
         const carrito = readJsonFile(dbCarrito)
         res.render(rutaBase + "/productCart",{carrito:carrito})
+    },
+    addToCart:(req,res)=>{
+        idProd = req.params.idProd
+        
+        const catalogo = readJsonFile(dbProductos)
+        const carrito  = readJsonFile(dbCarrito)
+
+        const color = req.body.color
+        const tamano = req.body.tamano
+        const cantidad = req.body.cantidad
+
+        producto = catalogo.filter(prod => {
+            return prod.codigo == idProd
+        })
+
+        console.log(producto)
+
+        let productoAgregado = new ProductoEnCarrito(producto[0].nombre,producto[0].imagenes[0],producto[0].categoria,producto[0].subCategoria,producto[0].precio,producto[0].descuento,color,tamano,producto[0].codigo,cantidad)
+
+        carrito.push(productoAgregado)
+        
+        //Guardado de Archivo
+        writeJsonFile(dbCarrito, carrito)
+
+        //Redirigir al Maestro de Productos
+        res.redirect("/user/productCart")
     }
 }
 

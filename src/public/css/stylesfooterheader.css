@@ -102,13 +102,13 @@ header .main-head .input{
 }
 
 header .main-head .input input{
-    width:100%;
+    width:85%;
     font-size: 16px;
 }
 
 header .main-head .input button {
     display:flex;
-    width:5%;
+    width:15%;
     align-self: stretch;
 }
 

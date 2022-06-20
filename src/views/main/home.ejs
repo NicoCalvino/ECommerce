@@ -52,7 +52,7 @@
             <% } else { %>
                 <a href="/products/<%= ofertas[i].codigo %>" class="imagenes-seleccionables">
             <% } %>
-                <img src="/images/productos/<%= ofertas[i].imagenes[0] %>" alt="Oferta 1">
+                <img src="/images/productos/<%= ofertas[i].imagenes[0] %>" alt="Oferta <%= i + 1 %>">
                 <div class="titulo-precio">
                     <p class="precio-anterior">$ <%= ofertas[i].precio %></p>
                     <p class="precio-producto">$ <%= ofertas[i].precio * (1-ofertas[i].descuento/100) %></p>
@@ -70,7 +70,7 @@
             <% } else { %>
                 <a href="/products/<%= novedades[i].codigo %>" class="imagenes-seleccionables">
             <% } %>
-                <img src="/images/productos/<%= novedades[i].imagenes[0] %>" alt="Oferta 1">
+                <img src="/images/productos/<%= novedades[i].imagenes[0] %>" alt="Novedad <%= i + 1 %>">
                 <div class="titulo-precio">
                     <i class="fa-solid fa-bolt"></i>
                     <p class="precio-producto">$ <%= novedades[i].precio %></p>

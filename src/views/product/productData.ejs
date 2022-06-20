@@ -8,7 +8,7 @@
 <main>
     <div class="espacio-header"></div>
     <div class="volver-tachito">
-        <a href="/products/prodMaster/list" class="boton-volver"><button><i class="fa-solid fa-arrow-left"></i>VOLVER</button></a>
+        <a href="/products/prodMaster/list" class="boton-volver"><button><i class="fa-solid fa-arrow-left"></i>VOLVER AL MAESTRO</button></a>
         <form action="/products/delete/<%= producto.codigo %>?_method=DELETE" class="boton-eliminar" method="POST">
             <button type="submit" class=""><i class="fa-solid fa-trash-can"></i></button>
         </form>
@@ -17,7 +17,7 @@
         <% if (producto.codigo == "newProd") { %>
             <form action="/products/prodMaster/newProduct" method="POST" enctype="multipart/form-data">
         <% } else { %>
-            <form action="/products/prodMaster/edit/<%= producto.codigo %>?_method=PUT" method="POST">
+            <form action="/products/prodMaster/edit/<%= producto.codigo %>?_method=PUT" method="POST" enctype="multipart/form-data">
         <% } %>
             <h2><%= producto.nombre %> </h2>
             <h2>( <%= producto.codigo %> )</h2>

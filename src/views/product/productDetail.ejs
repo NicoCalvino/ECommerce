@@ -29,7 +29,7 @@
         </article>
         <article class="informacion">
             <p class="precio-producto">$ <%= producto.precio %></p>
-            <form class="opciones">
+            <form action="/user/productCart/<%= producto.codigo %>" method="POST" class="opciones">
                 <div class="cantidad">
                     <label for="cantidad">CANTIDAD</label>
                     <select name="cantidad" id="cantidad">
@@ -105,9 +105,11 @@
                 <% if (catalogoCategoria[i].codigo != producto.codigo){ %>
                     <li>
                         <a href="/products/<%= catalogoCategoria[i].codigo %>">
-                            <img src="/images/productos/<%= catalogoCategoria[i].imagenes[0] %>" alt="Otro Producto 1" class="imagenes-seleccionables">
-                            <h3 class="precio-producto"> $ <%= catalogoCategoria[i].precio %></h3>
-                            <h3 class="titulo-imagen"><%= catalogoCategoria[i].nombre %></h3>
+                            <img src="/images/productos/<%= catalogoCategoria[i].imagenes[0] %>" alt="Otro Producto  <%= i + 1 %>" class="imagenes-seleccionables">
+                            <div class="titulo-precio">
+                                <p class="precio-producto">$ <%= catalogoCategoria[i].precio %></p>
+                                <p class="titulo-producto"><%= catalogoCategoria[i].nombre %></p>
+                            </div>
                         </a>
                     </li>
                 <% } %>
@@ -125,9 +127,11 @@
             <% for (let i=0;i < cantProd ;i++){ %>
                 <li>
                     <a href="/products/<%= otrosProd[i].codigo %>">
-                        <img src="/images/productos/<%= otrosProd[i].imagenes[0] %>" alt="Otro Producto 1" class="imagenes-seleccionables">
-                        <h3 class="precio-producto"> $ <%= otrosProd[i].precio %></h3>
-                        <h3 class="titulo-imagen"><%= otrosProd[i].nombre %></h3>
+                        <img src="/images/productos/<%= otrosProd[i].imagenes[0] %>" alt="Otro Producto  <%= i + 1 %>" class="imagenes-seleccionables">
+                        <div class="titulo-precio">
+                            <p class="precio-producto">$ <%= otrosProd[i].precio %></p>
+                            <p class="titulo-producto"><%= otrosProd[i].nombre %></p>
+                        </div>
                     </a>
                 </li>
             <% } %>

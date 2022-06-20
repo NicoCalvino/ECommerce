@@ -2,22 +2,24 @@
 
 <main>
     <div class="espacio-header"></div>
-    <div class="boton-nuevo">
-        <a href="/products/prodMaster/newProduct" class="nuevo-producto"><button>NUEVO PRODUCTO</button></a>
-    </div>
     <ul>
+        <li class="boton-nuevo">
+            <a href="/products/prodMaster/newProduct" class="nuevo-producto"><button>NUEVO PRODUCTO</button></a>
+        </li>
         <% for (let i = 0; i < catalogo.length ; i++) { %>
             <% if(catalogo[i].codigo != "newProd") { %>
-            <li>
+            <li class="productos">
                 <div class="imagen">
                     <img src="/images/productos/<%= catalogo[i].imagenes[0] %>" class="imagen-producto" alt="imagen">
                 </div>
                 <div class="detalle">
-                    <p><%= catalogo[i].nombre.slice(0,30) %></p>
-                    <p>PRECIO: $ <%= catalogo[i].precio %></p>
-                    <p>STOCK: <%= catalogo[i].stock %></p>
-                    <p>ESTADO: <%= catalogo[i].estado %></p>
-                    <a href="/products/prodMaster/edit/<%= catalogo[i].codigo %>">Editar</a>
+                    <h2 class="nombre-producto"><%= catalogo[i].nombre.slice(0,30) %></h2>
+                    <div class="informacion-princiapl">
+                        <p>PRECIO: $ <%= catalogo[i].precio %></p>
+                        <p>STOCK: <%= catalogo[i].stock %></p>
+                        <p>ESTADO: <%= catalogo[i].estado %></p>
+                    </div>
+                    <a href="/products/prodMaster/edit/<%= catalogo[i].codigo %>" class="editar">Editar</a>
                 </div>
             </li>
             <% } %>

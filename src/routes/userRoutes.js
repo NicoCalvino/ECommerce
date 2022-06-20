@@ -31,5 +31,8 @@ router.post("/register", fileUpload.single("avatar"),userController.newUser)
 /** CARRITO DEL USUARIO **/
 router.get("/productCart", userController.cart)
 
+/*** AGREGAR AL CARRITO ***/
+router.post("/productCart/:idProd", userController.addToCart)
+
 
 module.exports = router

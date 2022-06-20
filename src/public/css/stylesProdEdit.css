@@ -92,10 +92,20 @@ main form div.info-prod label{
 
 main form div.info-prod .campo-informacion{
     width:100%;
+    line-height: 24px;
+    padding:5px;
+    transition:all 500ms;
+    border: 1.5px solid #0f6992
+}
+
+main form div.info-prod .campo-informacion:focus{
+    background-color: #70bb49;
+    color:white
 }
 
 main form div.info-prod .campo-caracteristicas{
     min-height: 150px;
+    line-height: 16px;
 }
 
 /*Estilos Imagenes*/
@@ -169,9 +179,14 @@ main form div.botones input:hover{
     main form{
         width:60%;
         margin:10px auto;
-        border: #70bb49 1px solid;
+        border: #70bb49 2px solid;
         border-radius: 2%;
-        padding: 10px;
+        padding: 15px;
+    }
+
+    main .volver-tachito{
+        width:50%;
+        margin:auto
     }
 
     main .boton-eliminar{
@@ -179,5 +194,10 @@ main form div.botones input:hover{
         margin:0px;
         border:none;
         max-width: 300px;
+    }
+
+    main div.info-producto div.info-prod .campo-informacion{
+        font-size: 20px;
+        line-height: 24px;
     }
 }
