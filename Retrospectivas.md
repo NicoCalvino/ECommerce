@@ -1,3 +1,38 @@
+Retrospectiva Sprint 3 Proyecto Ecommerce Grupo 6
+-------------------------------------------------
+Nuestra reflexión sobre lo ocurrido durante el Sprint arroja los siguientes resultados, en base a un análisis tipo estrella de mar.
+
+* Comenzar a hacer
+
+1. Completar el tablero de trabajo de forma más detallada
+2. Comunicarnos más durante el proceso de desarrollo 
+3. Recuperar al cuarto integrante, con el cual perdimos contacto
+
+* Hacer más
+
+1. Reuniones breves
+2. Comunicarnos más en todo el proceso de desarrollo 
+3. Revisar entre todos el sprint backlog
+
+* Continuar haciendo
+
+1. Dividirnos tareas
+2. Trabajar de manera responsable 
+3. Apoyarnos durante el desarrollo de la etapa en curso, con explicaciones sobre los temas agregados, de modo de permitir a todos  agregar valor en el sitio que estamos construyendo
+4. Entrega en término antes del plazo final del sprint
+
+* Hacer menos
+
+1. Dejar temas o cosas sin definir desde el inicio del proyecto
+
+* Dejar de hacer
+
+1. Sobrecargar a algún miembro del grupo
+ 
+.
+----------------------------------------------------------------------------
+
+
 Retrospectiva Sprint 2 Proyecto Ecommerce Grupo 6
 -------------------------------------------------
 Nuestra reflexión como equipo, sobre lo ocurrido durante el primer Sprint, arroja los siguientes resultados en base a un análisis tipo estrella de mar.
