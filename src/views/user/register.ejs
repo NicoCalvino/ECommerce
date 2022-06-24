@@ -5,43 +5,67 @@
     <form action="/user/register" method="POST" enctype="multipart/form-data">
         <div class="info-personal">
             <h3 class="titulo-seccion">Información Personal</h3>
-            <input type="text" name="nombre" placeholder="Nombre" required>
-            <input type="text" name="apellido" placeholder="Apellido" required>
+            <input type="text" name="nombre" placeholder="Nombre" <%=locals.oldInfo && oldInfo.nombre ? "value=" + oldInfo.nombre : '' %>>
+            <% if (locals.mensajesError && mensajesError.nombre){ %>
+                <span class="feedback"><%= mensajesError.nombre.msg %></span>
+            <% } %>   
+            <input type="text" name="apellido" placeholder="Apellido" <%=locals.oldInfo && oldInfo.apellido ? "value=" + oldInfo.apellido : '' %>>
+            <% if (locals.mensajesError && mensajesError.apellido){ %>
+                <span class="feedback"><%= mensajesError.apellido.msg %></span>
+            <% } %>   
             <div class="fecha-de-nacimiento">
-                <input type="date" name="fechaDeNacimiento" id="fecha-de-nacimiento" required>
+                <input type="date" name="fechaDeNacimiento" id="fecha-de-nacimiento" <%=locals.oldInfo && oldInfo.fechaDeNacimiento ? "value=" + oldInfo.fechaDeNacimiento : '' %>>
                 <label for="fecha-de-nacimiento">FECHA DE NACIMIENTO</label>
-                <span class="feedback">Debe ser mayor de 18 años</span>
+                <% if (locals.mensajesError && mensajesError.fechaDeNacimiento){ %>
+                    <span class="feedback"><%= mensajesError.fechaDeNacimiento.msg %></span>
+                <% } %> 
             </div>
-            <input type="email" name="email" placeholder="Correo Electrónico" required>
-            <span class="feedback">El correo ingresado no es válido</span>
+            <input type="email" name="email" placeholder="Correo Electrónico" <%=locals.oldInfo && oldInfo.email ? "value=" + oldInfo.email : '' %>>
+            <% if (locals.mensajesError && mensajesError.email){ %>
+                <span class="feedback"><%= mensajesError.email.msg %></span>
+            <% } %> 
         </div>
         <div class="intereses-principales">
             <h3 class="titulo-seccion">Intereses Principales</h3>
             <ul>
-                <li><label for="recreativo"><input type="checkbox" class="opcion" name="intereses" id="recreativo" value="recreativo">RECREATIVO</label></li>
-                <li><label for="pista"><input type="checkbox" class="opcion" name="intereses" id="pista" value="pista">PISTA</label></li>
-                <li><label for="mountain"><input type="checkbox" class="opcion" name="intereses" id="mountain" value="mountain">MOUNTAIN-BIKE</label></li>
-                <li><label for="bmx"><input type="checkbox" class="opcion" name="intereses" id="bmx" value="bmx">BMX</label></li>
+                <li><label for="recreativo"><input type="checkbox" class="opcion" name="intereses" id="recreativo" value="recreativo" <%=locals.oldInfo && locals.oldInfo.intereses && locals.oldInfo.intereses.includes("recreativo") ? "checked" : null %>>RECREATIVO</label></li>
+                <li><label for="pista"><input type="checkbox" class="opcion" name="intereses" id="pista" value="pista" <%=locals.oldInfo && locals.oldInfo.intereses && locals.oldInfo.intereses.includes("pista") ? "checked" : null %>>PISTA</label></li>
+                <li><label for="mountain"><input type="checkbox" class="opcion" name="intereses" id="mountain" value="mountain" <%=locals.oldInfo && locals.oldInfo.intereses && locals.oldInfo.intereses.includes("mountain") ? "checked" : null %>>MOUNTAIN-BIKE</label></li>
+                <li><label for="bmx"><input type="checkbox" class="opcion" name="intereses" id="bmx" value="bmx" <%=locals.oldInfo && locals.oldInfo.intereses && locals.oldInfo.intereses.includes("bmx") ? "checked" : null %>>BMX</label></li>
             </ul>
-            <span class="feedback">Debe Elegir al menos una opción</span>
+            <% if (locals.mensajesError && mensajesError.intereses){ %>
+                <span class="feedback"><%= mensajesError.intereses.msg %></span>
+            <% } %> 
         </div>
         <div class="imagen">
             <input type="file" name="avatar">
+            <% if (locals.mensajesError && mensajesError.avatar){ %>
+                <span class="feedback"><%= mensajesError.avatar.msg %></span>
+            <% } %> 
         </div>
         <div class="contrasena">
-            <input type="password" name="contrasena" placeholder="Contraseña" required>
-            <input type="password" name="conf-contrasena" placeholder="Confirmar Contraseña" required>
-            <span class="feedback">Las contraseñas no coinciden</span>
+            <input type="password" name="contrasena" placeholder="Contraseña">
+            <% if (locals.mensajesError && mensajesError.contrasena){ %>
+                <span class="feedback"><%= mensajesError.contrasena.msg %></span>
+            <% } %> 
+            <input type="password" name="confContrasena" placeholder="Confirmar Contraseña">
+            <% if (locals.mensajesError && mensajesError.confContrasena){ %>
+                <span class="feedback"><%= mensajesError.confContrasena.msg %></span>
+            <% } %> 
         </div>
         <div class="disclaimer">
-            <label for="term-cond"><input type="checkbox" name="term-cond" id="term-cond">ACEPTO LOS TERMINOS Y CONDICIONES</label>
+            <label for="term-cond"><input type="checkbox" name="termCond" id="term-cond">ACEPTO LOS TERMINOS Y CONDICIONES</label>
+            <% if (locals.mensajesError && mensajesError.termCond){ %>
+                <span class="feedback"><%= mensajesError.termCond.msg %></span>
+            <% } %> 
             <label for="newsletter"><input type="checkbox" name="newsletter" id="newsletter">SUBSCRIBIRSE A NEWSLETTER</label>
-            <span class="feedback">Debe aceptar los terminos y condiciones</span>
         </div>
         <div class="captcha">
             <img src="/images/Captcha.png" alt="captcha" class="imagen-captcha">
-            <input type="text" name="captcha" placeholder="Ingresar captcha" required>
-            <span class="feedback">El código ingresado es incorrecto</span>
+            <input type="text" name="captcha" placeholder="Ingresar captcha">
+            <% if (locals.mensajesError && mensajesError.captcha){ %>
+                <span class="feedback"><%= mensajesError.captcha.msg %></span>
+            <% } %> 
         </div>
         <div class="botones">
             <input type="submit" value="CREAR CUENTA">

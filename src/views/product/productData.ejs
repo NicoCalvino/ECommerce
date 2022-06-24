@@ -9,18 +9,18 @@
     <div class="espacio-header"></div>
     <div class="volver-tachito">
         <a href="/products/prodMaster/list" class="boton-volver"><button><i class="fa-solid fa-arrow-left"></i>VOLVER AL MAESTRO</button></a>
-        <form action="/products/delete/<%= producto.codigo %>?_method=DELETE" class="boton-eliminar" method="POST">
+        <form action="/products/delete/<%= producto.id %>?_method=DELETE" class="boton-eliminar" method="POST">
             <button type="submit" class=""><i class="fa-solid fa-trash-can"></i></button>
         </form>
     </div>
     <div class="info-producto">
-        <% if (producto.codigo == "newProd") { %>
+        <% if (producto.id == "newProd") { %>
             <form action="/products/prodMaster/newProduct" method="POST" enctype="multipart/form-data">
         <% } else { %>
-            <form action="/products/prodMaster/edit/<%= producto.codigo %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            <form action="/products/prodMaster/edit/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
         <% } %>
             <h2><%= producto.nombre %> </h2>
-            <h2>( <%= producto.codigo %> )</h2>
+            <h2>( <%= producto.id %> )</h2>
             <div class="info-prod">
                 <label class="titulo-campo" for="nombreProducto">NOMBRE:</label>
                 <input type="text" class="campo-informacion" name="nombreProducto" id="nombreProducto" value="<%= producto.nombre %>" required placeholder="NOMBRE DE PRODUCTO">
@@ -28,15 +28,15 @@
             <div class="info-prod">
                 <label class="titulo-campo" for="categoria">CATEGORIA:</label>
                 <select class="campo-informacion" name="categoria" id="categoria">
-                    <option value="bicicletas" <%= producto.categoria == "bicicletas" ? "selected" : null %>>BICICLETAS</option>
-                    <option value="accesorios" <%= producto.categoria == "accesorios" ? "selected" : null %>>ACCESORIOS</option>
-                    <option value="componentes" <%= producto.categoria == "componentes" ? "selected" : null %>>COMPONENTES</option>
-                    <option value="indumentaria" <%= producto.categoria == "indumentaria" ? "selected" : null %>>INDUMENTARIA</option>
+                    <option value="BICICLETAS" <%= producto.categoria == "BICICLETAS" ? "selected" : null %>>BICICLETAS</option>
+                    <option value="ACCESORIOS" <%= producto.categoria == "ACCESORIOS" ? "selected" : null %>>ACCESORIOS</option>
+                    <option value="COMPONENTES" <%= producto.categoria == "COMPONENTES" ? "selected" : null %>>COMPONENTES</option>
+                    <option value="INDUMENTARIA" <%= producto.categoria == "INDUMENTARIA" ? "selected" : null %>>INDUMENTARIA</option>
                 </select>
             </div>
             <div class="info-prod">
                 <label class="titulo-campo" for="sub-categoria">SUB CATEGORIA:</label>
-                <input type="text" class="campo-informacion" name="subCategoria" id="sub-categoria" value="<%= producto.subCategoria %>" required placeholder="SUB CATEGORIA">
+                <input type="text" class="campo-informacion" name="subcategoria" id="sub-categoria" value="<%= producto.subcategoria %>" required placeholder="SUB CATEGORIA">
             </div>
             <div class="info-prod">
                 <label class="titulo-campo" for="precio">PRECIO: $</label>
@@ -64,7 +64,7 @@
             </div>
             <div class="info-prod">
                 <% let caracteristicas = "" %>
-                <% producto.caract.forEach (function(caracteristica){ %>
+                <% producto.caracteristicas.forEach (function(caracteristica){ %>
                     <% caracteristicas = caracteristicas + "," + caracteristica %>
                 <% }) %>
                 <label class="titulo-campo" for="caracteristicas">CARACTERISTICAS:</label>

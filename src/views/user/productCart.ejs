@@ -11,7 +11,7 @@
             <% let totalPedido = 0 %>
             <% for (let i = 0; i < carrito.length; i++){ %>
                 <article class="producto">
-                    <a href="/products/<%= carrito[i].codigo %>" class="imagen">
+                    <a href="/products/<%= carrito[i].id %>" class="imagen">
                         <img src="/images/productos/<%= carrito[i].imagen %>" alt="Imagen Prod">
                     </a>
                     <div class="titulo-precio">

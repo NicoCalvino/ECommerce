@@ -19,16 +19,16 @@ const writeJsonFile = (rutaArchivo, contenido) => {
 }
 
 function Producto(nombre,imagen,categoria,subCategoria,precio,descuento,colores,tamanos,caract,codigo,stock,estado){
+    this.id=codigo
     this.nombre=nombre
     this.imagenes=imagen
     this.categoria=categoria
-    this.subCategoria=subCategoria
+    this.subcategoria=subCategoria
     this.precio=precio
     this.descuento=descuento
     this.colores=colores
     this.tamanos=tamanos
-    this.caract=caract
-    this.codigo=codigo
+    this.caracteristicas=caract
     this.stock=stock
     this.estado=estado
 }
@@ -37,13 +37,13 @@ function ProductoEnCarrito(nombre,imagen,categoria,subCategoria,precio,descuento
     this.nombre=nombre
     this.imagenes=imagen
     this.categoria=categoria
-    this.subCategoria=subCategoria
+    this.subcategoria=subCategoria
     this.precio=precio
     this.descuento=descuento
     this.color=color
     this.tamano=tamano
     this.cantidad=cantidad
-    this.codigo=codigo
+    this.id=codigo
 }
 
 
@@ -55,13 +55,13 @@ const controller={
     detalle:(req,res) => {
         const idProd = req.params.idProd;
         const catalogo = readJsonFile(dbProductos)
-        producto = catalogo.find((prod) => prod.codigo == idProd)
+        producto = catalogo.find((prod) => prod.id == idProd)
 
         const catalogoCategoria=catalogo.filter(prod =>{
-            return prod.codigo != producto.codigo && prod.categoria == producto.categoria
+            return prod.id != producto.id && prod.categoria == producto.categoria
         })
         const otrosProd=catalogo.filter(prod =>{
-            return prod.codigo != "newProd" && prod.categoria != producto.categoria 
+            return prod.id != "newProd" && prod.categoria != producto.categoria 
         })
 
         const calificaciones = readJsonFile(dbCalif)
@@ -88,18 +88,18 @@ const controller={
     editProduct:(req,res)=>{
         const idProd = req.params.idProd;
         const catalogo = readJsonFile(dbProductos)
-        producto = catalogo.find((prod) => prod.codigo == idProd);
+        producto = catalogo.find((prod) => prod.id == idProd);
         res.render(rutaBase + "/productData",{producto:producto})
     },
     newProduct:(req,res)=>{
         const catalogo = readJsonFile(dbProductos)
-        producto = catalogo.find((prod) => prod.codigo == "newProd");
+        producto = catalogo.find((prod) => prod.id == "newProd");
         res.render(rutaBase + "/productData",{producto:producto})
     },
     createProduct:(req,res)=>{
         const nombreProd = req.body.nombreProducto
         const categoria = req.body.categoria
-        const subCategoria = req.body.subCategoria
+        const subcategoria = req.body.subcategoria
         const precio = req.body.precio
         const descuento = req.body.precioAnt
         const colores = req.body.colores
@@ -125,7 +125,7 @@ const controller={
         //Asignacion de Codigo
         let ultimoCodigo = 0
         catalogoCategoria.forEach( prod =>{
-            codigoProducto = prod.codigo
+            codigoProducto = prod.id
             letraCodigo = codigoProducto.slice(0,1)
             nroCodigo = Number(codigoProducto.slice(1,codigoProducto.length))
             if (nroCodigo > ultimoCodigo){
@@ -138,7 +138,7 @@ const controller={
         nuevoCodigo = letraCodigo + nuevoCodigo
 
         //Creacion de Objeto Literal
-        let productoNuevo = new Producto(nombreProd,arrayImagenes,categoria,subCategoria,precio,descuento,arrayColores,arrayTamanos,arrayCaract,nuevoCodigo,stock,estado)
+        let productoNuevo = new Producto(nombreProd,arrayImagenes,categoria,subcategoria,precio,descuento,arrayColores,arrayTamanos,arrayCaract,nuevoCodigo,stock,estado)
         
         //Agregar el Nuevo Producto al Rango Json
         catalogo.push(productoNuevo)
@@ -157,7 +157,7 @@ const controller={
         const idProd = req.params.idProd
         const nombreProd = req.body.nombreProducto
         const categoria = req.body.categoria
-        const subCategoria = req.body.subCategoria
+        const subcategoria = req.body.subcategoria
         const precio = req.body.precio
         const descuento = req.body.precioAnt
         const colores = req.body.colores
@@ -174,15 +174,15 @@ const controller={
         const catalogo = readJsonFile(dbProductos)
         //Asignacion de Codigo
         catalogo.forEach( prod =>{
-            if (prod.codigo == idProd){
+            if (prod.id == idProd){
                 prod.nombre=nombreProd
                 prod.categoria=categoria
-                prod.subCategoria=subCategoria
+                prod.subcategoria=subcategoria
                 prod.precio=precio
                 prod.descuento=descuento
                 prod.colores=arrayColores
                 prod.tamanos=arrayTamanos
-                prod.caract=arrayCaract
+                prod.caracteristicas=arrayCaract
                 prod.stock=stock
                 prod.estado=estado
             }
@@ -199,7 +199,7 @@ const controller={
         const idProd = req.params.idProd
 
         const nuevoCatalogo = catalogo.filter(prod => {
-            return prod.codigo !=idProd
+            return prod.id !=idProd
         })
 
         //Guardado de Archivo

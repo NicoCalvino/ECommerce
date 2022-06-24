@@ -1,38 +1,34 @@
 [
   {
-    "nombre": "MTB Regal 21 Vel. R29",
-    "imagen": "MTB_Regal_1.jpg",
-    "categoria": "bicicletas",
-    "subCategoria": "Montaña",
-    "precio": "47120",
-    "descuento": 20,
-    "color": "NARANJA/NEGRO",
-    "tamano": "UNICO",
-    "cantidad": "1",
-    "codigo": "b4"
-  },
-  {
-    "nombre": "MTB Sunshine R29",
-    "imagen": "MTB_1.jpg",
-    "categoria": "bicicletas",
-    "subCategoria": "Montaña",
-    "precio": "45090",
+    "nombre": "BICICLETA BMX FACTOR BUFFALO DRAGON QF75",
+    "imagen": "bmxp1.jpg",
+    "categoria": "BICICLETAS",
+    "precio": 56988.2,
     "descuento": 15,
-    "color": "AZUL/ROJO",
+    "color": "AZUL OSCURO",
     "tamano": "UNICO",
-    "cantidad": "1",
-    "codigo": "b2"
+    "cantidad": "1"
   },
   {
-    "nombre": "ESLINGA C/CERROJO TUBULAR ACERO",
-    "imagen": "candado_1.jpg",
-    "categoria": "accesorios",
-    "subCategoria": "Candado",
-    "precio": "2950",
-    "descuento": "0",
-    "color": "NEGRO",
-    "tamano": "1 METRO",
+    "nombre": "BICICLETA BMX TREK FALCON PEGASUS ZB17",
+    "imagen": "bmxp2.jpg",
+    "categoria": "BICICLETAS",
+    "precio": 91630.03,
+    "descuento": 15,
+    "color": "ROSA",
+    "tamano": "UNICO",
     "cantidad": "1",
-    "codigo": "a1"
+    "id": "b5"
+  },
+  {
+    "nombre": "BICICLETA BMX TREK FALCON PEGASUS ZB17",
+    "imagen": "bmxp2.jpg",
+    "categoria": "BICICLETAS",
+    "precio": 91630.03,
+    "descuento": 15,
+    "color": "ROSA",
+    "tamano": "UNICO",
+    "cantidad": "1",
+    "id": "b5"
   }
 ]

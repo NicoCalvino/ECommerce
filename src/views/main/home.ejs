@@ -47,28 +47,28 @@
     <section class="seccion-body">
         <h2 class="titulo-seccion">OFERTAS DESTACADAS</h2>
         <% for (let i = 0 ; i < ofertas.length;i++){ %>
-            <% if (i == 5){ %>
-                <a href="/products/<%= ofertas[i].codigo %>" class="articulo-oculto imagenes-seleccionables">
+            <% if (i == 4){ %>
+                <a href="/products/<%= ofertas[i].id %>" class="articulo-oculto imagenes-seleccionables">
             <% } else { %>
-                <a href="/products/<%= ofertas[i].codigo %>" class="imagenes-seleccionables">
+                <a href="/products/<%= ofertas[i].id %>" class="imagenes-seleccionables">
             <% } %>
                 <img src="/images/productos/<%= ofertas[i].imagenes[0] %>" alt="Oferta <%= i + 1 %>">
                 <div class="titulo-precio">
                     <p class="precio-anterior">$ <%= ofertas[i].precio %></p>
-                    <p class="precio-producto">$ <%= ofertas[i].precio * (1-ofertas[i].descuento/100) %></p>
+                    <p class="precio-producto">$ <%= (ofertas[i].precio * (1-ofertas[i].descuento/100)).toFixed(2) %></p>
                     <p class="titulo-producto"><%= ofertas[i].nombre %></p>
                 </div>
             </a>
-            <% if (i == 6 ){i=ofertas.length} %>
+            <% if (i == 4 ){i=ofertas.length} %>
         <% } %>
     </section>
     <section class="seccion-body">
         <h2 class="titulo-seccion">NOVEDADES</h2>
         <% for (let i = 0 ; i < novedades.length;i++){ %>
-            <% if (i == 5){ %>
-                <a href="/products/<%= novedades[i].codigo %>" class="articulo-oculto imagenes-seleccionables">
+            <% if (i == 4){ %>
+                <a href="/products/<%= novedades[i].id %>" class="articulo-oculto imagenes-seleccionables">
             <% } else { %>
-                <a href="/products/<%= novedades[i].codigo %>" class="imagenes-seleccionables">
+                <a href="/products/<%= novedades[i].id %>" class="imagenes-seleccionables">
             <% } %>
                 <img src="/images/productos/<%= novedades[i].imagenes[0] %>" alt="Novedad <%= i + 1 %>">
                 <div class="titulo-precio">
@@ -77,7 +77,7 @@
                     <p class="titulo-producto"><%= novedades[i].nombre %></p>
                 </div>
             </a>
-            <% if (i == 6 ){i=novedades.length} %>
+            <% if (i == 4 ){i=novedades.length} %>
         <% } %>
     </section>
     <section class="comunidad">

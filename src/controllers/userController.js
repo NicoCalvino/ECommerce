@@ -1,6 +1,8 @@
 const path = require ("path")
 const fs = require("fs")
 
+const {validationResult}=require('express-validator')
+
 let rutaBase = "user"
 
 const dbProductos = path.join(__dirname, "../database/productos.json")
@@ -34,13 +36,13 @@ function ProductoEnCarrito(nombre,imagen,categoria,subCategoria,precio,descuento
     this.nombre=nombre
     this.imagen=imagen
     this.categoria=categoria
-    this.subCategoria=subCategoria
+    this.subcategoria=subCategoria
     this.precio=precio
     this.descuento=descuento
     this.color=color
     this.tamano=tamano
     this.cantidad=cantidad
-    this.codigo=codigo
+    this.id=codigo
 }
 
 const controller = {
@@ -51,37 +53,45 @@ const controller = {
         res.render(rutaBase + "/register")
     },
     newUser:(req,res) =>{
-        const name = req.body.nombre
-        const lastName = req.body.apellido
-        const birthDate = req.body.fechaDeNacimiento
-        const email = req.body.email
-        const interests = req.body.intereses
-        const password = req.body.contrasena
-        const categoria = "NUEVO"
-        const imagen = req.file?.filename || "Anonimo.png"
+        let erroresRegistro=validationResult(req)
 
-        const baseUsuarios = readJsonFile(dbUsuarios) 
+        if (erroresRegistro.isEmpty()){
 
-        //Asignacion de Codigo
-        let ultimoCodigo = 0
-        baseUsuarios.forEach( user =>{
-            codigoUsuario = user.id
-            if (codigoUsuario > ultimoCodigo){
-                ultimoCodigo = codigoUsuario
-            }
-        })
-        let nuevoCodigo = ultimoCodigo +1
+            const name = req.body.nombre
+            const lastName = req.body.apellido
+            const birthDate = req.body.fechaDeNacimiento
+            const email = req.body.email
+            const interests = req.body.intereses
+            const password = req.body.contrasena
+            const categoria = "NUEVO"
+            const imagen = req.file?.filename || "Anonimo.png"
 
-        let usuarioNuevo = new Usuario(nuevoCodigo,name,lastName,birthDate,email,interests,password,categoria,imagen)
+            const baseUsuarios = readJsonFile(dbUsuarios) 
 
-        //Agregar el Nuevo Producto al Rango Json
-        baseUsuarios.push(usuarioNuevo)
+            //Asignacion de Codigo
+            let ultimoCodigo = 0
+            baseUsuarios.forEach( user =>{
+                codigoUsuario = user.id
+                if (codigoUsuario > ultimoCodigo){
+                    ultimoCodigo = codigoUsuario
+                }
+            })
+            let nuevoCodigo = ultimoCodigo +1
 
-        //Guardado de Archivo
-        writeJsonFile(dbUsuarios, baseUsuarios)
+            let usuarioNuevo = new Usuario(nuevoCodigo,name,lastName,birthDate,email,interests,password,categoria,imagen)
 
-        //Redirigir al Maestro de Productos
-        res.redirect("../")
+            //Agregar el Nuevo Producto al Rango Json
+            baseUsuarios.push(usuarioNuevo)
+
+            //Guardado de Archivo
+            writeJsonFile(dbUsuarios, baseUsuarios)
+
+            //Redirigir al Maestro de Productos
+            res.redirect("../")
+        }else{
+            return res.render(rutaBase + "/register",{mensajesError:erroresRegistro.mapped(), oldInfo:req.body})
+            //res.send(erroresRegistro.mapped())
+        }
     },
     cart:(req,res) => {
         const carrito = readJsonFile(dbCarrito)
@@ -98,12 +108,12 @@ const controller = {
         const cantidad = req.body.cantidad
 
         producto = catalogo.filter(prod => {
-            return prod.codigo == idProd
+            return prod.id == idProd
         })
 
         console.log(producto)
 
-        let productoAgregado = new ProductoEnCarrito(producto[0].nombre,producto[0].imagenes[0],producto[0].categoria,producto[0].subCategoria,producto[0].precio,producto[0].descuento,color,tamano,producto[0].codigo,cantidad)
+        let productoAgregado = new ProductoEnCarrito(producto[0].nombre,producto[0].imagenes[0],producto[0].categoria,producto[0].subCategoria,producto[0].precio,producto[0].descuento,color,tamano,producto[0].id,cantidad)
 
         carrito.push(productoAgregado)
         

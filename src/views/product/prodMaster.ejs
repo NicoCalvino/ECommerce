@@ -7,7 +7,7 @@
             <a href="/products/prodMaster/newProduct" class="nuevo-producto"><button>NUEVO PRODUCTO</button></a>
         </li>
         <% for (let i = 0; i < catalogo.length ; i++) { %>
-            <% if(catalogo[i].codigo != "newProd") { %>
+            <% if(catalogo[i].id != "newProd") { %>
             <li class="productos">
                 <div class="imagen">
                     <img src="/images/productos/<%= catalogo[i].imagenes[0] %>" class="imagen-producto" alt="imagen">
@@ -19,7 +19,7 @@
                         <p>STOCK: <%= catalogo[i].stock %></p>
                         <p>ESTADO: <%= catalogo[i].estado %></p>
                     </div>
-                    <a href="/products/prodMaster/edit/<%= catalogo[i].codigo %>" class="editar">Editar</a>
+                    <a href="/products/prodMaster/edit/<%= catalogo[i].id %>" class="editar">Editar</a>
                 </div>
             </li>
             <% } %>
