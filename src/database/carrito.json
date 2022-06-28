@@ -21,14 +21,25 @@
     "id": "b5"
   },
   {
-    "nombre": "BICICLETA BMX TREK FALCON PEGASUS ZB17",
-    "imagen": "bmxp2.jpg",
+    "nombre": "BICICLETA PLEGABLE SCOTT EAGLE PEGASUS MD60",
+    "imagen": "plegablep5.jfif",
     "categoria": "BICICLETAS",
-    "precio": 91630.03,
-    "descuento": 15,
-    "color": "ROSA",
+    "precio": 93731.93,
+    "descuento": 0,
+    "color": "NARANJA",
     "tamano": "UNICO",
     "cantidad": "1",
-    "id": "b5"
+    "id": "b28"
+  },
+  {
+    "nombre": "BOLSO TREK TYLER TRAFALGOR NJ59",
+    "imagen": "bolso16.jpg",
+    "categoria": "ACCESORIOS",
+    "precio": 1137.63,
+    "descuento": 0,
+    "color": "NARANJA/ROJO",
+    "tamano": "CHICO",
+    "cantidad": "6",
+    "id": "a3"
   }
 ]

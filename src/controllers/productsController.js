@@ -1,6 +1,8 @@
 const path = require("path")
 const fs = require("fs")
 
+const {validationResult} = require('express-validator')
+
 let rutaBase = "product"
 
 const dbProductos = path.join(__dirname, "../database/productos.json")
@@ -94,60 +96,65 @@ const controller={
     newProduct:(req,res)=>{
         const catalogo = readJsonFile(dbProductos)
         producto = catalogo.find((prod) => prod.id == "newProd");
-        res.render(rutaBase + "/productData",{producto:producto})
+        res.render(rutaBase + "/productNew")
     },
     createProduct:(req,res)=>{
-        const nombreProd = req.body.nombreProducto
-        const categoria = req.body.categoria
-        const subcategoria = req.body.subcategoria
-        const precio = req.body.precio
-        const descuento = req.body.precioAnt
-        const colores = req.body.colores
-        const tamanos = req.body.tamanos
-        const caracteristicas = req.body.caracteristicas
-        const stock = req.body.stock
-        const estado = req.body.estado
-        const imagen = req.file?.filename || "SinImagen.png"
-        
-        const catalogo = readJsonFile(dbProductos)
-        const catalogoCategoria = catalogo.filter(prod =>{
-            return prod.categoria == categoria
-        })
+        let erroresProducto = validationResult(req)
+        console.log(erroresProducto)
+        if (erroresProducto.isEmpty()){
+            const nombreProd = req.body.nombreProducto
+            const categoria = req.body.categoria
+            const subcategoria = req.body.subcategoria
+            const precio = req.body.precio
+            const descuento = req.body.precioAnt
+            const colores = req.body.colores
+            const tamanos = req.body.tamanos
+            const caracteristicas = req.body.caracteristicas
+            const stock = req.body.stock
+            const estado = req.body.estado
+            const imagen = req.file?.filename || "SinImagen.png"
+            
+            const catalogo = readJsonFile(dbProductos)
+            const catalogoCategoria = catalogo.filter(prod =>{
+                return prod.categoria == categoria
+            })
 
-        //Conversiones a Array
-        let arrayImagenes = []
-        arrayImagenes.push(imagen)
-        let arrayColores = colores.split(",")
-        let arrayTamanos = tamanos.split(",")
-        let arrayCaract = caracteristicas.split(",")
+            //Conversiones a Array
+            let arrayImagenes = []
+            arrayImagenes.push(imagen)
+            let arrayColores = colores.split(",")
+            let arrayTamanos = tamanos.split(",")
+            let arrayCaract = caracteristicas.split(",")
 
+            //Asignacion de Codigo
+            let ultimoCodigo = 0
+            catalogoCategoria.forEach( prod =>{
+                codigoProducto = prod.id
+                letraCodigo = codigoProducto.slice(0,1)
+                nroCodigo = Number(codigoProducto.slice(1,codigoProducto.length))
+                if (nroCodigo > ultimoCodigo){
+                    ultimoCodigo = nroCodigo
+                }
+            })
 
-        //Asignacion de Codigo
-        let ultimoCodigo = 0
-        catalogoCategoria.forEach( prod =>{
-            codigoProducto = prod.id
-            letraCodigo = codigoProducto.slice(0,1)
-            nroCodigo = Number(codigoProducto.slice(1,codigoProducto.length))
-            if (nroCodigo > ultimoCodigo){
-                ultimoCodigo = nroCodigo
-            }
-        })
+            let nuevoCodigo = ultimoCodigo +1
 
-        let nuevoCodigo = ultimoCodigo +1
+            nuevoCodigo = letraCodigo + nuevoCodigo
 
-        nuevoCodigo = letraCodigo + nuevoCodigo
+            //Creacion de Objeto Literal
+            let productoNuevo = new Producto(nombreProd,arrayImagenes,categoria,subcategoria,precio,descuento,arrayColores,arrayTamanos,arrayCaract,nuevoCodigo,stock,estado)
+            
+            //Agregar el Nuevo Producto al Rango Json
+            catalogo.push(productoNuevo)
 
-        //Creacion de Objeto Literal
-        let productoNuevo = new Producto(nombreProd,arrayImagenes,categoria,subcategoria,precio,descuento,arrayColores,arrayTamanos,arrayCaract,nuevoCodigo,stock,estado)
-        
-        //Agregar el Nuevo Producto al Rango Json
-        catalogo.push(productoNuevo)
+            //Guardado de Archivo
+            writeJsonFile(dbProductos, catalogo)
 
-        //Guardado de Archivo
-        writeJsonFile(dbProductos, catalogo)
-
-        //Redirigir al Maestro de Productos
-        res.redirect("/products/prodMaster/list")
+            //Redirigir al Maestro de Productos
+            res.redirect("/products/prodMaster/list")
+        }else{
+            return res.render(rutaBase + '/productNew',{mensajesError:erroresProducto.mapped(),oldInfo:req.body})
+        }
     },
     master:(req,res)=>{
         const catalogo = readJsonFile(dbProductos)

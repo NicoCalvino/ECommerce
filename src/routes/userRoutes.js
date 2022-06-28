@@ -23,7 +23,7 @@ const formValidations = [
     let password = req.body.contrasena
     let confPassword = req.body.confContrasena
     if (password != confPassword){
-      throw new Error('Las Contraseñas no cohinciden')
+      throw new Error('Las Contraseñas no coinciden')
     }
     return true
   }),

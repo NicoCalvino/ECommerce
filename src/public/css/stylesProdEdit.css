@@ -108,6 +108,11 @@ main form div.info-prod .campo-caracteristicas{
     line-height: 16px;
 }
 
+p.feedback{
+    font-size: 10px;
+    color: red;
+}
+
 /*Estilos Imagenes*/
 main form div.imagenes{
     width:100%;

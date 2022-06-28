@@ -1,20 +1,5 @@
 [
   {
-    "id": "newProd",
-    "nombre": "",
-    "imagenes": [],
-    "categoria": "",
-    "subcategoria": "",
-    "precio": "",
-    "descuento": "",
-    "colores": [],
-    "tamanos": [],
-    "caracteristicas": [],
-    "stock": "",
-    "estado": "",
-    "caract": []
-  },
-  {
     "id": "b1",
     "nombre": "BICICLETA MOUNTAIN BIANCHI SEAHAWK WARE-WOLF PF36",
     "imagenes": [

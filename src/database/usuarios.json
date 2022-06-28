@@ -4236,19 +4236,5 @@
     "password": "4qFMBilAb",
     "categoria": "BRONZE",
     "imagen": "Anonimo.png"
-  },
-  {
-    "id": 301,
-    "nombre": "Nicolas",
-    "apellido": "Calviño",
-    "fechaDeNacimiento": "1988-06-21",
-    "email": "nicolascalvino@hotmail.com",
-    "intereses": [
-      "recreativo",
-      "mountain"
-    ],
-    "password": "3Americas",
-    "categoria": "NUEVO",
-    "imagen": "1656097006770_img_.jpg"
   }
 ]
