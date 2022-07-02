@@ -162,7 +162,7 @@ const controller = {
         writeJsonFile(dbUsuarios, nuevaBase)
 
         //Redirigir al Maestro de Productos
-        res.redirect("user/usersMaster")
+        res.redirect("/user/usersMaster/list")
     }
 
 }
