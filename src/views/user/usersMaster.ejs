@@ -1,0 +1,23 @@
+<%- include('../partials/header',{hojaDeEstilo:"/css/stylesUserMaster.css",titulo:"MAESTRO DE USUARIOS"}) %>
+
+<main>
+    <div class="espacio-header"></div>
+    <ul>
+        <% for (let i = 0; i < usuarios.length ; i++) { %>
+            <% console.log(usuarios[i]) %>
+            <li class="usuarios">
+                <div class="imagen">
+                    <img src="/images/usuarios/<%= usuarios[i].imagen %>" class="imagen-usuario" alt="imagen">
+                </div>
+                <div class="detalle">
+                    <h2 class="dato-usuario"><%= usuarios[i].nombre + " " + usuarios[i].apellido %></h2>
+                    <h2 class="dato-usuario"><%= usuarios[i].email %></h2>
+                    <h2 class="dato-usuario"><%= usuarios[i].categoria %></h2>
+                    <a href="/user/usersMaster/edit/<%= usuarios[i].id %>" class="editar">Editar</a>
+                </div>
+            </li>
+        <% } %>
+    </ul>
+</main>
+
+<%- include ("../partials/footer") %>

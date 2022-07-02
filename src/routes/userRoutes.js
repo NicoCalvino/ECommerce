@@ -40,6 +40,16 @@ const formValidations = [
   })
 ]
 
+const userDataValidations = [
+  body('nombreUsuario').notEmpty().withMessage('Este campo no puede estar en Blanco'),
+  body('apellidoUsuario').notEmpty().withMessage('Este campo no puede estar en Blanco'),
+  body('mailUsuario').notEmpty().withMessage('Este campo no puede estar en Blanco'),
+  body('fechaNacimiento').notEmpty().withMessage('Este campo no puede estar en Blanco'),
+  body('categoria').notEmpty().withMessage('Este campo no puede estar en Blanco'),
+  body('fechaAlta').notEmpty().withMessage('Este campo no puede estar en Blanco'),
+  body('intereses').notEmpty().withMessage('Este campo no puede estar en Blanco')
+]
+
 const storage = multer.diskStorage({ 
     destination: function (req, file, cb) {
       let folder = path.join(__dirname, "../public/images/usuarios")
@@ -67,6 +77,12 @@ router.post("/register", fileUpload.single("avatar"),formValidations, userContro
 
 /** CARRITO DEL USUARIO **/
 router.get("/productCart", userController.cart)
+
+/** MAESTRO DE USUARIOS **/
+router.get("/usersMaster/list", userController.userMaster)
+router.get("/usersMaster/edit/:idUser", userController.userData)
+router.put("/usersMaster/edit/:idUser", userDataValidations, userController.userEdit)
+router.delete("/delete/:idUser", userController.delete)
 
 /*** AGREGAR AL CARRITO ***/
 router.post("/productCart/:idProd", userController.addToCart)

@@ -122,7 +122,49 @@ const controller = {
 
         //Redirigir al Maestro de Productos
         res.redirect("/user/productCart")
+    },
+    userMaster:(req,res) =>{
+        const baseUsuarios = readJsonFile(dbUsuarios) 
+        res.render(rutaBase + "/usersMaster",{usuarios:baseUsuarios})
+    },
+    userData:(req,res)=>{
+        const baseUsuarios = readJsonFile(dbUsuarios)
+        const idUser =req.params.idUser
+
+        let usuarioAEditar = baseUsuarios.find(user => user.id == idUser)
+
+        res.render(rutaBase + "/userData",{usuario:usuarioAEditar})
+    },
+    userEdit:(req,res)=>{
+        const baseUsuarios = readJsonFile(dbUsuarios)
+        const idUser =req.params.idUser
+
+        let usuarioAEditar = baseUsuarios.find(user => user.id == idUser)
+
+        let erroresUsuario=validationResult(req)
+        console.log(erroresUsuario)
+        if (erroresUsuario.isEmpty()){
+
+        }else{
+            return res.render(rutaBase + "/userData",{mensajesError:erroresUsuario.mapped(), usuario:usuarioAEditar})
+            //res.send(erroresRegistro.mapped())
+        }
+    },
+    delete:(req,res)=>{
+        const baseUsuarios = readJsonFile(dbUsuarios)
+        const idUser =req.params.idUser
+
+        const nuevaBase = baseUsuarios.filter(user => {
+            return user.id !=idUser
+        })
+
+        //Guardado de Archivo
+        writeJsonFile(dbUsuarios, nuevaBase)
+
+        //Redirigir al Maestro de Productos
+        res.redirect("user/usersMaster")
     }
+
 }
 
 module.exports = controller

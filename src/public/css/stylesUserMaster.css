@@ -1,0 +1,102 @@
+/*Celeste: 01adff
+negro:333333
+blanco:ffffff
+Azul Oscuro: 08355A
+Azul Claro: 0f6992
+verde: 70bb49
+*/ 
+
+/*estilos del main*/
+a{text-decoration: none;}
+
+main{
+    width:90%;
+    margin:auto;
+    color:#333333
+}
+
+/*Estilos de la lista*/
+
+main ul li.usuarios {
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom:1px solid #70bb49;
+    width:100%
+}
+
+/*Estilos de la imagen de cada producto*/
+main ul li div.imagen{
+    width:10%;
+}
+
+main ul li div img.imagen-usuario{
+    width:100%;
+    object-fit:cover;
+}
+
+/*Estilos del detalle del producto*/
+main ul li.usuarios div.detalle{
+    display:flex;
+    flex-wrap: wrap;
+    width:65%;
+    margin-left: 10px;
+}
+
+main ul li.usuarios div.detalle h2.dato-usuario{
+    width:100%;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+main ul li.usuarios div.detalle a.editar{
+    width:25%;
+    font-size: 10px;
+}
+
+@media(min-width:576px){
+    main ul li.usuarios div.detalle h2.dato-usuario{
+        font-size: 16px;
+    }
+    
+    main ul li.usuarios div.detalle a.editar{
+        font-size: 12px;
+    }
+}
+
+@media(min-width:768px){
+    main ul{
+        width:90%;
+        margin:10px auto;
+        border-bottom: #70bb49 2px solid;
+        border-radius: 10px;
+    }
+
+    main ul li.usuarios{
+        border-left: #70bb49 2px solid;
+        border-right: #70bb49 2px solid;
+        border-top: #70bb49 2px solid;
+        border-bottom: none
+    }
+
+    main ul li div.imagen{
+        margin: 5px;
+    }
+
+    main ul li div.imagen{
+        width:5%;
+    }
+
+    main ul li div.imagen img{
+        max-height: 150px;
+    }
+
+    main ul li.usuarios div.detalle h2.dato-usuario{
+        font-size: 16px;
+    }
+    
+    main ul li.usuarios div.detalle a.editar{
+        font-size: 12px;
+    }
+
+}

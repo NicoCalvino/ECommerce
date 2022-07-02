@@ -1,0 +1,191 @@
+/*Celeste: 01adff
+negro:333333
+blanco:ffffff
+Azul Oscuro: 08355A
+Azul Claro: 0f6992
+verde: 70bb49
+*/ 
+
+/*estilos del main*/
+a{text-decoration: none;}
+
+main{
+    width:90%;
+    margin:auto;
+    color:#333333
+}
+
+main div.info-usuario{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .volver-tachito{
+    width:90%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+main a.boton-volver{
+    width:30%;
+}
+
+main a.boton-volver button{
+    background-color:#0f6992;
+    color:white;
+    font-size: 16px;
+    padding:5px;
+    border-radius:5px;
+    margin:5px;
+    transition: all 450ms;
+}
+
+main  a.boton-volver button i{
+    margin-right:5px;
+}
+
+main a.boton-volver button:hover{
+    background-color:#08355A ;
+}
+
+/*Estilos boton eliminar*/
+main .boton-eliminar{
+    width:20%;
+    display:flex;
+    justify-content: flex-end;
+
+}
+
+main .boton-eliminar button{
+    width:55%;
+    font-size: 32px;
+}
+
+main form {
+    display:flex;
+    flex-wrap: wrap;
+    margin-bottom:10px
+}
+
+main form h2{
+    font-size: 20px;
+    width:100%
+}
+
+/*Estilo Campos*/
+main form div.info-usuario{
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+    margin-top: 10px
+}
+
+main form div.info-usuario label{
+    width:100%;
+    font-size: 14px;
+}
+
+main form div.info-usuario .campo-informacion{
+    width:100%;
+    line-height: 24px;
+    padding:5px;
+    transition:all 500ms;
+    border: 1.5px solid #0f6992
+}
+
+main form div.info-usuario .campo-informacion:focus{
+    background-color: #70bb49;
+    color:white
+}
+
+p.feedback{
+    font-size: 10px;
+    color: red;
+}
+
+/* Estilos Intereses */
+main form div.intereses h3{
+    width:100%;
+}
+
+/*Estilos Imagenes*/
+main form div.imagen{
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+main form div.imagen img{
+    width:25%;
+}
+
+/*estilos de Botones*/
+main form div.botones {
+    width:70%;
+    display:flex;
+    flex-wrap: wrap;
+    margin:10px auto;
+    justify-content: space-between;
+}
+
+main form div.botones input{
+    width:40%;
+    background-color: #70bb49;
+    color:white;
+    font-size: 16px;
+    padding:5px;
+    border-radius:5px;
+    transition: all 450ms;
+}
+
+main form div.botones input:hover{
+    background-color: #4c6b3b;
+}
+
+@media(min-width:576px){
+    main div.espacio-header{
+        margin-top: 125px;
+    }
+    main form h2{
+        font-size: 24px;
+    }
+    /*Estilos Imagenes*/
+    main form div.imagenes div.info-imagen{
+        width:50%;
+    }
+}
+
+@media(min-width:768px){
+    main form{
+        width:60%;
+        margin:10px auto;
+        border: #70bb49 2px solid;
+        border-radius: 2%;
+        padding: 15px;
+    }
+
+    main .volver-tachito{
+        width:50%;
+        margin:auto
+    }
+
+    main .boton-eliminar{
+        width:20%;
+        margin:0px;
+        border:none;
+        max-width: 300px;
+    }
+
+    main div.info-usuario div.info-usuario .campo-informacion{
+        font-size: 20px;
+        line-height: 24px;
+    }
+}

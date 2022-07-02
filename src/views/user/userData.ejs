@@ -1,0 +1,87 @@
+<% let titulo = "CONFIGURACIÓN " + usuario.nombre + " " + usuario.apellido %>
+
+<%- include('../partials/header',{hojaDeEstilo:"/css/stylesUserEdit.css",titulo:titulo}) %>
+<% console.log(usuario) %>
+<main>
+    <div class="espacio-header"></div>
+    <div class="volver-tachito">
+        <a href="/user/usersMaster/list" class="boton-volver"><button><i class="fa-solid fa-arrow-left"></i>VOLVER AL MAESTRO</button></a>
+        <form action="/user/delete/<%= usuario.id %>?_method=DELETE" class="boton-eliminar" method="POST">
+            <button type="submit" class=""><i class="fa-solid fa-trash-can"></i></button>
+        </form>
+    </div>
+    <div class="info-usuario">
+        <form action="/user/usersMaster/edit/<%= usuario.id %>?_method=PUT" method="POST">
+            <h2><%= usuario.nombre + " " + usuario.apellido + " " + "(" + usuario.id + ")" %></h2>
+            <div class="imagen">
+                <img src="/images/usuarios/<%= usuario.imagen %>">
+            </div>
+            <div class="info-usuario">
+                <label class="titulo-campo" for="nombreUsuario">NOMBRE:</label>
+                <input type="text" class="campo-informacion" name="nombreUsuario" id="nombreUsuario" placeholder="NOMBRE" value="<%=usuario.nombre %>">
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.nombreUsuario){ %>
+                <p class="feedback"><%=mensajesError.nombreUsuario.msg %></p>
+            <% } %>
+            <div class="info-usuario">
+                <label class="titulo-campo" for="apellidoUsuario">APELLIDO:</label>
+                <input type="text" class="campo-informacion" name="apellidoUsuario" id="apellidoUsuario" placeholder="APELLIDO" value="<%=usuario.apellido %>">
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.apellidoUsuario){ %>
+                <p class="feedback"><%=mensajesError.apellidoUsuario.msg %></p>
+            <% } %>
+            <div class="info-usuario">
+                <label class="titulo-campo" for="mailUsuario">E-MAIL:</label>
+                <input type="email" class="campo-informacion" name="mailUsuario" id="mailUsuario" placeholder="E-MAIL" value="<%=usuario.email %>">
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.mailUsuario){ %>
+                <p class="feedback"><%=mensajesError.mailUsuario.msg %></p>
+            <% } %>
+            <div class="info-usuario">
+                <label class="titulo-campo" for="fechaNacimiento">FECHA DE NACIMIENTO:</label>
+                <input type="date" class="campo-informacion" name="fechaNacimiento" id="fechaNacimiento" value="<%=usuario.fechaDeNacimiento %>">
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.fechaNacimiento){ %>
+                <p class="feedback"><%=mensajesError.fechaNacimiento.msg %></p>
+            <% } %>
+            <div class="info-usuario">
+                <label class="titulo-campo" for="categoria">CATEGORIA:</label>
+                <select class="campo-informacion" name="categoria" id="categoria">
+                    <option value="" >ELEGIR</option>
+                    <option value="NEW" <%= usuario.categoria == "NEW" ? "selected" : null %>>NEW</option>
+                    <option value="GOLD" <%= usuario.categoria == "GOLD" ? "selected" : null %>>GOLD</option>
+                    <option value="SILVER" <%= usuario.categoria == "SILVER" ? "selected" : null %>>SILVER</option>
+                    <option value="BRONZE" <%= usuario.categoria == "BRONZE" ? "selected" : null %>>BRONZE</option>
+                </select>
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.categoria){ %>
+                <p class="feedback"><%=mensajesError.categoria.msg %></p>
+            <% } %>
+            <div class="info-usuario">
+                <label class="titulo-campo" for="fechaAlta">FECHA DE ALTA:</label>
+                <input type="date" class="campo-informacion" name="fechaAlta" id="fechaAlta" value="<%=usuario.fechaAlta %>">
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.fechaAlta){ %>
+                <p class="feedback"><%=mensajesError.fechaAlta.msg %></p>
+            <% } %>
+            <div class="info-usuario intereses">
+                <h3>INTERESES</H3>
+                <ul>
+                    <li><label for="recreativo"><input type="checkbox" class="opcion" name="intereses" id="recreativo" value="recreativo" <%= usuario.intereses.includes("recreativo") ? "checked" : null %>>RECREATIVO</label></li>
+                    <li><label for="pista"><input type="checkbox" class="opcion" name="intereses" id="pista" value="pista" <%= usuario.intereses.includes("pista") ? "checked" : null %>>PISTA</label></li>
+                    <li><label for="mountain"><input type="checkbox" class="opcion" name="intereses" id="mountain" value="mountain" <%= usuario.intereses.includes("mountain") ? "checked" : null %>>MOUNTAIN-BIKE</label></li>
+                    <li><label for="bmx"><input type="checkbox" class="opcion" name="intereses" id="bmx" value="bmx" <%= usuario.intereses.includes("bmx") ? "checked" : null %>>BMX</label></li>
+                </ul>
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.intereses){ %>
+                <p class="feedback"><%=mensajesError.intereses.msg %></p>
+            <% } %>
+            <div class="botones">
+                <input type="reset" value="Deshacer">
+                <input type="submit" value="Confirmar">
+            </div>
+        </form>
+    </div>
+</main>
+
+<%- include ("../partials/footer") %>
