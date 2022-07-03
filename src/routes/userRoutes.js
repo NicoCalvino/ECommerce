@@ -45,8 +45,8 @@ const userDataValidations = [
   body('apellidoUsuario').notEmpty().withMessage('Este campo no puede estar en Blanco'),
   body('mailUsuario').notEmpty().withMessage('Este campo no puede estar en Blanco'),
   body('fechaNacimiento').notEmpty().withMessage('Este campo no puede estar en Blanco'),
+  body('rol').notEmpty().withMessage('Este campo no puede estar en Blanco'),
   body('categoria').notEmpty().withMessage('Este campo no puede estar en Blanco'),
-  body('fechaAlta').notEmpty().withMessage('Este campo no puede estar en Blanco'),
   body('intereses').notEmpty().withMessage('Este campo no puede estar en Blanco')
 ]
 

@@ -1,7 +1,6 @@
 <% let titulo = "CONFIGURACIÓN " + usuario.nombre + " " + usuario.apellido %>
 
 <%- include('../partials/header',{hojaDeEstilo:"/css/stylesUserEdit.css",titulo:titulo}) %>
-<% console.log(usuario) %>
 <main>
     <div class="espacio-header"></div>
     <div class="volver-tachito">
@@ -44,26 +43,6 @@
             <% if (locals.mensajesError && locals.mensajesError.fechaNacimiento){ %>
                 <p class="feedback"><%=mensajesError.fechaNacimiento.msg %></p>
             <% } %>
-            <div class="info-usuario">
-                <label class="titulo-campo" for="categoria">CATEGORIA:</label>
-                <select class="campo-informacion" name="categoria" id="categoria">
-                    <option value="" >ELEGIR</option>
-                    <option value="NEW" <%= usuario.categoria == "NEW" ? "selected" : null %>>NEW</option>
-                    <option value="GOLD" <%= usuario.categoria == "GOLD" ? "selected" : null %>>GOLD</option>
-                    <option value="SILVER" <%= usuario.categoria == "SILVER" ? "selected" : null %>>SILVER</option>
-                    <option value="BRONZE" <%= usuario.categoria == "BRONZE" ? "selected" : null %>>BRONZE</option>
-                </select>
-            </div>
-            <% if (locals.mensajesError && locals.mensajesError.categoria){ %>
-                <p class="feedback"><%=mensajesError.categoria.msg %></p>
-            <% } %>
-            <div class="info-usuario">
-                <label class="titulo-campo" for="fechaAlta">FECHA DE ALTA:</label>
-                <input type="date" class="campo-informacion" name="fechaAlta" id="fechaAlta" value="<%=usuario.fechaAlta %>">
-            </div>
-            <% if (locals.mensajesError && locals.mensajesError.fechaAlta){ %>
-                <p class="feedback"><%=mensajesError.fechaAlta.msg %></p>
-            <% } %>
             <div class="info-usuario intereses">
                 <h3>INTERESES</H3>
                 <ul>
@@ -76,6 +55,33 @@
             <% if (locals.mensajesError && locals.mensajesError.intereses){ %>
                 <p class="feedback"><%=mensajesError.intereses.msg %></p>
             <% } %>
+            <div class="info-usuario">
+                <label class="titulo-campo" for="rol">ROL:</label>
+                <select class="campo-informacion" name="rol" id="rol">
+                    <option value="ADMINISTRADOR" <%= usuario.rol == "ADMINISTRADOR" ? "selected" : null %>>ADMINISTRADOR</option>
+                    <option value="USUARIO" <%= usuario.rol == "USUARIO" ? "selected" : null %>>USUARIO</option>
+                </select>
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.rol){ %>
+                <p class="feedback"><%=mensajesError.rol.msg %></p>
+            <% } %>
+            <div class="info-usuario">
+                <label class="titulo-campo" for="categoria">CATEGORIA:</label>
+                <select class="campo-informacion" name="categoria" id="categoria">
+                    <option value="" >ELEGIR</option>
+                    <option value="NUEVO" <%= usuario.categoria == "NUEVO" ? "selected" : null %>>NUEVO</option>
+                    <option value="GOLD" <%= usuario.categoria == "GOLD" ? "selected" : null %>>GOLD</option>
+                    <option value="SILVER" <%= usuario.categoria == "SILVER" ? "selected" : null %>>SILVER</option>
+                    <option value="BRONZE" <%= usuario.categoria == "BRONZE" ? "selected" : null %>>BRONZE</option>
+                </select>
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.categoria){ %>
+                <p class="feedback"><%=mensajesError.categoria.msg %></p>
+            <% } %>
+            <div class="info-usuario">
+                <h3>FECHA DE ALTA</H3>
+                <h3><%=usuario.fechaAlta %></H3>
+            </div>
             <div class="botones">
                 <input type="reset" value="Deshacer">
                 <input type="submit" value="Confirmar">

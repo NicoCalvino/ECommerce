@@ -1,5 +1,6 @@
 const path = require("path")
 const fs = require("fs")
+const ProductosModel = require("../models/productosModel")
 
 const {validationResult} = require('express-validator')
 
@@ -51,20 +52,16 @@ function ProductoEnCarrito(nombre,imagen,categoria,subCategoria,precio,descuento
 
 const controller={
     index:(req,res) => {
-        const catalogo = readJsonFile(dbProductos)
+        const catalogo = ProductosModel.getAll()
         res.render(rutaBase + "/catalogo", {catalogo:catalogo})
     },
     detalle:(req,res) => {
         const idProd = req.params.idProd;
-        const catalogo = readJsonFile(dbProductos)
-        producto = catalogo.find((prod) => prod.id == idProd)
+        const catalogo = ProductosModel.getAll()
+        producto = ProductosModel.findbyPK(idProd)
 
-        const catalogoCategoria=catalogo.filter(prod =>{
-            return prod.id != producto.id && prod.categoria == producto.categoria
-        })
-        const otrosProd=catalogo.filter(prod =>{
-            return prod.id != "newProd" && prod.categoria != producto.categoria 
-        })
+        const catalogoCategoria = ProductosModel.filterPKFromArray(idProd, categoria, producto.categoria)
+        const otrosProd = ProductosModel.filterByField(categoria, producto.categoria, 2)
 
         const calificaciones = readJsonFile(dbCalif)
 
