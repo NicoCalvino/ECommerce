@@ -4,7 +4,7 @@ const EdicionArchivosModel = require("./edicionArchivoModel")
 
 const model = {
     dbProductos: path.join(__dirname, "../database/productos.json"),
-        
+    dbCalif: path.join(__dirname, "../database/calificaciones.json"),        
     getAll:function(){
         return EdicionArchivosModel.readData(this.dbProductos)
     },
@@ -38,7 +38,18 @@ const model = {
         return newArray
     },
 
-    
+    reviewDetail:function(idProd){
+        let calificaciones = EdicionArchivosModel.readData(this.dbCalif)
+        let califFiltradas = calificaciones.filter(review => review.producto == idProd)
+        let califTotal = 0
+        for (let i = 0 ; i < califFiltradas; i++){
+            califTotal = califTotal + califFiltradas[i].calificacion
+        }
+        let califProm = califTotal/(opinionesProd.length)
+
+        let resumenCalificacion = [califFiltradas, califProm]
+        return resumenCalificacion
+    },
     
     generateId:function(){
         let allUsers = this.getAll()

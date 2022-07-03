@@ -8,7 +8,7 @@ let rutaBase = "product"
 
 const dbProductos = path.join(__dirname, "../database/productos.json")
 const dbCalif = path.join(__dirname, "../database/calificaciones.json")
-const dbCarrito = path.join(__dirname, "../database/carrito.json")
+
 
 const readJsonFile = (rutaArchivo) => {
     const data = fs.readFileSync(rutaArchivo,"utf-8")
@@ -36,20 +36,6 @@ function Producto(nombre,imagen,categoria,subCategoria,precio,descuento,colores,
     this.estado=estado
 }
 
-function ProductoEnCarrito(nombre,imagen,categoria,subCategoria,precio,descuento,color,tamano,codigo,cantidad){
-    this.nombre=nombre
-    this.imagenes=imagen
-    this.categoria=categoria
-    this.subcategoria=subCategoria
-    this.precio=precio
-    this.descuento=descuento
-    this.color=color
-    this.tamano=tamano
-    this.cantidad=cantidad
-    this.id=codigo
-}
-
-
 const controller={
     index:(req,res) => {
         const catalogo = ProductosModel.getAll()
@@ -63,18 +49,9 @@ const controller={
         const catalogoCategoria = ProductosModel.filterPKFromArray(idProd, categoria, producto.categoria)
         const otrosProd = ProductosModel.filterByField(categoria, producto.categoria, 2)
 
-        const calificaciones = readJsonFile(dbCalif)
-
-        const opinionesProd = calificaciones.filter(opinion =>{
-            return opinion.producto == idProd
-        })
-        
-        let califTotal = 0
-        for (let i=0; i<opinionesProd.length;i++){
-            califTotal = califTotal + opinionesProd[i].calificacion
-        }
-
-        let califProm = califTotal/(opinionesProd.length)
+        const resumenCalificacion = ProductosModel.reviewDetail(idProd)
+        const opinionesProd = resumenCalificacion[0]
+        const califProm = resumenCalificacion[1]
         
         res.render(rutaBase + "/productDetail", {
             producto,
@@ -86,13 +63,10 @@ const controller={
     },
     editProduct:(req,res)=>{
         const idProd = req.params.idProd;
-        const catalogo = readJsonFile(dbProductos)
-        producto = catalogo.find((prod) => prod.id == idProd);
+        const producto = ProductosModel.findbyPK(idProd);
         res.render(rutaBase + "/productData",{producto:producto})
     },
     newProduct:(req,res)=>{
-        const catalogo = readJsonFile(dbProductos)
-        producto = catalogo.find((prod) => prod.id == "newProd");
         res.render(rutaBase + "/productNew")
     },
     createProduct:(req,res)=>{
