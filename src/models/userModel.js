@@ -24,6 +24,12 @@ const model = {
         return userFound
     },
     
+    getOneField:function(user,field){
+        let userFound = this.findByField("email", user)
+        let infoField = userFound[field]
+        return infoField
+    },
+
     generateId:function(){
         let allUsers = this.getAll()
         let lastUser = allUsers.pop()
@@ -92,27 +98,59 @@ const model = {
         return EdicionArchivosModel.readData(this.dbCarrito)
     },
 
-    addToCart: function(idProd, infoProd){
-        let carrito = this.getCart()
-
-        productoElegido = ProductosModel.findbyPK(idProd)
-
-        productoAgregado = {
-            nombre:productoElegido.nombre,
-            imagen:productoElegido.imagenes[0],
-            categoria:productoElegido.categoria,
-            precio:productoElegido.precio,
-            descuento:productoElegido.descuento,
-            color:infoProd.color,
-            tamano:infoProd.tamano,
-            id:productoElegido.id,
-            cantidad:infoProd.cantidad
+    getUserCart:function(idUser){
+        let archivoCarrito = this.getCart()
+        let carritoUsuario = archivoCarrito.filter(oneProd =>{
+            return oneProd.idUser == idUser
+        })
+        if(carritoUsuario.length === 0){
+            return false
         }
+        return carritoUsuario
+    },
 
-        carrito.push(productoAgregado)
-        EdicionArchivosModel.saveData(this.dbCarrito, carrito)
-        return productoAgregado
+    addToCart: function(idUser, idProd, infoProd){
+        let carrito = this.getUserCart(idUser)
+
+        if(!carrito){carrito = []}
+
+        prodEnCart = carrito.find(oneProd => oneProd.id == idProd)
+        
+        if (!prodEnCart){
+            productoElegido = ProductosModel.findbyPK(idProd)
+
+            productoAgregado = {
+                idUser:idUser,
+                nombre:productoElegido.nombre,
+                imagen:productoElegido.imagenes[0],
+                categoria:productoElegido.categoria,
+                precio:productoElegido.precio,
+                descuento:productoElegido.descuento,
+                color:infoProd.color,
+                tamano:infoProd.tamano,
+                id:productoElegido.id,
+                cantidad:infoProd.cantidad
+            }
+
+            carrito.push(productoAgregado)
+            EdicionArchivosModel.saveData(this.dbCarrito, carrito)
+            return productoAgregado
+        }
+    },
+
+    processLogin:function(userInfo){
+        let allUsers = this.getAll()
+        let emailUser = userInfo.email
+        let passUser = userInfo.contrasena
+        for (let i = 0; i < allUsers.length; i++){
+            if (allUsers[i].email == emailUser && bcryptjs.compareSync(passUser, allUsers[i].password)){
+                return true
+            }
+        }
+        return false
     }
+
+
 }
 
 

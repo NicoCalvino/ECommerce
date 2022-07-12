@@ -29,7 +29,8 @@
         </article>
         <article class="informacion">
             <p class="precio-producto">$ <%= producto.precio %></p>
-            <form action="/user/productCart/<%= producto.id %>" method="POST" class="opciones">
+            <% if(locals.userId){ %>
+                <form action="/user/productCart/<%= producto.id %>" method="POST" class="opciones">
                 <div class="cantidad">
                     <label for="cantidad">CANTIDAD</label>
                     <select name="cantidad" id="cantidad">
@@ -60,6 +61,7 @@
                     <input type="submit" value="COMPRAR">
                 </div>
             </form>
+        <% } %>
         </article>
         <article class="caracteristicas">
             <h3>CARACTERISTICAS</h3>
@@ -96,35 +98,23 @@
     <section class="productos-similares">
         <h3 class="titulo-seccion">PRODUCTOS SIMILARES</h3>
         <ul class="vinculos-productos">
-            <% if(catalogoCategoria.length > 6) { %>
-                <% cantProd = 5 %> 
-            <% } else{ %> 
-                <% cantProd = catalogoCategoria.length %>
-            <% } %>
-            <% for (let i=0;i < cantProd ;i++){ %>
-                <% if (catalogoCategoria[i].id != producto.id){ %>
-                    <li>
-                        <a href="/products/<%= catalogoCategoria[i].id %>">
-                            <img src="/images/productos/<%= catalogoCategoria[i].imagenes[0] %>" alt="Otro Producto  <%= i + 1 %>" class="imagenes-seleccionables">
-                            <div class="titulo-precio">
-                                <p class="precio-producto">$ <%= catalogoCategoria[i].precio %></p>
-                                <p class="titulo-producto"><%= catalogoCategoria[i].nombre %></p>
-                            </div>
-                        </a>
-                    </li>
-                <% } %>
+            <% for (let i=0;i < categoria.length ;i++){ %>
+                <li>
+                    <a href="/products/<%= categoria[i].id %>">
+                        <img src="/images/productos/<%= categoria[i].imagenes[0] %>" alt="Otro Producto  <%= i + 1 %>" class="imagenes-seleccionables">
+                        <div class="titulo-precio">
+                            <p class="precio-producto">$ <%= categoria[i].precio %></p>
+                            <p class="titulo-producto"><%= categoria[i].nombre %></p>
+                        </div>
+                    </a>
+                </li>
             <% } %>
         </ul>
     </section>
     <section class="productos-similares">
         <h3 class="titulo-seccion">PRODUCTOS QUE PODRÍAN INTERESARTE</h3>
         <ul class="vinculos-productos">
-            <% if(otrosProd.length > 6) { %>
-                <% cantProd = 5 %> 
-            <% } else{ %> 
-                <% cantProd = otrosProd.length %>
-            <% } %>
-            <% for (let i=0;i < cantProd ;i++){ %>
+            <% for (let i=0;i < otrosProd.length ;i++){ %>
                 <li>
                     <a href="/products/<%= otrosProd[i].id %>">
                         <img src="/images/productos/<%= otrosProd[i].imagenes[0] %>" alt="Otro Producto  <%= i + 1 %>" class="imagenes-seleccionables">

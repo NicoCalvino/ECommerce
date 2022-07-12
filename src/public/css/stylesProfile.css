@@ -1,0 +1,85 @@
+/*Celeste: 01adff
+negro:333333
+blanco:ffffff
+Azul Oscuro: 08355A
+Azul Claro: 0f6992
+verde: 70bb49
+*/ 
+
+/*estilos del main*/
+a{text-decoration: none;}
+
+main{
+    width:90%;
+    margin:auto;
+    color:#333333
+}
+
+main div.info-usuario{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    border: 3px solid #70bb49;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+main div.imagen{
+    width:30%;
+    object-fit:cover;
+}
+
+main div.imagen img{
+    width:100%
+}
+
+main div.detalle-usuario{
+    width: 60%
+}
+
+main div.detalle-usuario h2{
+    font-size: 12px;
+    font-weight: normal;
+}
+
+main div.info-tecnica{
+    width:100%
+}
+
+main div.info-tecnica h2{
+    font-size: 10px;
+    font-weight: normal;
+}
+
+@media(min-width:576px){
+    main div.info-usuario{
+        margin-top: 120px;
+    }
+
+    main div.detalle-usuario h2{
+        font-size: 18px;
+    }
+    
+}
+
+@media(min-width:768px){
+    main div.info-usuario{
+        width:50%;
+        margin: 10px auto;
+    }
+
+    main div.imagen{
+        width:20%;
+    }
+
+    main div.detalle-usuario{
+        width: 70%;
+        line-height: 34px;
+    }
+
+    main div.detalle-usuario h2{
+        font-size: 24px;
+    }
+}

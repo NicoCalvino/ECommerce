@@ -24,9 +24,9 @@ const model = {
     filterByField:function(field, dato, filtro){
         let allProducts = this.getAll()
         let newArray
-        if (filtro = 1){
+        if (filtro == 1){
             newArray = allProducts.filter(oneProduct => oneProduct[field] == dato)
-        }else if(filtro = 2){
+        }else if(filtro == 2){
             newArray = allProducts.filter(oneProduct => oneProduct[field] != dato)
         }
         return newArray
@@ -38,81 +38,103 @@ const model = {
         return newArray
     },
 
+    randomReduce:function(array){
+        let newArray = []
+        for (let x = 1; x < 6 ; x++){
+            let buscador = Math.round(Math.random()*1000)
+            console.log(buscador)
+            let indiceRandom = 0
+            for (let i = 1; i <=buscador ; i++){
+                indiceRandom++
+                if(indiceRandom >= array.length){
+                    indiceRandom = 0
+                }
+            }
+            console.log(array[indiceRandom])
+            if(!newArray.includes(array[indiceRandom])){
+                newArray.push(array[indiceRandom])
+            }else{x--}
+        }
+        return newArray
+    },
+
     reviewDetail:function(idProd){
         let calificaciones = EdicionArchivosModel.readData(this.dbCalif)
         let califFiltradas = calificaciones.filter(review => review.producto == idProd)
         let califTotal = 0
-        for (let i = 0 ; i < califFiltradas; i++){
+        for (let i = 0 ; i < califFiltradas.length; i++){
             califTotal = califTotal + califFiltradas[i].calificacion
         }
-        let califProm = califTotal/(opinionesProd.length)
+        let califProm = califTotal/(califFiltradas.length)
 
         let resumenCalificacion = [califFiltradas, califProm]
         return resumenCalificacion
     },
     
-    generateId:function(){
-        let allUsers = this.getAll()
-        let lastUser = allUsers.pop()
-        if(lastUser){
-            return lastUser.id +1
+    generateId:function(newCat){
+        let catalogoCategoria = this.filterByField("categoria", newCat, 1)
+        letraCodigo = newCat.slice(0,1)
+        let lastProd = catalogoCategoria.pop()
+        if(lastProd){
+            nroCodigo = Number(lastProd.id.slice(1,lastProd.id.length))
+            return letraCodigo + (nroCodigo +1)
         }
-        return 1
+        return letraCodigo + 1
     },
 
-    newUser:function(userInfo, imagen){
-        let allUsers = this.getAll()
-
-        let newUser ={
-            id:this.generateId(),
-            rol:"USUARIO",
-            fechaAlta: new Date(),
-            nombre : userInfo.nombre,
-            apellido : userInfo.apellido,
-            fechaDeNacimiento : userInfo.fechaDeNacimiento,
-            email : userInfo.email,
-            intereses : userInfo.intereses,
-            password : bcryptjs.hashSync(userInfo.contrasena,10),
-            categoria : "NUEVO",
-            imagen : imagen
+    newProduct:function(prodInfo, imagen){
+        let allProducts = this.getAll()
+        let categoria = prodInfo.categoria
+        let newProd ={
+            id:this.generateId(categoria),
+            nombre: prodInfo.nombreProducto,
+            imagenes: imagen.split(","),    
+            categoria:  prodInfo.categoria,
+            subcategoria:  prodInfo.subcategoria,
+            precio:  prodInfo.precio,
+            descuento:  prodInfo.precioAnt,
+            colores:  prodInfo.colores.split(","),
+            tamanos: prodInfo.tamanos.split(","),
+            caracteristicas:  prodInfo.caracteristicas.split(","),
+            stock:  prodInfo.stock,
+            estado:  prodInfo.estado
         }
-        allUsers.push(newUser)
-        EdicionArchivosModel.saveData(this.dbUsuarios, allUsers)
-        return newUser
+        allProducts.push(newProd)
+        EdicionArchivosModel.saveData(this.dbProductos, allProducts)
+        return newProd
     },
 
     delete: function(pk){
-        let allUsers = this.getAll()
-        let updatedUsers = allUsers.filter(oneUser => oneUser.id != pk)
-        let deletedUser = allUsers.find(oneUser => oneUser.id == pk)
-        EdicionArchivosModel.saveData(this.dbUsuarios, updatedUsers)
-        return deletedUser
+        let allProducts = this.getAll()
+        let updatedProducts = allProducts.filter(oneProduct => oneProduct.id != pk)
+        let deletedProduct = allProducts.find(oneProduct => oneProduct.id == pk)
+        EdicionArchivosModel.saveData(this.dbProductos, updatedProducts)
+        return deletedProduct
     },
 
-    edit: function(pk, userInfo){
-        let allUsers = this.getAll()
-        for (let i = 0; i < allUsers.length; i++){
-            if (allUsers[i].id == pk){
-                let imagen = allUsers[i].imagen
-                let fechaAlta = allUsers[i].fechaAlta
-                let password = allUsers[i].password
-                allUsers[i] ={
-                    id : Number(pk),
-                    imagen: imagen,
-                    fechaAlta: fechaAlta,
-                    password: password,
-                    rol: userInfo.rol,
-                    nombre: userInfo.nombreUsuario,
-                    apellido: userInfo.apellidoUsuario,
-                    fechaDeNacimiento: userInfo.fechaNacimiento,
-                    email: userInfo.mailUsuario,
-                    intereses: userInfo.intereses,
-                    categoria: userInfo.categoria,
+    editProd: function(pk, prodInfo){
+        let allProducts = this.getAll()
+        for (let i = 0; i < allProducts.length; i++){
+            if (allProducts[i].id == pk){
+                let imagenes = allProducts[i].imagenes
+                allProducts[i] ={
+                    id:pk,
+                    nombre: prodInfo.nombreProducto,
+                    imagenes: imagenes,    
+                    categoria:  prodInfo.categoria,
+                    subcategoria:  prodInfo.subcategoria,
+                    precio:  prodInfo.precio,
+                    descuento:  prodInfo.precioAnt,
+                    colores:  prodInfo.colores.split(","),
+                    tamanos: prodInfo.tamanos.split(","),
+                    caracteristicas:  prodInfo.caracteristicas.split(","),
+                    stock:  prodInfo.stock,
+                    estado:  prodInfo.estado
                 }
                 break
             }
         }
-        EdicionArchivosModel.saveData(this.dbUsuarios, allUsers)
+        EdicionArchivosModel.saveData(this.dbProductos, allProducts)
     }
 
 }

@@ -3,6 +3,9 @@ const express =require("express");
 const app = express();
 const PORT = process.env.PORT || 4000;
 const methodOverride = require("method-override")
+const cookieParser=require('cookie-parser')
+const session=require('express-session')
+const userLoggedMiddleware = require("./middlewares/userLoggedMiddleware")
 
 const productsRoutes = require("./routes/productsRoutes")
 const userRoutes = require("./routes/userRoutes")
@@ -16,7 +19,9 @@ app.use(methodOverride("_method"))
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
-
+app.use(cookieParser())
+app.use(session({secret:'Esto Es Secreto',resave:false, saveUninitialized:false}))
+app.use(userLoggedMiddleware)
 
 app.use("/user", userRoutes)
 app.use("/products", productsRoutes)

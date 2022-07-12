@@ -38649,27 +38649,5 @@
     ],
     "stock": "1208",
     "estado": "OFERTA"
-  },
-  {
-    "id": "B151",
-    "nombre": "Spark 26 Alloy Mountain Bike Re Buena",
-    "imagenes": [
-      "1656985678351_img_.jpg"
-    ],
-    "categoria": "BICICLETAS",
-    "subcategoria": "MONTAÑA",
-    "precio": "32948",
-    "descuento": "5",
-    "colores": [
-      "rsf"
-    ],
-    "tamanos": [
-      "fsda"
-    ],
-    "caracteristicas": [
-      "fsdag"
-    ],
-    "stock": "32",
-    "estado": "NORMAL"
   }
 ]

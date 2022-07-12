@@ -10,8 +10,30 @@ const controller = {
     login:(req,res) => {
         res.render(rutaBase + "/login")
     },
+    loginProcess:(req,res)=>{
+        let check = UserModel.processLogin(req.body)
+        if (check){
+            req.session.userLogged = req.body.email
+            if (req.body.recordar == "on"){
+                res.cookie("emailLogged", req.body.email,{maxAge: 5000 * 60})
+            }
+            res.redirect("/user/userProfile")
+        }
+        res.render(rutaBase + "/login",{error:"Los datos igresados son incorrectos", email:req.body.email})
+    },
+    logoutProcess:(req,res)=>{
+        req.session.destroy()
+        res.clearCookie("emailLoged")
+        res.redirect("/")
+    },
     register:(req,res) => {
         res.render(rutaBase + "/register")
+    },
+    profile:(req,res)=>{
+        let emailLogged = req.session.userLogged
+        let usuario = UserModel.findByField("email",emailLogged)
+        res.render(rutaBase + "/userProfile",{usuario:usuario})
+
     },
     newUser:(req,res) =>{
         let erroresRegistro=validationResult(req)
@@ -21,20 +43,23 @@ const controller = {
             UserModel.newUser(req.body,req.file?.filename || "Anonimo.png")
 
             //Redirigir al Maestro de Productos
-            res.redirect("/user/usersMaster/list")
+            req.session.userLogged=req.body.email
+            res.redirect("/user/userProfile")
         }else{
             return res.render(rutaBase + "/register",{mensajesError:erroresRegistro.mapped(), oldInfo:req.body})
             //res.send(erroresRegistro.mapped())
         }
     },
     cart:(req,res) => {
-        const carrito = UserModel.getCart()
+        const idUser = UserModel.getOneField(req.session.userLogged, "id")
+        const carrito = UserModel.getUserCart(idUser)
         res.render(rutaBase + "/productCart",{carrito:carrito})
     },
     addToCart:(req,res)=>{
         idProd = req.params.idProd
-        
-        UserModel.addToCart(idProd, req.body)
+
+        idUser = UserModel.getOneField(req.session.userLogged, "id")
+        UserModel.addToCart(idUser, idProd, req.body)
         
         //Redirigir al Maestro de Productos
         res.redirect("/user/productCart")

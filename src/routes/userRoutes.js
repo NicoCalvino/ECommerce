@@ -1,17 +1,27 @@
 const express = require("express")
 const app = express()
-const multer = require("multer")
+const fileUpload = require("../middlewares/multerUsersMiddleware")
 const path = require("path")
+const guestMiddleware= require("../middlewares/guestMiddleware")
+const authMiddleware= require("../middlewares/authMiddleware")
+const adminMiddleware= require("../middlewares/adminMiddleware")
+const UserModel = require("../models/userModel")
 
 const {body} = require('express-validator')
 const formValidations = [
   body('nombre').notEmpty().withMessage('Debe Indicar su nombre'),
   body('apellido').notEmpty().withMessage('Debe Indicar su apellido'),
   body('fechaDeNacimiento').notEmpty().withMessage('Debe Indicar su fecha De Nacimiento'),
-  body('email').isEmail().withMessage('El correo Ingresado no es válido'),
+  body('email').isEmail().withMessage('El correo Ingresado no es válido').custom((value, {req}) =>{
+      let emailExists = UserModel.findByField("email",req.body.email)
+      if (emailExists){
+        throw new Error('El mail ingresado ya existe')
+      }
+      return true
+  }),
   body('intereses').notEmpty().withMessage('Debe Indicar al menos un interes'),
   body('contrasena').notEmpty().withMessage('La contraseña no es válida'),
-  body('termCond').notEmpty().withMessage('Debe aceptar os términos y condiciones'),
+  body('termCond').notEmpty().withMessage('Debe aceptar los términos y condiciones'),
   body('captcha').custom((value, {req}) => {
     let respuesta = req.body.captcha
     if (respuesta != 'mwxe2'){
@@ -50,42 +60,35 @@ const userDataValidations = [
   body('intereses').notEmpty().withMessage('Este campo no puede estar en Blanco')
 ]
 
-const storage = multer.diskStorage({ 
-    destination: function (req, file, cb) {
-      let folder = path.join(__dirname, "../public/images/usuarios")
-       cb(null, folder ); 
-    }, 
-    filename: function (req, file, cb) { 
-      let nombreArchivo = Date.now() + "_img_" + path.extname(file.originalname)
-       cb(null,nombreArchivo )
-    } 
-})
-
-let fileUpload = multer({storage: storage })
-
 const router = express.Router()
 
 const userController = require("../controllers/userController")
 
 /** LOGEO DE USUARIO **/
-router.get("/login", userController.login)
-router.post("/login", userController.login)
+router.get("/login", guestMiddleware, userController.login)
+router.post("/login", userController.loginProcess)
+router.get("/logout", userController.logoutProcess)
 
 /** REGISTRO DE USUARIO **/
-router.get("/register", userController.register)
+router.get("/register", guestMiddleware, userController.register)
 router.post("/register", fileUpload.single("avatar"),formValidations, userController.newUser)
 
-/** CARRITO DEL USUARIO **/
-router.get("/productCart", userController.cart)
+/** PERFIL DEL USUARIO **/
+router.get("/userProfile", authMiddleware, userController.profile)
 
-/** MAESTRO DE USUARIOS **/
-router.get("/usersMaster/list", userController.userMaster)
-router.get("/usersMaster/edit/:idUser", userController.userData)
-router.put("/usersMaster/edit/:idUser", userDataValidations, userController.userEdit)
-router.delete("/delete/:idUser", userController.delete)
+/** CARRITO DEL USUARIO **/
+router.get("/productCart", authMiddleware, userController.cart)
 
 /*** AGREGAR AL CARRITO ***/
-router.post("/productCart/:idProd", userController.addToCart)
+router.post("/productCart/:idProd", authMiddleware, userController.addToCart)
+
+/** MAESTRO DE USUARIOS **/
+router.get("/usersMaster/list", authMiddleware, adminMiddleware,userController.userMaster)
+router.get("/usersMaster/edit/:idUser", authMiddleware, adminMiddleware,userController.userData)
+router.put("/usersMaster/edit/:idUser", userDataValidations, authMiddleware, adminMiddleware,userController.userEdit)
+router.delete("/delete/:idUser", authMiddleware, adminMiddleware, userController.delete)
+
+
 
 
 module.exports = router

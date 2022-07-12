@@ -4838,9 +4838,9 @@
   },
   {
     "id": 301,
-    "imagen": "1657233562691_img_.jpg",
-    "fechaAlta": "2022-07-07T22:39:22.703Z",
-    "password": "$2a$10$jw4eXULE977JSc5flVwFGeFx0bJgvbO/cEudRvXYTLmJU6O2bu6xK",
+    "imagen": "1656816195655_img_.jpg",
+    "fechaAlta": "2022-07-03T02:43:15.665Z",
+    "password": "$2a$10$sL3eVDMeAq70B6qRJRF5p.0GWjIGaiu/BhSjoXfPhrs2rejsqdMza",
     "rol": "ADMINISTRADOR",
     "nombre": "Nicolas",
     "apellido": "Calviño",
@@ -4848,8 +4848,7 @@
     "email": "nicolascalvino@hotmail.com",
     "intereses": [
       "recreativo",
-      "mountain",
-      "bmx"
+      "mountain"
     ],
     "categoria": "GOLD"
   }

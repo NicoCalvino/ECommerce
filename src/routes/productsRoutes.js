@@ -1,7 +1,8 @@
 const express = require ("express")
 const app = express()
-const multer = require("multer")
 const path = require("path")
+const fileUpload = require("../middlewares/multerProductsMiddleware")
+const adminMiddleware= require("../middlewares/adminMiddleware")
 const {body} = require('express-validator')
 
 const prodValidations=[
@@ -17,19 +18,6 @@ const prodValidations=[
   body('estado').notEmpty().withMessage('Debe Indicar un estado para el producto')
 ]
 
-const storage = multer.diskStorage({ 
-    destination: function (req, file, cb) {
-      let folder = path.join(__dirname, "../public/images/productos")
-       cb(null, folder ); 
-    }, 
-    filename: function (req, file, cb) { 
-      let nombreArchivo = Date.now() + "_img_" + path.extname(file.originalname)
-       cb(null,nombreArchivo )
-    } 
-})
-
-let fileUpload = multer({storage: storage })
-
 const router = express.Router()
 
 const productsController = require("../controllers/productsController")
@@ -38,21 +26,21 @@ const productsController = require("../controllers/productsController")
 router.get("/search", productsController.index)
 
 /*** MAESTRO DE PRODUCTOS ***/ 
-router.get("/prodMaster/list", productsController.master)
+router.get("/prodMaster/list", adminMiddleware, productsController.master)
 
 /*** EDITAR PRODUCTO ***/ 
-router.get("/prodMaster/edit/:idProd", productsController.editProduct)
-router.put("/prodMaster/edit/:idProd", fileUpload.single("nuevaImagen"),prodValidations, productsController.update); 
+router.get("/prodMaster/edit/:idProd", adminMiddleware,productsController.editProduct)
+router.put("/prodMaster/edit/:idProd", fileUpload.single("nuevaImagen"),prodValidations, adminMiddleware, productsController.update); 
 
 /*** CREAR PRODUCTO ***/
-router.get("/prodMaster/newProduct", productsController.newProduct)
-router.post("/prodMaster/newProduct", fileUpload.single("nuevaImagen"), prodValidations, productsController.createProduct)
+router.get("/prodMaster/newProduct", adminMiddleware, productsController.newProduct)
+router.post("/prodMaster/newProduct", fileUpload.single("nuevaImagen"), prodValidations, adminMiddleware, productsController.createProduct)
 
 /*** INGRESAR A UN PRODUCTO ***/ 
 router.get("/:idProd", productsController.detalle)
 
 /*** ELIMINAR PRODUCTO ***/ 
-router.delete('/delete/:idProd', productsController.delete); 
+router.delete('/delete/:idProd', adminMiddleware, productsController.delete); 
 
 
 module.exports = router
