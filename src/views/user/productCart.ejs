@@ -7,61 +7,50 @@
         <a href="/"><button><i class="fa-solid fa-arrow-left"></i>CONTINUAR COMPRANDO</button></a>
     </div>
     <% if (locals.carrito){ %>
-        <form action="/" method="POST">
-            <section class="grupo-productos">
-                <% let totalPedido = 0 %>
-                <% for (let i = 0; i < carrito.length; i++){ %>
-                    <article class="producto">
-                        <a href="/products/<%= carrito[i].id %>" class="imagen">
-                            <img src="/images/productos/<%= carrito[i].imagen %>" alt="Imagen Prod">
-                        </a>
-                        <div class="titulo-precio">
-                            <h3 class="nombre-producto"><%=carrito[i].nombre %></h3>
-                            <p class="precio-producto">$ <%=carrito[i].precio %></p>
+        <section class="grupo-productos">
+            <% let totalPedido = 0 %>
+            <% for (let i = 0; i < carrito.length; i++){ %>
+                <article class="producto">
+                    <a href="/products/<%= carrito[i].id %>" class="imagen">
+                        <img src="/images/productos/<%= carrito[i].imagen %>" alt="Imagen Prod">
+                    </a>
+                    <div class="titulo-precio">
+                        <h3 class="nombre-producto"><%=carrito[i].nombre %></h3>
+                        <p class="precio-producto">$ <%=carrito[i].precio %></p>
+                    </div>
+                    <div class="detalle-pedido">
+                        <div class="color-tamano">
+                            <p><span class="titulo-estetica">COLOR: </span><span><%= carrito[i].color %></span></p>
+                            <p><span class="titulo-estetica">TAMAÑO: </span><span><%= carrito[i].tamano %></span></p>
+                            <p><span class="titulo-estetica">CANTIDAD: </span><span><%= carrito[i].cantidad %></span></p>
                         </div>
-                        <div class="detalle-pedido">
-                            <div class="color-tamano">
-                                <p><span class="titulo-estetica">COLOR: </span><span><%= carrito[i].color %></span></p>
-                                <p><span class="titulo-estetica">TAMAÑO: </span><span><%= carrito[i].tamano %></span></p>
-                            </div>
-                            <div class="cantidad">
-                                <label for="cantidad" id="cantidad">CANTIDAD</label>
-                                <select id="cantidad" name="cantidad-prod-<%= i+1 %>">
-                                    <% for (let q = 1;q<=9;q++){ %>
-                                        <% if(q == carrito[i].cantidad){ %>
-                                            <option value="<%= q %>" selected><%= q %></option>
-                                        <% } else { %>
-                                            <option value="<%= q %>"><%= q %></option>
-                                        <% } %>
-                                    <% } %>
-                                </select>
-                            </div>
-                        </div>
-                        <p class="total-producto">$ <%= carrito[i].precio * carrito[i].cantidad %></p>
-                        <% totalPedido = totalPedido + (carrito[i].precio * carrito[i].cantidad) %>
-                        <div class="edicion">
-                            <a href="#">Modificar</a>
-                            <button class="eliminar"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                    </article>
-                <% } %>
-            </section>
-            <section class="envio">
-                <h3>ENVIO<i class="fa-solid fa-truck"></i></h3>
-                <p class="direccion-envio">Calle Inventada 4586 Departamento 5 H</p>
-                <a>Modificar</a>
-            </section>
-            <section class="total">
-                <div class="items-totales">
-                    <span>TOTAL ARTICULOS</span><span>$ <%= totalPedido %></span>
-                    <span>ENVÍO</span><span>$ 1.520,00</span>
-                    <span class="total-pedido">TOTAL PEDIDO</span><span class="total-pedido">$ <%= totalPedido + 1,520 %></span>
-                </div>
-            </section>
-            <div class="final">
-                <input type="submit" value="PAGAR" id="pagar">
-            <div>
-        </form>
+                    </div>
+                    <p class="total-producto">$ <%= carrito[i].precio * carrito[i].cantidad %></p>
+                    <% totalPedido = totalPedido + (carrito[i].precio * carrito[i].cantidad) %>
+                    <div class="edicion">
+                        <a href="/user/productCart/<%= carrito[i].id %>">Modificar</a>
+                        <form action="/user/productCart/<%= carrito[i].id %>?_method=DELETE" method="POST">
+                            <button type="submit" class="eliminar"><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
+                    </div>
+                </article>
+            <% } %>
+        </section>
+        <section class="envio">
+            <h3>ENVIO<i class="fa-solid fa-truck"></i></h3>
+            <p class="direccion-envio">Calle Inventada 4586 Departamento 5 H</p>
+            <a>Modificar</a>
+        </section>
+        <section class="total">
+            <div class="items-totales">
+                <span>TOTAL ARTICULOS</span><span>$ <%= totalPedido %></span>
+                <span>ENVÍO</span><span>$ 1.520,00</span>
+                <span class="total-pedido">TOTAL PEDIDO</span><span class="total-pedido">$ <%= totalPedido + 1,520 %></span>
+            </div>
+        </section>
+        <div class="final">
+            <input type="submit" value="PAGAR" id="pagar">
+        <div>
     <% } else { %>
         <h2>NO SE HAN AGREGADO PRODUCTOS AL CARRITO</h2>
     <% } %>

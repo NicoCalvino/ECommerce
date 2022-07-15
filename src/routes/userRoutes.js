@@ -77,10 +77,11 @@ router.post("/register", fileUpload.single("avatar"),formValidations, userContro
 router.get("/userProfile", authMiddleware, userController.profile)
 
 /** CARRITO DEL USUARIO **/
-router.get("/productCart", authMiddleware, userController.cart)
-
-/*** AGREGAR AL CARRITO ***/
 router.post("/productCart/:idProd", authMiddleware, userController.addToCart)
+router.put("/productCart/:idProd", authMiddleware, userController.processEditCart)
+router.delete("/productCart/:idProd", authMiddleware, userController.processDeleteCart)
+router.get("/productCart", authMiddleware, userController.cart)
+router.get("/productCart/:idProd", userController.editCart)
 
 /** MAESTRO DE USUARIOS **/
 router.get("/usersMaster/list", authMiddleware, adminMiddleware,userController.userMaster)

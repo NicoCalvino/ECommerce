@@ -142,6 +142,11 @@ header .cat-bar{
     display:none;
 }
 
+header nav.saludoUser{
+    font-size: 12px;
+    text-align: right;
+}
+
 /*estilos del footer*/
 
 footer{
@@ -185,7 +190,11 @@ footer .redes-sociales i{
 @media(min-width:576px){
     /*media queries del header*/
     main .espacio-header{
-        margin-top:100px
+        margin-top:150px
+    }
+
+    header nav.saludoUser{
+        font-size: 16px;
     }
 
     header .main-head {
@@ -259,6 +268,10 @@ footer .redes-sociales i{
 @media(min-width:768px){
     header{
         position:static
+    }
+
+    header nav.saludoUser{
+        font-size: 20px;
     }
 
     main .espacio-header{

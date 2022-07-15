@@ -11,6 +11,11 @@
 </head>
 <body>
     <header>
+        <% if (locals.userName){ %>
+            <nav class="saludoUser">
+                Hola <%= locals.userName %> !
+            </nav>
+        <% } %>
         <div class="main-head">
             <a href="/" class="logos">
                 <img src="/images/logos/Logo-Bici-Pal.jpeg" alt="Logo BiciPal" class="logo-imagen">
@@ -19,8 +24,8 @@
             <div class="burger-menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
-            <form action="/search" method="GET" class="input">
-                <input type="text" placeholder="Buscar productos, marcas">
+            <form action="/products/search/todo" method="GET" class="input">
+                <input type="text" name="valor" placeholder="Buscar productos, marcas">
                 <button type="sumbmit"><i class="fas fa-search"></i></button>
             </form>
             <nav class="log-bar">
@@ -43,10 +48,10 @@
         <nav class="cat-bar">
             <ul>
                 <li><a href="#">MARCAS</a></li>
-                <li><a href="#">BICICLETAS</a></li>
-                <li><a href="#">COMPONENTES Y ACCESORIOS</a></li>
-                <li><a href="#">RUEDAS Y CUBIERTAS</a></li>
-                <li><a href="#">EQUIPAMIENTO</a></li>
+                <li><a href="/products/search/categoria?valor=BICICLETAS">BICICLETAS</a></li>
+                <li><a href="/products/search/categoria?valor=COMPONENTES">COMPONENTES Y ACCESORIOS</a></li>
+                <li><a href="/products/search/subcategoria?valor=RUEDAS">RUEDAS Y CUBIERTAS</a></li>
+                <li><a href="/products/search/categoria?valor=INDUMENTARIA">EQUIPAMIENTO</a></li>
                 <li><a href="#">COMUNIDAD</a></li>
             </ul>
         </nav>

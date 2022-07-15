@@ -1,0 +1,23 @@
+<%- include('../partials/header',{hojaDeEstilo:"/css/stylesProdSearch.css",titulo:tituloBusqueda}) %>
+
+<main>
+    <div class="espacio-header"></div>
+    <section class="productos">
+        <h3 class="titulo-seccion"><%= tituloBusqueda %></h3>
+        <ul class="vinculos-productos">
+            <% for (let i=0;i < resultado.length ;i++){ %>
+                <li>
+                    <a href="/products/<%= resultado[i].id %>">
+                        <img src="/images/productos/<%= resultado[i].imagenes[0] %>" alt="Otro Producto  <%= i + 1 %>" class="imagenes-seleccionables">
+                        <div class="titulo-precio">
+                            <p class="precio-producto">$ <%= resultado[i].precio %></p>
+                            <p class="titulo-producto"><%= resultado[i].nombre %></p>
+                        </div>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+    </section>
+</main>
+
+<%- include ("../partials/footer") %>

@@ -13,10 +13,12 @@ function userLoggedMiddleware (req,res,next){
     if(req.session.userLogged){
         let userRole = UserModel.getOneField(req.session.userLogged, "rol")
         let userPk = UserModel.getOneField(req.session.userLogged, "id")
+        let userName = UserModel.getOneField(req.session.userLogged, "nombre")
         
         res.locals.isLogged = true
         res.locals.userLogged = req.session.userLogged
         res.locals.userId = userPk
+        res.locals.userName = userName
         if (userRole == "ADMINISTRADOR"){
             req.session.userAdmin=true
             res.locals.userAdmin=true

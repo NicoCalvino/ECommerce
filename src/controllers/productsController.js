@@ -8,8 +8,16 @@ let rutaBase = "product"
 
 const controller={
     index:(req,res) => {
-        const catalogo = ProductosModel.getAll()
-        res.render(rutaBase + "/catalogo", {catalogo:catalogo})
+        let criterio = req.params.criterio
+        let valor = req.query.valor
+        let resultado = []
+        if(criterio == "todo"){
+            resultado = ProductosModel.filterMultiple(valor)
+        }else{
+            resultado = ProductosModel.filterByField(criterio,valor,1)
+        }
+
+        res.render(rutaBase + "/productSearch", {resultado:resultado, tituloBusqueda:valor})
     },
     detalle:(req,res) => {
         const idProd = req.params.idProd;

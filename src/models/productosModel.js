@@ -32,6 +32,20 @@ const model = {
         return newArray
     },
 
+    filterMultiple:function(dato){
+        let allProducts = this.getAll()
+        let categorias = ["nombre","categoria","subcategoria","estado"]
+        let newArray = []
+        allProducts.forEach(oneProd =>{
+            for (i = 0 ; i < categorias.length ; i ++){
+                if(oneProd[categorias[i]].toUpperCase().indexOf(dato.toUpperCase()) > -1 ){
+                    newArray.push(oneProd)
+                }
+            }
+        })
+        return newArray
+    },
+
     filterPKFromArray:function(pk, field, dato){
         let allProducts = this.filterByField(field, dato, 1)
         let newArray = allProducts.filter(oneProduct => oneProduct.id != pk)
@@ -42,7 +56,6 @@ const model = {
         let newArray = []
         for (let x = 1; x < 6 ; x++){
             let buscador = Math.round(Math.random()*1000)
-            console.log(buscador)
             let indiceRandom = 0
             for (let i = 1; i <=buscador ; i++){
                 indiceRandom++
@@ -50,7 +63,6 @@ const model = {
                     indiceRandom = 0
                 }
             }
-            console.log(array[indiceRandom])
             if(!newArray.includes(array[indiceRandom])){
                 newArray.push(array[indiceRandom])
             }else{x--}

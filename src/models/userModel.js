@@ -109,6 +109,14 @@ const model = {
         return carritoUsuario
     },
 
+    getOneCartProd:function(idUser, idProd){
+        let archivoCarrito = this.getCart()
+        let productoCarrito = archivoCarrito.find(oneProd =>{
+            return (oneProd.idUser == idUser) && (oneProd.id == idProd)
+        })
+        return productoCarrito
+    },
+
     addToCart: function(idUser, idProd, infoProd){
         let carrito = this.getUserCart(idUser)
 
@@ -136,6 +144,31 @@ const model = {
             EdicionArchivosModel.saveData(this.dbCarrito, carrito)
             return productoAgregado
         }
+    },
+
+    editCart: function(idUser, idProd, newInfo){
+        let archivoCarrito = this.getCart()
+        for (let i = 0;i < archivoCarrito.length ; i++){
+            if(archivoCarrito[i].idUser == idUser && archivoCarrito[i].id == idProd){
+                archivoCarrito[i].color= newInfo.color
+                archivoCarrito[i].cantidad= newInfo.cantidad
+                archivoCarrito[i].tamano= newInfo.tamano
+            }
+        }
+
+        EdicionArchivosModel.saveData(this.dbCarrito, archivoCarrito)
+    },
+
+    deleteFromCart: function(idUser,idProd){
+        let archivoCarrito = this.getCart()
+        let producto = this.getOneCartProd(idUser,idProd)
+        let nuevoCarrito = archivoCarrito.filter(oneProd =>{
+            return !(oneProd.idUser == idUser && oneProd.id == idProd)
+        })
+
+        EdicionArchivosModel.saveData(this.dbCarrito, nuevoCarrito)
+
+        return producto
     },
 
     processLogin:function(userInfo){

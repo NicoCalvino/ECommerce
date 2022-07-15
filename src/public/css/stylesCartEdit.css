@@ -1,0 +1,165 @@
+/*Celeste: 01adff
+negro:333333
+blanco:ffffff
+Azul Oscuro: 08355A
+Azul Claro: 0f6992
+verde: 70bb49
+*/
+
+/*ESTILOS GENERALES DEL MAIN*/
+main{
+    width:90%;
+    margin:auto
+}
+
+main section {
+    border-bottom: 2px solid #333333;
+}
+
+/*Estilos del titulo de la pagina*/
+main .titulo{
+    display:flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+main .titulo a{
+    margin-left:10px
+}
+
+main .titulo a button{
+    margin-left:10px;
+    background-color:#0f6992;
+    color:white;
+    font-size: 16px;
+    padding:5px;
+    border-radius:5px;
+    margin:5px;
+    transition: all 450ms;
+}
+
+main .titulo a button i{
+    margin-right:5px;
+}
+
+main .titulo button:hover{
+    background-color:#08355A ;
+}
+
+/*ESTILOS GENERALES DE LOS PRODUCTOS*/
+main section article{
+    display:flex;
+    flex-wrap: wrap;
+    margin:5px 0px
+}
+
+main section article a.imagen{
+    width:20%;
+    display:flex;
+    align-self: flex-start;
+    margin-right:5px;
+}
+
+main section article .titulo-precio {
+    width:75%;
+}
+
+main section article img {
+    width:100%;
+    object-fit: contain;
+}
+
+/*ESTILOS DEL DETALLE DEL PEDIDO*/
+main section article div.detalle-pedido{
+    display:flex;
+    flex-wrap: wrap;
+    width:100%;
+    line-height: 24px;
+    margin:5px 0px
+}
+
+/*Estilos de la cantidad*/
+main section article div.detalle-pedido .caracteristica{
+    display:flex;
+    flex-wrap: wrap;
+    width:100%;
+    margin: 5px
+}
+
+main section article div.detalle-pedido .caracteristica select{
+    margin-left: 5px;
+}
+
+
+main #pagar{
+    margin-left:10px;
+    background-color:#70bb49;
+    color:white;
+    font-size: 16px;
+    padding:5px;
+    border-radius:5px;
+    width:40%;
+    margin:5px;
+    transition: all 450ms;
+}
+
+main .final input:hover{
+    background-color:#4c6b3b ;
+}
+
+@media(min-width:576px){
+    main .titulo{
+        margin-top: 110px;
+    }
+
+}
+
+@media(min-width:768px){
+    main .titulo{
+        margin-top: 0px;
+    }
+
+    main form{
+        display:flex;
+        flex-wrap:wrap;
+    }
+
+    main section.grupo-productos{
+        width:60%
+    }
+
+    /*Estilos Titulo y Precio*/
+    main section article .titulo-precio{
+        display:flex;
+        flex-wrap: wrap;
+        order:-1;
+        width:100%;
+        font-size: 20px;
+        align-items: center;
+    }
+
+    main section article .titulo-precio .nombre-producto{
+        width:initial; 
+    }
+
+    main section article .titulo-precio .precio-producto{
+        width:initial;
+        margin-left: 10px;
+    }
+
+    /*Estilos Detalle Pedido*/
+    main section article div.detalle-pedido{
+        width:30%
+    }
+
+    main section article div.detalle-pedido .caracteristica select{
+        height: 24px;
+    }
+
+
+    main div.final{
+        width:100%
+    }
+
+    /*Estilo Boton Pagar*/
+}

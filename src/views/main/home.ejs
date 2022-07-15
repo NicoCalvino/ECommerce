@@ -7,7 +7,7 @@
         <p class="texto-consulta">¿Necesitas ayuda?</p>
     </a>
     <div class="banner">
-        <img src="images/mountain_banner_1000250.jpg" alt="imagen_banner">
+        <img src="images/<%= banner %>" alt="imagen_banner">
     </div>
     <nav class="payment-bar">
         <ul>
@@ -20,32 +20,32 @@
     </nav>
     <section class="categorias">
         <article class="categoria-principal">
-            <a href="/products/bm00001">
+            <a href="/products/search/subcategoria?valor=PLEGABLE">
                 <img src="images/biciurbana1.jpg" alt="Bicicletas Urbanas">
-                <h2 class="titulo-categoria">BICICLETAS URBANAS</h2>
+                <h2 class="titulo-categoria">BICICLETAS PLEGABLES</h2>
             </a>
         </article>
         <article class="categorias-secundarias">
-            <a href="/productDetail">
+            <a href="/products/search/subcategoria?valor=MOUNTAIN">
                 <img src="images/Imagen Bici 3 E.jpg" alt="bicicletas de Montaña">
                 <h2 class="titulo-categoria">BICICLETAS DE MONTAÑA</h2>
             </a>
-            <a href="#">
+            <a href="/products/search/subcategoria?valor=KIDS">
                 <img src="images/kids_park E.jpg" alt="Bicicletas de Niños">
                 <h2 class="titulo-categoria">BICICLETAS DE NIÑOS</h2>
             </a>
-            <a href="#">
+            <a href="/products/search/categoria?valor=COMPONENTES">
                 <img src="images/componentesimg E.jpg" alt="Componentes">
                 <h2 class="titulo-categoria">COMPONENTES</h2>
             </a>
-            <a href="#">
+            <a href="/products/search/subcategoria?valor=ACCESORIOS">
                 <img src="images/componentes.jpg" alt="Accesorios">
                 <h2 class="titulo-categoria">ACCESORIOS</h2>
             </a>
         </article>
     </section>
     <section class="seccion-body">
-        <h2 class="titulo-seccion">OFERTAS DESTACADAS</h2>
+        <h2 class="titulo-seccion"><a href="/products/search/estado?valor=OFERTA">OFERTAS DESTACADAS</a></h2>
         <% for (let i = 0 ; i < ofertas.length;i++){ %>
             <% if (i == 4){ %>
                 <a href="/products/<%= ofertas[i].id %>" class="articulo-oculto imagenes-seleccionables">
@@ -63,7 +63,7 @@
         <% } %>
     </section>
     <section class="seccion-body">
-        <h2 class="titulo-seccion">NOVEDADES</h2>
+        <h2 class="titulo-seccion"><a href="/products/search/estado?valor=NOVEDAD">NOVEDADES</a></h2>
         <% for (let i = 0 ; i < novedades.length;i++){ %>
             <% if (i == 4){ %>
                 <a href="/products/<%= novedades[i].id %>" class="articulo-oculto imagenes-seleccionables">

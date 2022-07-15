@@ -18,11 +18,13 @@ a.chat-consulta{
 
 /*Banner*/
 main .banner {
-  width:100%
+  width:100%;
+  height:2%
 }
 
 main .banner img {
-  width:100%
+  width:100%;
+  height:100%
 }
 
 /*Barra de Envio y Tipos de Pago*/
@@ -117,6 +119,10 @@ main section h2.titulo-seccion{
   text-align: center;
 }
 
+main section h2.titulo-seccion a {
+  color:#08355A;
+}
+
 main section.seccion-body {
   width:90%;
   margin:auto;
@@ -126,7 +132,7 @@ main section.seccion-body {
   margin-top: 10px;
 }
 
-main section.seccion-body a{
+main section.seccion-body a.imagenes-seleccionables{
   width:80%;
   margin:10px auto;
   background-color: white;
@@ -360,7 +366,7 @@ main section.comunidad p.detalle-comunidad{
     width:90%;
   }
 
-  main section.seccion-body a{
+  main section.seccion-body a.imagenes-seleccionables{
     width:18%;
     flex-wrap: wrap;
   }

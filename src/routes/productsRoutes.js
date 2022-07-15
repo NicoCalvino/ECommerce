@@ -23,7 +23,7 @@ const router = express.Router()
 const productsController = require("../controllers/productsController")
 
 /*** BUSCAR PRODUCTOS ***/ 
-router.get("/search", productsController.index)
+router.get("/search/:criterio", productsController.index)
 
 /*** MAESTRO DE PRODUCTOS ***/ 
 router.get("/prodMaster/list", adminMiddleware, productsController.master)

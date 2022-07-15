@@ -1,6 +1,7 @@
 const path = require ("path")
 const fs = require("fs")
 const UserModel = require("../models/userModel")
+const ProductosModel = require("../models/productosModel")
 
 const {validationResult}=require('express-validator')
 
@@ -15,7 +16,7 @@ const controller = {
         if (check){
             req.session.userLogged = req.body.email
             if (req.body.recordar == "on"){
-                res.cookie("emailLogged", req.body.email,{maxAge: 5000 * 60})
+                res.cookie("emailLogged", req.body.email,{maxAge: 50000 * 60})
             }
             res.redirect("/user/userProfile")
         }
@@ -64,6 +65,35 @@ const controller = {
         //Redirigir al Maestro de Productos
         res.redirect("/user/productCart")
     },
+
+    editCart:(req,res)=>{
+        idProd = req.params.idProd
+        idUser = UserModel.getOneField(req.session.userLogged, "id")
+
+        let producto = UserModel.getOneCartProd(idUser,idProd)
+        let infoProd = ProductosModel.findbyPK(idProd)
+
+        res.render(rutaBase + "/productCartEdit",{producto:producto,infoProd:infoProd})
+    }, 
+
+    processEditCart:(req,res)=>{
+        idProd = req.params.idProd
+        idUser = UserModel.getOneField(req.session.userLogged, "id")
+        UserModel.editCart(idUser,idProd,req.body)
+
+        //Redirigir al Maestro de Productos
+        res.redirect("/user/productCart")
+    },
+
+    processDeleteCart:(req,res)=>{
+        idProd = req.params.idProd
+        idUser = UserModel.getOneField(req.session.userLogged, "id")
+        UserModel.deleteFromCart(idUser,idProd,req.body)
+
+        //Redirigir al Maestro de Productos
+        res.redirect("/user/productCart")
+    },
+
     userMaster:(req,res) =>{
         const baseUsuarios = UserModel.getAll()
         res.render(rutaBase + "/usersMaster",{usuarios:baseUsuarios})

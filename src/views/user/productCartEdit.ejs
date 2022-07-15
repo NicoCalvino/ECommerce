@@ -1,0 +1,53 @@
+<%- include('../partials/header',{hojaDeEstilo:"/css/stylesCartEdit.css",titulo:"CARRITO DE COMPRAS"}) %>
+
+<main>
+    <div class="espacio-header"></div>
+    <div class="titulo">
+        <a href="/user/productCart"><button><i class="fa-solid fa-arrow-left"></i>VOLVER AL CARRITO</button></a>
+    </div>
+        <form action="/user/productCart/<%= producto.id %>?_method=PUT" method="POST">
+            <section class="grupo-productos">
+                <article class="producto">
+                    <a href="/products/<%= producto.id %>" class="imagen">
+                        <img src="/images/productos/<%= producto.imagen %>" alt="Imagen Prod">
+                    </a>
+                    <div class="titulo-precio">
+                        <h3 class="nombre-producto"><%=producto.nombre %></h3>
+                        <p class="precio-producto">$ <%=producto.precio %></p>
+                    </div>
+                    <div class="detalle-pedido">
+                        <div class="caracteristica">
+                            <label for="color" id="color">COLOR</label>
+                            <select name="color" id="color">
+                                <% for (let i = 0; i < infoProd.colores.length; i++){ %>
+                                    <option value="<%= infoProd.colores[i] %>" <%= infoProd.colores[i] == producto.color ? "selected" : null %>><%= infoProd.colores[i] %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="caracteristica">
+                            <label for="tamano" id="tamano">TAMAÑO</label>
+                            <select name="tamano" id="tamano">
+                                <% for (let i = 0; i < infoProd.tamanos.length; i++){ %>
+                                    <option value="<%= infoProd.tamanos[i] %>" <%= infoProd.tamanos[i] == producto.tamano ? "selected" : null %>><%= infoProd.tamanos[i] %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="caracteristica">
+                            <label for="cantidad">CANTIDAD</label>
+                            <select name="cantidad" id="cantidad">
+                                <% if(infoProd.stock > 10){stockLimite = 10} else{stockLimite = infoProd.stock} %>
+                                <% for (let i = 1; i<=stockLimite; i++) { %>
+                                    <option value="<%= i %>" <%= i == producto.cantidad ? "selected" : null %>><%= i %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <div class="final">
+                <input type="submit" value="CONFIRMAR" id="pagar">
+            <div>
+        </form>
+</main>
+
+<%- include ("../partials/footer") %>
