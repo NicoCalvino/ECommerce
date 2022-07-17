@@ -1,6 +1,7 @@
 const path = require ("path")
 const fs = require("fs")
 const EdicionArchivosModel = require("./edicionArchivoModel")
+const UserModel = require("./userModel")
 
 const model = {
     dbProductos: path.join(__dirname, "../database/productos.json"),
@@ -72,10 +73,10 @@ const model = {
 
     reviewDetail:function(idProd){
         let calificaciones = EdicionArchivosModel.readData(this.dbCalif)
-        let califFiltradas = calificaciones.filter(review => review.producto == idProd)
+        let califFiltradas = calificaciones.filter(review => review.idProd == idProd)
         let califTotal = 0
         for (let i = 0 ; i < califFiltradas.length; i++){
-            califTotal = califTotal + califFiltradas[i].calificacion
+            califTotal = califTotal + califFiltradas[i].nota
         }
         let califProm = califTotal/(califFiltradas.length)
 

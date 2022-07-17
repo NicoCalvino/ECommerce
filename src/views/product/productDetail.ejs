@@ -81,16 +81,16 @@
                 <li>
                     <h4><%= opinionesProd[i].titulo %></h4>
                     <p class="calificacion-usuario">
-                        <% let nroEnt = parseInt(opinionesProd[i].calificacion) %>
+                        <% let nroEnt = parseInt(opinionesProd[i].nota) %>
                         <% for (let i = 1; i<=nroEnt; i++) { %>
                             <i class="fa-solid fa-star"></i>
                         <% } %>
-                        <% let nroDec = opinionesProd[i].calificacion - nroEnt %>
+                        <% let nroDec = opinionesProd[i].nota - nroEnt %>
                         <% if (nroDec != 0) { %>
                             <i class="fa-solid fa-star-half"></i></i>
                         <% } %>
                     </p>
-                    <p class="opinion-usuario"><%= opinionesProd[i].opinion %></p>
+                    <p class="opinion-usuario"><%= opinionesProd[i].detalle %></p>
                 </li>
             <% } %>
         </ul>
