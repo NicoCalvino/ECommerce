@@ -83,6 +83,7 @@ header .main-head .burger-menu{
     background-color:rgb(211, 207, 207);
     border-radius:5px;
     padding:5px;
+    position:relative;
 }
 
 header .main-head .burger-menu .fa-bars{
@@ -90,6 +91,32 @@ header .main-head .burger-menu .fa-bars{
     font-size: 20px;
     text-align:center;
     width:100%
+}
+
+header .main-head .burger-menu ul{
+    display:none;
+    transition: all 500ms;
+}
+
+header .main-head .burger-menu:active ul{
+    display:block;
+    color: white;
+    background-color: #08355A;
+    position:absolute;
+    text-decoration: none;
+    border-radius: 5%;
+    padding:8px;
+    left:0px;
+    top:30px
+}
+
+header .main-head .burger-menu ul li{
+    line-height: 24px;
+}
+
+
+header .main-head .burger-menu ul li a {
+    color:white
 }
 
 /*barra de busqueda*/
@@ -142,9 +169,24 @@ header .cat-bar{
     display:none;
 }
 
+header .cat-bar ul li ul{
+    position:relative
+}
+
+header .cat-bar ul li ul.desplegable{
+    display:none;
+    position:absolute;
+    background-color: #08355A;
+    width:200px
+}
+
 header nav.saludoUser{
     font-size: 12px;
     text-align: right;
+}
+
+header .cat-bar ul li:hover ul.desplegable{
+    display:block;
 }
 
 /*estilos del footer*/

@@ -22,7 +22,15 @@
                 <img src="/images/logos/Logo-Bici-Pal-Blanco-Palabra.jpeg" alt="BiciPal" class="logo-palabra">
             </a>         
             <div class="burger-menu">
-                <i class="fa-solid fa-bars"></i>
+                <a href="#"><i class="fa-solid fa-bars"></i></a>
+                <ul>
+                    <li><a href="#">MARCAS</a></li>
+                    <li><a href="/products/search/categoria?valor=BICICLETAS">BICICLETAS</a></li>
+                    <li><a href="/products/search/categoria?valor=ACCESORIOS">ACCESORIOS</a></li>
+                    <li><a href="/products/search/categoria?valor=COMPONENTES">COMPONENTES</a></li>
+                    <li><a href="/products/search/categoria?valor=INDUMENTARIA">INDUMENTARIA</a></li>
+                    <li><a href="#">COMUNIDAD</a></li>
+                </ul>
             </div>
             <form action="/products/search/todo" method="GET" class="input">
                 <input type="text" name="valor" placeholder="Buscar productos, marcas">
@@ -48,11 +56,53 @@
         <nav class="cat-bar">
             <ul>
                 <li><a href="#">MARCAS</a></li>
-                <li><a href="/products/search/categoria?valor=BICICLETAS">BICICLETAS</a></li>
-                <li><a href="/products/search/categoria?valor=COMPONENTES">COMPONENTES Y ACCESORIOS</a></li>
-                <li><a href="/products/search/subcategoria?valor=RUEDAS">RUEDAS Y CUBIERTAS</a></li>
-                <li><a href="/products/search/categoria?valor=INDUMENTARIA">EQUIPAMIENTO</a></li>
-                <li><a href="#">COMUNIDAD</a></li>
+                <li>
+                    <a href="/products/search/categoria?valor=BICICLETAS">BICICLETAS</a>
+                    <ul class="desplegable">
+                        <li><a href="/products/search/subcategoria?valor=BMX">BMX</a></li>
+                        <li><a href="/products/search/subcategoria?valor=MOUNTAIN">MOUNTAIN</a></li>
+                        <li><a href="/products/search/subcategoria?valor=PASEO">PASEO</a></li>
+                        <li><a href="/products/search/subcategoria?valor=KIDS">KIDS</a></li>
+                        <li><a href="/products/search/subcategoria?valor=PLEGABLE">PLEGABLE</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/products/search/categoria?valor=ACCESORIOS">ACCESORIOS</a>
+                    <ul class="desplegable">
+                        <li><a href="/products/search/subcategoria?valor=INFLADORES">INFLADORES</a></li>
+                        <li><a href="/products/search/subcategoria?valor=CANDADOS">CANDADOS</a></li>
+                        <li><a href="/products/search/subcategoria?valor=LUCES">LUCES</a></li>
+                        <li><a href="/products/search/subcategoria?valor=BOLSOS">BOLSOS</a></li>
+                        <li><a href="/products/search/subcategoria?valor=FUNDAS">FUNDAS</a></li>
+                        <li><a href="/products/search/subcategoria?valor=ASIENTOS">ASIENTOS</a></li>
+                        <li><a href="/products/search/subcategoria?valor=SOPORTES">SOPORTES</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/products/search/categoria?valor=COMPONENTES">COMPONENTES</a>
+                    <ul class="desplegable">
+                        <li><a href="/products/search/subcategoria?valor=PEDALES">PEDALES</a></li>
+                        <li><a href="/products/search/subcategoria?valor=CUADRO">CUADRO</a></li>
+                        <li><a href="/products/search/subcategoria?valor=TRANSMISION">TRANSMISION</a></li>
+                        <li><a href="/products/search/subcategoria?valor=MANUBRIO">MANUBRIO</a></li>
+                        <li><a href="/products/search/subcategoria?valor=CADENA">CADENA</a></li>
+                        <li><a href="/products/search/subcategoria?valor=RUEDAS">RUEDAS</a></li>
+                        <li><a href="/products/search/subcategoria?valor=ASIENTO">ASIENTO</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/products/search/categoria?valor=INDUMENTARIA">INDUMENTARIA</a>
+                    <ul class="desplegable">
+                        <li><a href="/products/search/subcategoria?valor=ROPA">ROPA</a></li>
+                        <li><a href="/products/search/subcategoria?valor=CASCOS">CASCOS</a></li>
+                        <li><a href="/products/search/subcategoria?valor=ANTEOJOS">ANTEOJOS</a></li>
+                        <li><a href="/products/search/subcategoria?valor=GUANTES">GUANTES</a></li>
+                        <li><a href="/products/search/subcategoria?valor=ZAPATILLAS">ZAPATILLAS</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">COMUNIDAD</a>
+                </li>
             </ul>
         </nav>
     </header>
