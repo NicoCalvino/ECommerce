@@ -98,7 +98,7 @@ header .main-head .burger-menu ul{
     transition: all 500ms;
 }
 
-header .main-head .burger-menu:active ul{
+header .main-head .burger-menu:hover ul{
     display:block;
     color: white;
     background-color: #08355A;
