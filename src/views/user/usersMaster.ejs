@@ -10,9 +10,9 @@
                 </div>
                 <div class="detalle">
                     <h2 class="dato-usuario"><%= usuarios[i].nombre + " " + usuarios[i].apellido %></h2>
-                    <h2 class="dato-usuario"><%= usuarios[i].rol %></h2>
+                    <h2 class="dato-usuario"><%= usuarios[i].roles.rol %></h2>
                     <h2 class="dato-usuario"><%= usuarios[i].email %></h2>
-                    <h2 class="dato-usuario"><%= usuarios[i].categoria %></h2>
+                    <h2 class="dato-usuario"><%= usuarios[i].categoriasUsuarios.categoria_de_usuario %></h2>
                     <a href="/user/usersMaster/edit/<%= usuarios[i].id %>" class="editar">Editar</a>
                 </div>
             </li>

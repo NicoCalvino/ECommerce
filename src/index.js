@@ -23,6 +23,7 @@ app.use(cookieParser())
 app.use(session({secret:'Esto Es Secreto',resave:false, saveUninitialized:false}))
 app.use(userLoggedMiddleware)
 
+
 app.use("/user", userRoutes)
 app.use("/products", productsRoutes)
 app.use("/comunidad", comuRoutes)

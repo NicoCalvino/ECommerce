@@ -21,10 +21,9 @@
                 <label class="titulo-campo" for="categoria">CATEGORIA:</label>
                 <select class="campo-informacion" name="categoria" id="categoria">
                     <option value="" selected>ELEGIR</option>
-                    <option value="BICICLETAS" <%= locals.oldInfo && oldInfo.categoria == "BICICLETAS" ? "selected" : '' %>>BICICLETAS</option>
-                    <option value="ACCESORIOS" <%= locals.oldInfo && oldInfo.categoria == "ACCESORIOS" ? "selected" : '' %>>ACCESORIOS</option>
-                    <option value="COMPONENTES" <%= locals.oldInfo && oldInfo.categoria == "COMPONENTES" ? "selected" : '' %>>COMPONENTES</option>
-                    <option value="INDUMENTARIA" <%= locals.oldInfo && oldInfo.categoria == "INDUMENTARIA" ? "selected" : '' %>>INDUMENTARIA</option>
+                    <% categorias.forEach(categoria => { %>
+                        <option value="<%= categoria.id %>" <%= locals.oldInfo && oldInfo.categoria == categoria.id ? "selected" : '' %>><%= categoria.categoria %></option>    
+                    <% }) %>
                 </select>
             </div>
             <% if (locals.mensajesError && locals.mensajesError.categoria){ %>
@@ -32,48 +31,27 @@
             <% } %>
             <div class="info-prod">
                 <label class="titulo-campo" for="sub-categoria">SUB CATEGORIA:</label>
-                <input type="text" class="campo-informacion" name="subcategoria" id="sub-categoria" placeholder="SUB CATEGORIA" <%=locals.oldInfo && oldInfo.subcategoria ? "value=" + oldInfo.subcategoria : '' %>>
+                <select class="campo-informacion" name="subcategoria" id="sub-categoria">
+                    <option value="" selected>ELEGIR</option>
+                    <% subcategorias.forEach(subcategoria => { %>
+                        <option value="<%= subcategoria.id %>" <%= locals.oldInfo && oldInfo.subcategoria == subcategoria.id ? "selected" : '' %>><%= subcategoria.subcategoria %></option>    
+                    <% }) %>
+                </select>
             </div>
             <% if (locals.mensajesError && locals.mensajesError.subcategoria){ %>
                 <p class="feedback"><%=mensajesError.subcategoria.msg %></p>
             <% } %>
             <div class="info-prod">
-                <label class="titulo-campo" for="precio">PRECIO: $</label>
-                <input type="text" class="campo-informacion" name="precio" id="precio"  placeholder="PRECIO" <%=locals.oldInfo && oldInfo.precio ? "value=" + oldInfo.precio : '' %>>
+                <label class="titulo-campo" for="estado">MARCA:</label>
+                <select class="campo-informacion" name="marca" id="marca">
+                    <option value="" selected>ELEGIR</option>
+                    <% marcas.forEach(marca => { %>
+                        <option value="<%= marca.id %>" <%= locals.oldInfo && oldInfo.marca == marca.id ? "selected" : '' %>><%= marca.marca %></option>    
+                    <% }) %>
+                </select>
             </div>
-            <% if (locals.mensajesError && locals.mensajesError.precio){ %>
-                <p class="feedback"><%=mensajesError.precio.msg %></p>
-            <% } %>
-            <div class="info-prod">
-                <label class="titulo-campo" for="precioAnt">DESCUENTO: % </label>
-                <input type="text" class="campo-informacion" name="precioAnt" id="precioAnt" placeholder="DESCUENTO" <%=locals.oldInfo && oldInfo.precioAnt ? "value=" + oldInfo.precioAnt : '' %>>
-            </div>
-            <% if (locals.mensajesError && locals.mensajesError.precioAnt){ %>
-                <p class="feedback"><%=mensajesError.precioAnt.msg %></p>
-            <% } %>
-            <div class="info-prod">
-                <label class="titulo-campo" for="colores">COLORES:</label>
-                <%=locals.oldInfo && oldInfo.colores ? textoColores=oldInfo.colores : textoColores='' %>
-                <textarea name="colores" class="campo-informacion" id="colores" placeholder="COLOR 1, COLOR 2, ..."><%= textoColores %></textarea>
-            </div>
-            <% if (locals.mensajesError && locals.mensajesError.colores){ %>
-                <p class="feedback"><%=mensajesError.colores.msg %></p>
-            <% } %>
-            <div class="info-prod">
-                <label class="titulo-campo" for="tamanos">TAMAÑOS:</label>
-                <%=locals.oldInfo && oldInfo.colores ? textoTamanos=oldInfo.tamanos : textoTamanos='' %>
-                <textarea name="tamanos" class="campo-informacion" id="tamanos" placeholder="TAMAÑO 1, TAMAÑO 2, ..."><%= textoTamanos %></textarea>
-            </div>
-            <% if (locals.mensajesError && locals.mensajesError.tamanos){ %>
-                <p class="feedback"><%=mensajesError.tamanos.msg %></p>
-            <% } %>
-            <div class="info-prod">
-                <label class="titulo-campo" for="caracteristicas">CARACTERISTICAS:</label>
-                <%=locals.oldInfo && oldInfo.colores ? textoCaracteristicas=oldInfo.caracteristicas : textoCaracteristicas='' %>
-                <textarea name="caracteristicas" class="campo-informacion campo-caracteristicas" id="caracteristicas" placeholder="TITULO1:DESCRIPCION1, TITULO2:DESCRIPCION2, ..."><%= textoCaracteristicas %></textarea>
-            </div>
-            <% if (locals.mensajesError && locals.mensajesError.caracteristicas){ %>
-                <p class="feedback"><%=mensajesError.caracteristicas.msg %></p>
+            <% if (locals.mensajesError && locals.mensajesError.marca){ %>
+                <p class="feedback"><%=mensajesError.marca.msg %></p>
             <% } %>
             <div class="info-prod">
                 <label class="titulo-campo" for="stock">STOCK:</label>
@@ -83,24 +61,82 @@
                 <p class="feedback"><%=mensajesError.stock.msg %></p>
             <% } %>
             <div class="info-prod">
+                <label class="titulo-campo" for="precio">PRECIO: $</label>
+                <input type="text" class="campo-informacion" name="precio" id="precio"  placeholder="PRECIO" <%=locals.oldInfo && oldInfo.precio ? "value=" + oldInfo.precio : '' %>>
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.precio){ %>
+                <p class="feedback"><%=mensajesError.precio.msg %></p>
+            <% } %>
+            <div class="info-prod">
                 <label class="titulo-campo" for="estado">ESTADO:</label>
                 <select class="campo-informacion" name="estado" id="estado">
-                    <option value="" selected >ELEGIR</option>
-                    <option value="NORMAL" <%= locals.oldInfo && oldInfo.estado == "NORMAL" ? "selected" : '' %>>NORMAL</option>
-                    <option value="OFERTA" <%= locals.oldInfo && oldInfo.estado == "OFERTA" ? "selected" : '' %>>OFERTA</option>
-                    <option value="NOVEDAD" <%= locals.oldInfo && oldInfo.estado == "NOVEDAD" ? "selected" : '' %>>NOVEDAD</option>
+                    <option value="" selected>ELEGIR</option>
+                    <% estados.forEach(estado => { %>
+                        <option value="<%= estado.id %>" <%= locals.oldInfo && oldInfo.estado == estado.id ? "selected" : '' %>><%= estado.estado %></option>    
+                    <% }) %>
                 </select>
             </div>
             <% if (locals.mensajesError && locals.mensajesError.estado){ %>
                 <p class="feedback"><%=mensajesError.estado.msg %></p>
             <% } %>
-            <div class="imagenes">
-                <label class="titulo-campo" for="nuevaImagen">AGREGAR IMAGEN</label>
-                <input type="file" name="nuevaImagen" id="nuevaImagen">
+            <div class="info-prod">
+                <label class="titulo-campo" for="precioAnt">DESCUENTO: % </label>
+                <input type="text" class="campo-informacion" name="precioAnt" id="precioAnt" placeholder="DESCUENTO" <%=locals.oldInfo && oldInfo.precioAnt ? "value=" + oldInfo.precioAnt : '' %>>
             </div>
+            <% if (locals.mensajesError && locals.mensajesError.precioAnt){ %>
+                <p class="feedback"><%=mensajesError.precioAnt.msg %></p>
+            <% } %>
+            <div class="info-prod">
+                <label class="titulo-campo" for="caracteristicas">CARACTERISTICAS:</label>
+                <%=locals.oldInfo && oldInfo.caracteristicas ? textoCaracteristicas=oldInfo.caracteristicas : textoCaracteristicas='' %>
+                <textarea name="caracteristicas" class="campo-informacion campo-caracteristicas" id="caracteristicas" placeholder="TITULO1:DESCRIPCION1| TITULO2:DESCRIPCION2| ..."><%= textoCaracteristicas %></textarea>
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.caracteristicas){ %>
+                <p class="feedback"><%=mensajesError.caracteristicas.msg %></p>
+            <% } %>
+            <h3 class="tituloCaracteristica">TAMAÑOS</h3>
+            <ul class="opciones-prod">
+                <% tamanos.forEach(elemento => { %>
+                    <li class="opcion-elegible">
+                        <label for="<%= elemento.tamano %>">
+                            <% let id = elemento.id.toString() %>
+                            <input type="checkbox" class="opcion" name="tamanos" id="<%= elemento.tamano %>" value="<%= elemento.id %>" <%=locals.oldInfo && locals.oldInfo.tamanos && locals.oldInfo.tamanos.includes(id) ? "checked" : null %>>
+                            <%= elemento.tamano %>
+                        </label>
+                    </li>
+                <% }) %>
+            </ul>
+            <% if (locals.mensajesError && locals.mensajesError.tamanos){ %>
+                <p class="feedback"><%=mensajesError.tamanos.msg %></p>
+            <% } %>
+            <h3 class="tituloCaracteristica">COLORES</h3>
+            <ul class="opciones-prod">
+                <% colores.forEach(elemento => { %>
+                    <li class="opcion-elegible">
+                        <label for="<%= elemento.color %>">
+                            <% let id = elemento.id.toString() %>
+                            <input type="checkbox" class="opcion" name="colores" id="<%= elemento.color %>" value="<%= elemento.id %>" <%=locals.oldInfo && locals.oldInfo.colores && locals.oldInfo.colores.includes(id) ? "checked" : null %>>
+                            <%= elemento.color %>
+                        </label>
+                    </li>
+                <% }) %>
+            </ul>
+            <% if (locals.mensajesError && locals.mensajesError.colores){ %>
+                <p class="feedback"><%=mensajesError.colores.msg %></p>
+            <% } %>
+            <h3 class="tituloCaracteristica">IMAGENES</h3>
+            <ul class="imagenes">
+                <li class="imagenProd">
+                    <label class="titulo-campo" for="nuevasImagenes">AGREGAR IMAGENES</label>
+                    <input type="file" name="nuevasImagenes" id="nuevasImagenes" multiple>
+                </li>    
+            </ul>
+            <% if (locals.mensajesError && locals.mensajesError.nuevasImagenes){ %>
+                <p class="feedback"><%=mensajesError.nuevasImagenes.msg %></p>
+            <% } %>
             <div class="botones">
                 <input type="reset" value="Deshacer">
-                <input type="submit" value="Confirmar">
+                <input type="submit" value="Siguiente">
             </div>
         </form>
     </div>

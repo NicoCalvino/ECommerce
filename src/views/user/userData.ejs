@@ -46,10 +46,17 @@
             <div class="info-usuario intereses">
                 <h3>INTERESES</H3>
                 <ul>
-                    <li><label for="recreativo"><input type="checkbox" class="opcion" name="intereses" id="recreativo" value="recreativo" <%= usuario.intereses.includes("recreativo") ? "checked" : null %>>RECREATIVO</label></li>
-                    <li><label for="pista"><input type="checkbox" class="opcion" name="intereses" id="pista" value="pista" <%= usuario.intereses.includes("pista") ? "checked" : null %>>PISTA</label></li>
-                    <li><label for="mountain"><input type="checkbox" class="opcion" name="intereses" id="mountain" value="mountain" <%= usuario.intereses.includes("mountain") ? "checked" : null %>>MOUNTAIN-BIKE</label></li>
-                    <li><label for="bmx"><input type="checkbox" class="opcion" name="intereses" id="bmx" value="bmx" <%= usuario.intereses.includes("bmx") ? "checked" : null %>>BMX</label></li>
+                    <% let interesesUser = [] %>
+                    <% usuario.intereses.forEach(elemento =>{ interesesUser.push(elemento.id) })%>
+                    <% intereses.forEach(elemento => { %>
+                        <li>
+                            <label for=<%= elemento.interes %>>
+                                <% let id = elemento.id %>
+                                <input type="checkbox" class="opcion" name="intereses" id="<%= elemento.interes %>" value="<%= elemento.id %>" <%= interesesUser.includes(id) ? "checked" : null %>>
+                                <%= elemento.interes %>
+                            </label>
+                        </li>
+                    <% }) %>
                 </ul>
             </div>
             <% if (locals.mensajesError && locals.mensajesError.intereses){ %>
@@ -58,8 +65,9 @@
             <div class="info-usuario">
                 <label class="titulo-campo" for="rol">ROL:</label>
                 <select class="campo-informacion" name="rol" id="rol">
-                    <option value="ADMINISTRADOR" <%= usuario.rol == "ADMINISTRADOR" ? "selected" : null %>>ADMINISTRADOR</option>
-                    <option value="USUARIO" <%= usuario.rol == "USUARIO" ? "selected" : null %>>USUARIO</option>
+                    <% roles.forEach(rol => { %>
+                        <option value="<%= rol.id %>" <%= usuario.rol_id == rol.id ? "selected" : null %>><%=rol.rol %></option>
+                    <% }) %>
                 </select>
             </div>
             <% if (locals.mensajesError && locals.mensajesError.rol){ %>
@@ -69,10 +77,9 @@
                 <label class="titulo-campo" for="categoria">CATEGORIA:</label>
                 <select class="campo-informacion" name="categoria" id="categoria">
                     <option value="" >ELEGIR</option>
-                    <option value="NUEVO" <%= usuario.categoria == "NUEVO" ? "selected" : null %>>NUEVO</option>
-                    <option value="GOLD" <%= usuario.categoria == "GOLD" ? "selected" : null %>>GOLD</option>
-                    <option value="SILVER" <%= usuario.categoria == "SILVER" ? "selected" : null %>>SILVER</option>
-                    <option value="BRONZE" <%= usuario.categoria == "BRONZE" ? "selected" : null %>>BRONZE</option>
+                    <% categoriasUsuario.forEach(categoria =>{ %>
+                        <option value="<%= categoria.id %>" <%= usuario.categoria_de_usuario_id == categoria.id ? "selected" : null %>><%=categoria.categoria_de_usuario %></option>
+                    <% }) %>
                 </select>
             </div>
             <% if (locals.mensajesError && locals.mensajesError.categoria){ %>
@@ -80,7 +87,7 @@
             <% } %>
             <div class="info-usuario">
                 <h3>FECHA DE ALTA</H3>
-                <h3><%=usuario.fechaAlta %></H3>
+                <h3><%=usuario.created_at %></H3>
             </div>
             <div class="botones">
                 <input type="reset" value="Deshacer">

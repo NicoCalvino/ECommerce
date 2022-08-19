@@ -20,7 +20,7 @@
                     <span class="feedback"><%= mensajesError.fechaDeNacimiento.msg %></span>
                 <% } %> 
             </div>
-            <input type="email" name="email" placeholder="Correo Electrónico" <%=locals.oldInfo && oldInfo.email ? "value=" + oldInfo.email : '' %>>
+            <input type="text" name="email" placeholder="Correo Electrónico" <%=locals.oldInfo && oldInfo.email ? "value=" + oldInfo.email : '' %>>
             <% if (locals.mensajesError && mensajesError.email){ %>
                 <span class="feedback"><%= mensajesError.email.msg %></span>
             <% } %> 
@@ -28,10 +28,15 @@
         <div class="intereses-principales">
             <h3 class="titulo-seccion">Intereses Principales</h3>
             <ul>
-                <li><label for="recreativo"><input type="checkbox" class="opcion" name="intereses" id="recreativo" value="recreativo" <%=locals.oldInfo && locals.oldInfo.intereses && locals.oldInfo.intereses.includes("recreativo") ? "checked" : null %>>RECREATIVO</label></li>
-                <li><label for="pista"><input type="checkbox" class="opcion" name="intereses" id="pista" value="pista" <%=locals.oldInfo && locals.oldInfo.intereses && locals.oldInfo.intereses.includes("pista") ? "checked" : null %>>PISTA</label></li>
-                <li><label for="mountain"><input type="checkbox" class="opcion" name="intereses" id="mountain" value="mountain" <%=locals.oldInfo && locals.oldInfo.intereses && locals.oldInfo.intereses.includes("mountain") ? "checked" : null %>>MOUNTAIN-BIKE</label></li>
-                <li><label for="bmx"><input type="checkbox" class="opcion" name="intereses" id="bmx" value="bmx" <%=locals.oldInfo && locals.oldInfo.intereses && locals.oldInfo.intereses.includes("bmx") ? "checked" : null %>>BMX</label></li>
+                <% intereses.forEach(elemento => { %>
+                    <li>
+                        <label for=<%= elemento.interes %>>
+                            <% let id = elemento.id.toString() %>
+                            <input type="checkbox" class="opcion" name="intereses" id="<%= elemento.interes %>" value="<%= elemento.id %>" <%=locals.oldInfo && locals.oldInfo.intereses && locals.oldInfo.intereses.includes(id) ? "checked" : null %>>
+                            <%= elemento.interes %>
+                        </label>
+                    </li>    
+                <% }) %>
             </ul>
             <% if (locals.mensajesError && mensajesError.intereses){ %>
                 <span class="feedback"><%= mensajesError.intereses.msg %></span>

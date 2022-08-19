@@ -1,6 +1,17 @@
-function guestMiddleware (req,res,next){
+const db = require('../database/models')
+const sequelize = db.sequelize
+
+async function guestMiddleware (req,res,next){
     if (req.session.userLogged){
-        return res.redirect('/user/userProfile')
+        let userFromSession = await db.Usuario.findAll({
+            where:{
+                email:req.session.userLogged
+            }
+        })
+
+        if(userFromSession.length>0){
+            return res.redirect('/user/userProfile')
+        }
     }
     next()
 }

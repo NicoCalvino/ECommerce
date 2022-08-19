@@ -11,11 +11,14 @@
             <h2><%= usuario.nombre + " " + usuario.apellido %></h2>
             <h2>E-mail: <%= usuario.email %></h2>
             <h2>Fecha de Nacimiento: <%= usuario.fechaDeNacimiento %></h2>
-            <h2>Intereses: <%= usuario.intereses %></h2>
+            <h2>Intereses:</h2>
+            <% for(let i = 0; i < usuario.intereses.length; i++){ %>
+                <p><%= usuario.intereses[i].interes %></p>
+            <% } %>
         </div>
         <div class="info-tecnica">
-            <h2>CATEGORIA: <%= usuario.categoria %></h2>
-            <h2>MIEMBRO DESDE: <%= usuario.fechaAlta %></h2>
+            <h2>CATEGORIA: <%= usuario.categoriasUsuarios.categoria_de_usuario %></h2>
+            <h2>MIEMBRO DESDE: <%= usuario.created_at %></h2>
         </div>
     </div>
 </main>

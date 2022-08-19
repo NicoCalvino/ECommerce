@@ -5,31 +5,31 @@
     <div class="titulo">
         <a href="/user/productCart"><button><i class="fa-solid fa-arrow-left"></i>VOLVER AL CARRITO</button></a>
     </div>
-        <form action="/user/productCart/<%= producto.id %>?_method=PUT" method="POST">
+        <form action="/user/productCart/<%= idCart %>?_method=PUT" method="POST">
             <section class="grupo-productos">
                 <article class="producto">
                     <a href="/products/<%= producto.id %>" class="imagen">
                         <img src="/images/productos/<%= producto.imagen %>" alt="Imagen Prod">
                     </a>
                     <div class="titulo-precio">
-                        <h3 class="nombre-producto"><%=producto.nombre %></h3>
-                        <p class="precio-producto">$ <%=producto.precio %></p>
+                        <h3 class="nombre-producto"><%=producto.productos.nombre %></h3>
+                        <p class="precio-producto">$ <%=producto.productos.precio %></p>
                     </div>
                     <div class="detalle-pedido">
                         <div class="caracteristica">
                             <label for="color" id="color">COLOR</label>
                             <select name="color" id="color">
-                                <% for (let i = 0; i < infoProd.colores.length; i++){ %>
-                                    <option value="<%= infoProd.colores[i] %>" <%= infoProd.colores[i] == producto.color ? "selected" : null %>><%= infoProd.colores[i] %></option>
-                                <% } %>
+                                <% colores.forEach( color =>{ %>
+                                    <option value="<%= color.id %>" <%= color.id == producto.color_id ? "selected" : null %>><%= color.color %></option>
+                                <% }) %>
                             </select>
                         </div>
                         <div class="caracteristica">
                             <label for="tamano" id="tamano">TAMAÑO</label>
                             <select name="tamano" id="tamano">
-                                <% for (let i = 0; i < infoProd.tamanos.length; i++){ %>
-                                    <option value="<%= infoProd.tamanos[i] %>" <%= infoProd.tamanos[i] == producto.tamano ? "selected" : null %>><%= infoProd.tamanos[i] %></option>
-                                <% } %>
+                                <% tamanos.forEach(tamano =>{ %>
+                                    <option value="<%= tamano.id %>" <%= tamano.id == producto.tamano_id ? "selected" : null %>><%= tamano.tamano %></option>
+                                <% }) %>
                             </select>
                         </div>
                         <div class="caracteristica">

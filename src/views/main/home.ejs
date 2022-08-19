@@ -20,25 +20,25 @@
     </nav>
     <section class="categorias">
         <article class="categoria-principal">
-            <a href="/products/search/subcategoria?valor=PLEGABLE">
+            <a href="/products/search/subcategoria?valor=4">
                 <img src="images/biciurbana1.jpg" alt="Bicicletas Urbanas">
                 <h2 class="titulo-categoria">PLEGABLES</h2>
             </a>
         </article>
         <article class="categorias-secundarias">
-            <a href="/products/search/subcategoria?valor=MOUNTAIN">
+            <a href="/products/search/subcategoria?valor=3">
                 <img src="images/Imagen Bici 3 E.jpg" alt="bicicletas de Montaña">
                 <h2 class="titulo-categoria">MONTAÑA</h2>
             </a>
-            <a href="/products/search/subcategoria?valor=KIDS">
+            <a href="/products/search/subcategoria?valor=1">
                 <img src="images/kids_park E.jpg" alt="Bicicletas de Niños">
                 <h2 class="titulo-categoria">NIÑOS</h2>
             </a>
-            <a href="/products/search/categoria?valor=COMPONENTES">
+            <a href="/products/search/categoria?valor=3">
                 <img src="images/componentesimg E.jpg" alt="Componentes">
                 <h2 class="titulo-categoria">COMPONENTES</h2>
             </a>
-            <a href="/products/search/subcategoria?valor=ACCESORIOS">
+            <a href="/products/search/categoria?valor=2">
                 <img src="images/componentes.jpg" alt="Accesorios">
                 <h2 class="titulo-categoria">ACCESORIOS</h2>
             </a>
@@ -52,7 +52,7 @@
             <% } else { %>
                 <a href="/products/<%= ofertas[i].id %>" class="imagenes-seleccionables">
             <% } %>
-                <img src="/images/productos/<%= ofertas[i].imagenes[0] %>" alt="Oferta <%= i + 1 %>">
+                <img src="/images/productos/<%= ofertas[i].imagenes[0].imagen %>" alt="Oferta <%= i + 1 %>">
                 <div class="titulo-precio">
                     <p class="precio-anterior">$ <%= ofertas[i].precio %></p>
                     <p class="precio-producto">$ <%= (ofertas[i].precio * (1-ofertas[i].descuento/100)).toFixed(2) %></p>
@@ -70,7 +70,7 @@
             <% } else { %>
                 <a href="/products/<%= novedades[i].id %>" class="imagenes-seleccionables">
             <% } %>
-                <img src="/images/productos/<%= novedades[i].imagenes[0] %>" alt="Novedad <%= i + 1 %>">
+                <img src="/images/productos/<%= novedades[i].imagenes[0].imagen %>" alt="Novedad <%= i + 1 %>">
                 <div class="titulo-precio">
                     <i class="fa-solid fa-bolt"></i>
                     <p class="precio-producto">$ <%= novedades[i].precio %></p>

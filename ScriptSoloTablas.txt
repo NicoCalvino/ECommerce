@@ -1,0 +1,160 @@
+CREATE DATABASE bicipal;
+create table bicipal.categorias(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+categoria  VARCHAR(100) NOT NULL
+);
+
+create table bicipal.categorias_de_usuarios(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+categoria_de_usuario  VARCHAR(100) NOT NULL
+);
+
+create table bicipal.colores(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+color  VARCHAR(100) NOT NULL
+);
+
+create table bicipal.estados(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+estado  VARCHAR(100) NOT NULL
+);
+
+create table bicipal.intereses(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+interes  VARCHAR(100) NOT NULL
+);
+
+create table bicipal.marcas(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+marca  VARCHAR(100) NOT NULL
+);
+
+create table bicipal.roles(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+rol  VARCHAR(100) NOT NULL
+);
+
+create table bicipal.subcategorias(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+subcategoria  VARCHAR(100) NOT NULL
+);
+
+create table bicipal.tamanos(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+tamano  VARCHAR(100) NOT NULL
+);
+
+create table bicipal.productos(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+nombre VARCHAR(100) NOT NULL,
+precio DECIMAL(10,2) UNSIGNED NOT NULL,
+descuento INT UNSIGNED DEFAULT NULL,
+stock INT UNSIGNED NOT NULL,
+caracteristicas TEXT  ,
+marca_id INT UNSIGNED NOT NULL ,
+categoria_id INT UNSIGNED NOT NULL ,
+subcategoria_id INT UNSIGNED NOT NULL ,
+estado_id INT UNSIGNED NOT NULL ,
+created_at TIMESTAMP NULL  ,
+updated_at TIMESTAMP NULL  ,
+deleted_at TIMESTAMP NULL  ,
+FOREIGN KEY(marca_id) REFERENCES marcas(id),
+FOREIGN KEY(categoria_id) REFERENCES categorias(id),
+FOREIGN KEY(subcategoria_id) REFERENCES subcategorias(id),
+FOREIGN KEY(estado_id) REFERENCES estados(id)
+);
+
+
+create table bicipal.usuarios(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+nombre VARCHAR(100) NOT NULL,
+apellido VARCHAR(100) NOT NULL,
+fechaDeNacimiento DATE NOT NULL ,
+email VARCHAR(100) NOT NULL ,
+password VARCHAR(100) NOT NULL ,
+imagen VARCHAR(100) DEFAULT ("Anonimo.png") ,
+created_at TIMESTAMP NULL,
+updated_at TIMESTAMP NULL,
+deleted_at TIMESTAMP NULL,
+rol_id INT UNSIGNED NOT NULL ,
+categoria_de_usuario_id INT UNSIGNED NOT NULL ,
+FOREIGN KEY(rol_id) REFERENCES roles(id),
+FOREIGN KEY(categoria_de_usuario_id) REFERENCES categorias_de_usuarios(id)
+);
+
+
+create table bicipal.calificaciones(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+nota DECIMAL(10,2) NOT NULL,
+titulo VARCHAR(100) NOT NULL,
+detalle TEXT NOT NULL,
+created_at TIMESTAMP NULL,
+updated_at TIMESTAMP NULL,
+deleted_at TIMESTAMP NULL,
+producto_id INT UNSIGNED NOT NULL ,
+usuario_id INT UNSIGNED NOT NULL ,
+FOREIGN KEY(producto_id) REFERENCES productos(id),
+FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
+);
+
+create table bicipal.imagenes(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+imagen VARCHAR(255) NOT NULL,
+producto_id INT UNSIGNED NOT NULL,
+FOREIGN KEY(producto_id) REFERENCES productos(id)
+);
+
+
+create table bicipal.producto_color(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+producto_id  INT UNSIGNED NOT NULL,
+color_id  INT UNSIGNED NOT NULL,
+FOREIGN KEY(producto_id) REFERENCES productos(id),
+FOREIGN KEY(color_id) REFERENCES colores(id)
+);
+
+create table bicipal.producto_tamano(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+producto_id  INT UNSIGNED NOT NULL,
+tamano_id  INT UNSIGNED NOT NULL,
+FOREIGN KEY(producto_id) REFERENCES productos(id),
+FOREIGN KEY(tamano_id) REFERENCES tamanos(id)
+);
+
+create table bicipal.producto_usuario(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+producto_id  INT UNSIGNED NOT NULL,
+usuario_id  INT UNSIGNED NOT NULL,
+FOREIGN KEY(producto_id) REFERENCES productos(id),
+FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
+);
+
+create table bicipal.usuario_interes(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+usuario_id  INT UNSIGNED NOT NULL,
+interes_id  INT UNSIGNED NOT NULL,
+FOREIGN KEY(usuario_id) REFERENCES productos(id),
+FOREIGN KEY(interes_id) REFERENCES intereses(id)
+);
+
+create table bicipal.carrito_de_compras(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+cantidad INT UNSIGNED NOT NULL,
+imagen VARCHAR(100)  ,
+usuario_id  INT UNSIGNED NOT NULL,
+producto_id  INT UNSIGNED NOT NULL,
+tamano_id  INT UNSIGNED NOT NULL,
+color_id  INT UNSIGNED NOT NULL,
+FOREIGN KEY(tamano_id) REFERENCES tamanos(id),
+FOREIGN KEY(color_id) REFERENCES colores(id),
+FOREIGN KEY(usuario_id) REFERENCES usuarios(id),
+FOREIGN KEY(producto_id) REFERENCES productos(id)
+);
+
+create table bicipal.favoritos_de_usuarios(
+id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+usuario_id  INT UNSIGNED NOT NULL,
+producto_id  INT UNSIGNED NOT NULL,
+FOREIGN KEY(usuario_id) REFERENCES productos(id),
+FOREIGN KEY(producto_id) REFERENCES intereses(id)
+);

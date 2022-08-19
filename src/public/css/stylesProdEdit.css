@@ -113,8 +113,44 @@ p.feedback{
     color: red;
 }
 
+.opciones-prod{
+    display:flex;
+    flex-wrap: wrap;
+    width:100%
+}
+
+.opciones-prod li.opcion-texto{
+    display: flex;
+    justify-content: space-around;
+    width:100%;
+    margin-top: 5px;
+
+}
+
+.opciones-prod li.opcion-texto .titulo-caracteristica{
+    width:10%
+}
+
+
+.opciones-prod li.opcion-texto .detalle-caracteristica{
+    width:85%
+}
+
+
+.opciones-prod li.opcion-elegible{
+    width:25%;
+    margin-top: 5px;
+}
+
+.tituloCaracteristica{
+    width:100%;
+    font-weight: 100;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
 /*Estilos Imagenes*/
-main form div.imagenes{
+main ul.imagenes{
     width:100%;
     display:flex;
     flex-wrap: wrap;
@@ -123,26 +159,23 @@ main form div.imagenes{
     justify-content: space-between;
 }
 
-main form div.imagenes div.info-imagen{
-    width: 100%;
+main ul.imagenes .imagenProd{
+    width:45%
+}
+
+main ul.imagenes .imagenProd div.info-imagen{
     display:flex;
     flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
 }
 
-main form div.imagenes div.info-imagen img{
-    width:25%;
+main ul.imagenes div.info-imagen img{
+    width:50%;
+    object-fit:cover;
 }
 
-main form div.imagenes div.info-imagen div.datos-imagen{
-    width:70%;
-    display:flex;
-    flex-wrap: wrap;
-}
 
-main form div.imagenes div.datos-imagen p,main form div.imagenes div.datos-imagen input {
-    width:100%;
-    margin:5px 0
-}
 
 /*estilos de Botones*/
 main form div.botones {
@@ -178,6 +211,11 @@ main form div.botones input:hover{
     main form div.imagenes div.info-imagen{
         width:50%;
     }
+    main form.edicionImagen input{
+        font-size: 24px;
+        padding: 5px;
+    }
+    
 }
 
 @media(min-width:768px){
@@ -204,5 +242,31 @@ main form div.botones input:hover{
     main div.info-producto div.info-prod .campo-informacion{
         font-size: 20px;
         line-height: 24px;
+    }
+
+    /*Estilos Imagenes*/
+
+
+    main ul.imagenes{
+        margin-top: 10px;
+    }
+
+    main ul.imagenes .imagenProd{
+        width:20%
+    }
+
+    main ul.imagenes .imagenProd div.info-imagen{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content:space-around;
+        align-items: center;
+    }
+
+    main ul.imagenes div.info-imagen img{
+        width:30%;
+    }
+
+    main form.edicionImagen{
+        border:none
     }
 }

@@ -6,7 +6,7 @@
         <h1> CARRITO </h1>
         <a href="/"><button><i class="fa-solid fa-arrow-left"></i>CONTINUAR COMPRANDO</button></a>
     </div>
-    <% if (locals.carrito){ %>
+    <% if (locals.carrito.length > 0){ %>
         <section class="grupo-productos">
             <% let totalPedido = 0 %>
             <% for (let i = 0; i < carrito.length; i++){ %>
@@ -15,18 +15,18 @@
                         <img src="/images/productos/<%= carrito[i].imagen %>" alt="Imagen Prod">
                     </a>
                     <div class="titulo-precio">
-                        <h3 class="nombre-producto"><%=carrito[i].nombre %></h3>
-                        <p class="precio-producto">$ <%=carrito[i].precio %></p>
+                        <h3 class="nombre-producto"><%=carrito[i].productos.nombre %></h3>
+                        <p class="precio-producto">$ <%=carrito[i].productos.precio %></p>
                     </div>
                     <div class="detalle-pedido">
                         <div class="color-tamano">
-                            <p><span class="titulo-estetica">COLOR: </span><span><%= carrito[i].color %></span></p>
-                            <p><span class="titulo-estetica">TAMAÑO: </span><span><%= carrito[i].tamano %></span></p>
+                            <p><span class="titulo-estetica">COLOR: </span><span><%= carrito[i].colores.color %></span></p>
+                            <p><span class="titulo-estetica">TAMAÑO: </span><span><%= carrito[i].tamanos.tamano %></span></p>
                             <p><span class="titulo-estetica">CANTIDAD: </span><span><%= carrito[i].cantidad %></span></p>
                         </div>
                     </div>
-                    <p class="total-producto">$ <%= carrito[i].precio * carrito[i].cantidad %></p>
-                    <% totalPedido = totalPedido + (carrito[i].precio * carrito[i].cantidad) %>
+                    <p class="total-producto">$ <%= carrito[i].productos.precio * carrito[i].cantidad %></p>
+                    <% totalPedido = totalPedido + (carrito[i].productos.precio * carrito[i].cantidad) %>
                     <div class="edicion">
                         <a href="/user/productCart/<%= carrito[i].id %>">Modificar</a>
                         <form action="/user/productCart/<%= carrito[i].id %>?_method=DELETE" method="POST">

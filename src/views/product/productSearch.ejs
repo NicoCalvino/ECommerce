@@ -8,7 +8,7 @@
             <% for (let i=0;i < resultado.length ;i++){ %>
                 <li>
                     <a href="/products/<%= resultado[i].id %>">
-                        <img src="/images/productos/<%= resultado[i].imagenes[0] %>" alt="Otro Producto  <%= i + 1 %>" class="imagenes-seleccionables">
+                        <img src="/images/productos/<%= resultado[i].imagenes[0].imagen %>" alt="Otro Producto  <%= i + 1 %>" class="imagenes-seleccionables">
                         <div class="titulo-precio">
                             <p class="precio-producto">$ <%= resultado[i].precio %></p>
                             <p class="titulo-producto"><%= resultado[i].nombre %></p>
@@ -17,6 +17,16 @@
                 </li>
             <% } %>
         </ul>
+    </section>
+    <section class="pagNumbers">
+        <% if(pagina > 1){ %>
+            <a class="pagina" href=<%= "/products/search/" + criterio + "?valor=" + valor + "&pag=" + (Number(pagina)-1) %>><<</a>
+        <% } %>
+            <p class="pagina" ><%= pagina %></p>
+            <% console.log(pagina + "    " + totalPaginas) %>
+        <% if(pagina < totalPaginas){ %>
+            <a class="pagina" href=<%= "/products/search/" + criterio + "?valor=" + valor + "&pag=" + (Number(pagina)+1) %>>>></a>
+        <% } %>    
     </section>
 </main>
 

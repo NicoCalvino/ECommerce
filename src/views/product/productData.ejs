@@ -16,7 +16,7 @@
             <h2>( <%= producto.id %> )</h2>
             <div class="info-prod">
                 <label class="titulo-campo" for="nombreProducto">NOMBRE:</label>
-                <input type="text" class="campo-informacion" name="nombreProducto" id="nombreProducto" placeholder="NOMBRE DE PRODUCTO" value="<%=producto.nombre %>">
+                <input type="text" class="campo-informacion" name="nombreProducto" id="nombreProducto" placeholder="NOMBRE DE PRODUCTO" value="<%= producto.nombre %>">
             </div>
             <% if (locals.mensajesError && locals.mensajesError.nombreProducto){ %>
                 <p class="feedback"><%=mensajesError.nombreProducto.msg %></p>
@@ -24,10 +24,10 @@
             <div class="info-prod">
                 <label class="titulo-campo" for="categoria">CATEGORIA:</label>
                 <select class="campo-informacion" name="categoria" id="categoria">
-                    <option value="BICICLETAS" <%= producto.categoria == "BICICLETAS" ? "selected" : null %>>BICICLETAS</option>
-                    <option value="ACCESORIOS" <%= producto.categoria == "ACCESORIOS" ? "selected" : null %>>ACCESORIOS</option>
-                    <option value="COMPONENTES" <%= producto.categoria == "COMPONENTES" ? "selected" : null %>>COMPONENTES</option>
-                    <option value="INDUMENTARIA" <%= producto.categoria == "INDUMENTARIA" ? "selected" : null %>>INDUMENTARIA</option>
+                    <option value="" selected>ELEGIR</option>
+                    <% categorias.forEach(categoria => { %>
+                        <option value="<%= categoria.id %>" <%= producto.categoria_id == categoria.id ? "selected" : '' %>><%= categoria.categoria %></option>    
+                    <% }) %>
                 </select>
             </div>
             <% if (locals.mensajesError && locals.mensajesError.categoria){ %>
@@ -35,95 +35,127 @@
             <% } %>
             <div class="info-prod">
                 <label class="titulo-campo" for="sub-categoria">SUB CATEGORIA:</label>
-                <input type="text" class="campo-informacion" name="subcategoria" id="sub-categoria" value="<%= producto.subcategoria %>" placeholder="SUB CATEGORIA">
+                <select class="campo-informacion" name="subcategoria" id="sub-categoria">
+                    <option value="" selected>ELEGIR</option>
+                    <% subcategorias.forEach(subcategoria => { %>
+                        <option value="<%= subcategoria.id %>" <%= producto.subcategoria_id == subcategoria.id ? "selected" : '' %>><%= subcategoria.subcategoria %></option>    
+                    <% }) %>
+                </select>
             </div>
             <% if (locals.mensajesError && locals.mensajesError.subcategoria){ %>
                 <p class="feedback"><%=mensajesError.subcategoria.msg %></p>
             <% } %>
             <div class="info-prod">
-                <label class="titulo-campo" for="precio">PRECIO: $</label>
-                <input type="text" class="campo-informacion" name="precio" id="precio" value="<%= producto.precio %>" placeholder="PRECIO">
+                <label class="titulo-campo" for="estado">MARCA:</label>
+                <select class="campo-informacion" name="marca" id="marca">
+                    <option value="" selected>ELEGIR</option>
+                    <% marcas.forEach(marca => { %>
+                        <option value="<%= marca.id %>" <%= producto.marca_id == marca.id ? "selected" : '' %>><%= marca.marca %></option>    
+                    <% }) %>
+                </select>
             </div>
-            <% if (locals.mensajesError && locals.mensajesError.precio){ %>
-                <p class="feedback"><%=mensajesError.precio.msg %></p>
-            <% } %>
-            <div class="info-prod">
-                <label class="titulo-campo" for="precioAnt">DESCUENTO: % </label>
-                <input type="text" class="campo-informacion" name="precioAnt" id="precioAnt" value="<%= producto.descuento %>" placeholder="DESCUENTO">
-            </div>
-            <% if (locals.mensajesError && locals.mensajesError.precioAnt){ %>
-                <p class="feedback"><%=mensajesError.precioAnt.msg %></p>
-            <% } %>
-            <div class="info-prod">
-                <% let colores = "" %>
-                <% producto.colores.forEach (function(color){ %>
-                    <% colores = colores + "," + color %>
-                <% }) %>
-                <label class="titulo-campo" for="colores">COLORES:</label>
-                <textarea name="colores" class="campo-informacion" id="colores" placeholder="COLOR 1, COLOR 2, ..."><%= colores.slice(1,colores.length) %></textarea>
-            </div>
-            <% if (locals.mensajesError && locals.mensajesError.colores){ %>
-                <p class="feedback"><%=mensajesError.colores.msg %></p>
-            <% } %>
-            <div class="info-prod">
-                <% let tamanos = "" %>
-                <% producto.tamanos.forEach (function(tamano){ %>
-                    <% tamanos = tamanos + "," + tamano %>
-                <% }) %>
-                <label class="titulo-campo" for="tamanos">TAMAÑOS:</label>
-                <textarea name="tamanos" class="campo-informacion" id="tamanos" placeholder="TAMAÑO 1, TAMAÑO 2, ..."><%= tamanos.slice(1,tamanos.length) %></textarea>
-            </div>
-            <% if (locals.mensajesError && locals.mensajesError.tamanos){ %>
-                <p class="feedback"><%=mensajesError.tamanos.msg %></p>
-            <% } %>
-            <div class="info-prod">
-                <% let caracteristicas = "" %>
-                <% producto.caracteristicas.forEach (function(caracteristica){ %>
-                    <% caracteristicas = caracteristicas + "," + caracteristica %>
-                <% }) %>
-                <label class="titulo-campo" for="caracteristicas">CARACTERISTICAS:</label>
-                <textarea name="caracteristicas" class="campo-informacion campo-caracteristicas" id="caracteristicas" placeholder="TITULO1:DESCRIPCION1, TITULO2:DESCRIPCION2, ..."><%= caracteristicas.slice(1,caracteristicas.length) %></textarea>
-            </div>
-            <% if (locals.mensajesError && locals.mensajesError.caracteristicas){ %>
-                <p class="feedback"><%=mensajesError.caracteristicas.msg %></p>
+            <% if (locals.mensajesError && locals.mensajesError.marca){ %>
+                <p class="feedback"><%=mensajesError.marca.msg %></p>
             <% } %>
             <div class="info-prod">
                 <label class="titulo-campo" for="stock">STOCK:</label>
-                <input type="text" class="campo-informacion" name="stock" id="stock" value="<%= producto.stock %>" placeholder="STOCK">
+                <input type="text" class="campo-informacion" name="stock" id="stock" placeholder="STOCK" value=<%= producto.stock  %>>
             </div>
             <% if (locals.mensajesError && locals.mensajesError.stock){ %>
                 <p class="feedback"><%=mensajesError.stock.msg %></p>
             <% } %>
             <div class="info-prod">
+                <label class="titulo-campo" for="precio">PRECIO: $</label>
+                <input type="text" class="campo-informacion" name="precio" id="precio"  placeholder="PRECIO" value=<%= producto.precio  %>>
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.precio){ %>
+                <p class="feedback"><%=mensajesError.precio.msg %></p>
+            <% } %>
+            <div class="info-prod">
                 <label class="titulo-campo" for="estado">ESTADO:</label>
                 <select class="campo-informacion" name="estado" id="estado">
-                    <option value="" <%= producto.estado == "" ? "selected" : null %>>ELEGIR</option>
-                    <option value="NORMAL" <%= producto.estado == "NORMAL" ? "selected" : null %>>NORMAL</option>
-                    <option value="OFERTA" <%= producto.estado == "OFERTA" ? "selected" : null %>>OFERTA</option>
-                    <option value="NOVEDAD" <%= producto.estado == "NOVEDAD" ? "selected" : null %>>NOVEDAD</option>
+                    <option value="" selected>ELEGIR</option>
+                    <% estados.forEach(estado => { %>
+                        <option value="<%= estado.id %>" <%= producto.estado_id == estado.id ? "selected" : '' %>><%= estado.estado %></option>    
+                    <% }) %>
                 </select>
             </div>
             <% if (locals.mensajesError && locals.mensajesError.estado){ %>
                 <p class="feedback"><%=mensajesError.estado.msg %></p>
             <% } %>
-            <div class="imagenes">
-                <% for (let i = 0; i < producto.imagenes.length; i++) { %>
-                    <div class="info-imagen">
-                        <img src="/images/productos/<%= producto.imagenes[i] %>">
-                        <div class="datos-imagen">
-                            <p><%= producto.imagenes[i] %></p>
-                            <input type="file" name="imagen <%= i %>" id="imagen <%= i %>">
-                        </div>
-                    </div>
-                <% } %>
-                <label class="titulo-campo" for="nuevaImagen">AGREGAR IMAGEN</label>
-                <input type="file" name="nuevaImagen" id="nuevaImagen">
+            <div class="info-prod">
+                <label class="titulo-campo" for="precioAnt">DESCUENTO: % </label>
+                <input type="text" class="campo-informacion" name="precioAnt" id="precioAnt" placeholder="DESCUENTO" value=<%= producto.descuento %>>
             </div>
+            <% if (locals.mensajesError && locals.mensajesError.precioAnt){ %>
+                <p class="feedback"><%=mensajesError.precioAnt.msg %></p>
+            <% } %>
+            <div class="info-prod">
+                <label class="titulo-campo" for="caracteristicas">CARACTERISTICAS:</label>
+                <textarea name="caracteristicas" class="campo-informacion campo-caracteristicas" id="caracteristicas" placeholder="TITULO1:DESCRIPCION1| TITULO2:DESCRIPCION2| ..."><%= producto.caracteristicas %></textarea>
+            </div>
+            <% if (locals.mensajesError && locals.mensajesError.caracteristicas){ %>
+                <p class="feedback"><%=mensajesError.caracteristicas.msg %></p>
+            <% } %>
+            <h3 class="tituloCaracteristica">TAMAÑOS</h3>
+            <ul class="opciones-prod">
+                <% let tamaProd = [] %>
+                <% producto.tamanos.forEach(elemento =>{ tamaProd.push(elemento.id) })%>
+                <% tamanos.forEach(elemento => { %>
+                    <li class="opcion-elegible">
+                        <label for="<%= elemento.tamano %>">
+                            <input type="checkbox" class="opcion" name="tamanos" id="<%= elemento.tamano %>" value="<%= elemento.id %>" <%= tamaProd.includes(elemento.id) ? "checked" : null %>>
+                            <%= elemento.tamano %>
+                        </label>
+                    </li>
+                <% }) %>
+            </ul>
+            <% if (locals.mensajesError && locals.mensajesError.tamanos){ %>
+                <p class="feedback"><%=mensajesError.tamanos.msg %></p>
+            <% } %>
+            <h3 class="tituloCaracteristica">COLORES</h3>
+            <ul class="opciones-prod">
+                <% let colorProd = [] %>
+                <% producto.colores.forEach(elemento =>{ colorProd.push(elemento.id) })%>
+                <% colores.forEach(elemento => { %>
+                    <li class="opcion-elegible">
+                        <label for="<%= elemento.color %>">
+                            <input type="checkbox" class="opcion" name="colores" id="<%= elemento.color %>" value="<%= elemento.id %>" <%= colorProd.includes(elemento.id) ? "checked" : null %>>
+                            <%= elemento.color %>
+                        </label>
+                    </li>
+                <% }) %>
+            </ul>
+            <% if (locals.mensajesError && locals.mensajesError.colores){ %>
+                <p class="feedback"><%=mensajesError.colores.msg %></p>
+            <% } %>
             <div class="botones">
                 <input type="reset" value="Deshacer">
                 <input type="submit" value="Confirmar">
             </div>
         </form>
+        <h3 class="tituloCaracteristica">IMAGENES</h3>
+        <ul class="imagenes">
+            <% for(let i = 0; i < producto.imagenes.length; i++){ %>
+                <li class="imagenProd">
+                    <div class="info-imagen">
+                        <img src="/images/productos/<%= producto.imagenes[i].imagen %>">
+                        <% if (producto.imagenes.length > 2){ %>
+                            <form class="edicionImagen" action="/products/prodMaster/edit/<%= producto.id %>/img/<%= producto.imagenes[i].id %>?_method=DELETE" method="POST" enctype="multipart/form-data">
+                                <input type="submit" value="BORRAR"> 
+                            </form>
+                        <% } %>    
+                    </div>
+                </li>
+            <% } %>    
+        </ul>
+        <div class="info-prod">
+            <label class="titulo-campo" for="nuevasImagenes">AGREGAR IMAGENES</label>
+            <form class="edicionImagen" action="/products/prodMaster/edit/<%= producto.id %>/img" method="POST" enctype="multipart/form-data">
+                <input type="file" name="nuevasImagenes" id="nuevasImagenes" multiple>
+                <input type="submit" value="AGREGAR"> 
+            </form>
+        </div>
     </div>
 </main>
 

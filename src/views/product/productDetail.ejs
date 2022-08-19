@@ -18,13 +18,13 @@
         </div>
         <article class=imagenes>
             <div class="imagen-principal">
-                <img src="/images/productos/<%= producto.imagenes[0] %>" alt="Imagen 1">
+                <img src="/images/productos/<%= producto.imagenes[0].imagen %>" alt="Imagen 1">
             </div>
             <div class="imagenes-secundarias">
-                <img src="/images/productos/<%= producto.imagenes[1] %>" alt="Imagen 2" class="imagenes-seleccionables">
-                <img src="/images/productos/<%= producto.imagenes[2] %>" alt="Imagen 3" class="imagenes-seleccionables">
-                <img src="/images/productos/<%= producto.imagenes[3] %>" alt="Imagen 4" class="imagenes-seleccionables">
-                <img src="/images/productos/<%= producto.imagenes[4] %>" alt="Imagen 5" class="imagenes-seleccionables">
+                <img src="/images/productos/<%= producto.imagenes[1].imagen %>" alt="Imagen 2" class="imagenes-seleccionables">
+                <img src="/images/productos/<%= producto.imagenes[2].imagen %>" alt="Imagen 3" class="imagenes-seleccionables">
+                <img src="/images/productos/<%= producto.imagenes[3].imagen %>" alt="Imagen 4" class="imagenes-seleccionables">
+                <img src="/images/productos/<%= producto.imagenes[4].imagen %>" alt="Imagen 5" class="imagenes-seleccionables">
             </div>
         </article>
         <article class="informacion">
@@ -35,7 +35,7 @@
                     <label for="cantidad">CANTIDAD</label>
                     <select name="cantidad" id="cantidad">
                         <% if(producto.stock > 10){stockLimite = 10} else{stockLimite = producto.stock} %>
-                        <% for (let i = 1; i<=stockLimite; i++) { %>
+                        <% for (let i = 1; i <= stockLimite; i++) { %>
                             <option value="<%= i %>"><%= i %></option>
                         <% } %>
                     </select>
@@ -44,7 +44,7 @@
                     <label for="color" id="color">COLOR</label>
                     <select name="color" id="color">
                         <% for (let i = 0; i < producto.colores.length; i++){ %>
-                            <option value="<%= producto.colores[i] %>"><%= producto.colores[i] %></option>
+                            <option value="<%= producto.colores[i].id %>"><%= producto.colores[i].color %></option>
                         <% } %>
                     </select>
                 </div>
@@ -52,7 +52,7 @@
                     <label for="tamano" id="tamano">TAMAÑO</label>
                     <select name="tamano" id="tamano">
                         <% for (let i = 0; i < producto.tamanos.length; i++){ %>
-                            <option value="<%= producto.tamanos[i] %>"><%= producto.tamanos[i] %></option>
+                            <option value="<%= producto.tamanos[i].id %>"><%= producto.tamanos[i].tamano %></option>
                         <% } %>
                     </select>
                 </div>
@@ -66,31 +66,31 @@
         <article class="caracteristicas">
             <h3>CARACTERISTICAS</h3>
             <ul>
-                <% for (let i = 0;i < producto.caracteristicas.length; i++) { %>
-                    <% let tituloCar = producto.caracteristicas[i].split(":")[0] %>
-                    <% let detalleCar = producto.caracteristicas[i].split(":")[1] %>
+                <% caracteristicas.forEach(caract => { %>
+                    <% let tituloCar = caract.split(":")[0] %>
+                    <% let detalleCar = caract.split(":")[1] %>
                     <li><span class="titulo-caract"><%= tituloCar %>: </span><%= detalleCar %></li>
-                <% } %>
+                <% }) %>
             </ul>
         </article>
     </section>
     <section class="valoraciones">
         <h3 class="titulo-seccion">OPINIONES</h3>
         <ul class="opiniones">
-            <% for (let i = 0;i < opinionesProd.length;i++){ %>
+            <% for (let i = 0;i < resumenCalificacion.length;i++){ %>
                 <li>
-                    <h4><%= opinionesProd[i].titulo %></h4>
+                    <h4><%= resumenCalificacion[i].titulo %></h4>
                     <p class="calificacion-usuario">
-                        <% let nroEnt = parseInt(opinionesProd[i].nota) %>
+                        <% let nroEnt = parseInt(resumenCalificacion[i].nota) %>
                         <% for (let i = 1; i<=nroEnt; i++) { %>
                             <i class="fa-solid fa-star"></i>
                         <% } %>
-                        <% let nroDec = opinionesProd[i].nota - nroEnt %>
+                        <% let nroDec = resumenCalificacion[i].nota - nroEnt %>
                         <% if (nroDec != 0) { %>
                             <i class="fa-solid fa-star-half"></i></i>
                         <% } %>
                     </p>
-                    <p class="opinion-usuario"><%= opinionesProd[i].detalle %></p>
+                    <p class="opinion-usuario"><%= resumenCalificacion[i].detalle %></p>
                 </li>
             <% } %>
         </ul>
@@ -101,7 +101,7 @@
             <% for (let i=0;i < categoria.length ;i++){ %>
                 <li>
                     <a href="/products/<%= categoria[i].id %>">
-                        <img src="/images/productos/<%= categoria[i].imagenes[0] %>" alt="Otro Producto  <%= i + 1 %>" class="imagenes-seleccionables">
+                        <img src="/images/productos/<%= categoria[i].imagenes[0].imagen %>" alt="Otro Producto  <%= i + 1 %>" class="imagenes-seleccionables">
                         <div class="titulo-precio">
                             <p class="precio-producto">$ <%= categoria[i].precio %></p>
                             <p class="titulo-producto"><%= categoria[i].nombre %></p>
@@ -117,7 +117,7 @@
             <% for (let i=0;i < otrosProd.length ;i++){ %>
                 <li>
                     <a href="/products/<%= otrosProd[i].id %>">
-                        <img src="/images/productos/<%= otrosProd[i].imagenes[0] %>" alt="Otro Producto  <%= i + 1 %>" class="imagenes-seleccionables">
+                        <img src="/images/productos/<%= otrosProd[i].imagenes[0].imagen %>" alt="Otro Producto  <%= i + 1 %>" class="imagenes-seleccionables">
                         <div class="titulo-precio">
                             <p class="precio-producto">$ <%= otrosProd[i].precio %></p>
                             <p class="titulo-producto"><%= otrosProd[i].nombre %></p>

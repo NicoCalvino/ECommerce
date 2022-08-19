@@ -5,16 +5,22 @@ const path = require("path")
 const guestMiddleware= require("../middlewares/guestMiddleware")
 const authMiddleware= require("../middlewares/authMiddleware")
 const adminMiddleware= require("../middlewares/adminMiddleware")
-const UserModel = require("../models/userModel")
+//const UserModel = require("../models/userModel")
+const db = require('../database/models')
+const sequelize = db.sequelize
 
 const {body} = require('express-validator')
 const formValidations = [
   body('nombre').notEmpty().withMessage('Debe Indicar su nombre'),
   body('apellido').notEmpty().withMessage('Debe Indicar su apellido'),
   body('fechaDeNacimiento').notEmpty().withMessage('Debe Indicar su fecha De Nacimiento'),
-  body('email').isEmail().withMessage('El correo Ingresado no es válido').custom((value, {req}) =>{
-      let emailExists = UserModel.findByField("email",req.body.email)
-      if (emailExists){
+  body('email').isEmail().withMessage('El correo Ingresado no es válido').custom( async (value, {req}) => {
+      let resultado = await db.Usuario.findAll({
+        where:{
+          email:req.body.email
+      }})
+      
+      if (resultado.length > 0){
         throw new Error('El mail ingresado ya existe')
       }
       return true
@@ -34,17 +40,6 @@ const formValidations = [
     let confPassword = req.body.confContrasena
     if (password != confPassword){
       throw new Error('Las Contraseñas no coinciden')
-    }
-    return true
-  }),
-  body('avatar').custom((value, { req }) => {
-    let file = req.file;
-    let acceptedExtensions = ['.jpg','.png','.jpeg']
-    if (!file){
-      throw new Error('Tenes que agregar tu avatar')
-    }
-    if (!acceptedExtensions.includes(path.extname(file.originalname))){
-      throw new Error('Las imagenes tienen que ser ' + acceptedExtensions)
     }
     return true
   })
@@ -77,11 +72,11 @@ router.post("/register", fileUpload.single("avatar"),formValidations, userContro
 router.get("/userProfile", authMiddleware, userController.profile)
 
 /** CARRITO DEL USUARIO **/
-router.post("/productCart/:idProd", authMiddleware, userController.addToCart)
-router.put("/productCart/:idProd", authMiddleware, userController.processEditCart)
-router.delete("/productCart/:idProd", authMiddleware, userController.processDeleteCart)
 router.get("/productCart", authMiddleware, userController.cart)
-router.get("/productCart/:idProd", userController.editCart)
+router.post("/productCart/:idProd", authMiddleware, userController.addToCart)
+router.put("/productCart/:idCart", authMiddleware, userController.processEditCart)
+router.delete("/productCart/:idCart", authMiddleware, userController.processDeleteCart)
+router.get("/productCart/:idCart", userController.editCart)
 
 /** MAESTRO DE USUARIOS **/
 router.get("/usersMaster/list", authMiddleware, adminMiddleware,userController.userMaster)

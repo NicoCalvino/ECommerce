@@ -6,24 +6,22 @@
         <li class="boton-nuevo">
             <a href="/products/prodMaster/newProduct" class="nuevo-producto"><button>NUEVO PRODUCTO</button></a>
         </li>
-        <% for (let i = 0; i < catalogo.length ; i++) { %>
-            <% if(catalogo[i].id != "newProd") { %>
+        <% catalogo.forEach(producto =>{ %>
             <li class="productos">
                 <div class="imagen">
-                    <img src="/images/productos/<%= catalogo[i].imagenes[0] %>" class="imagen-producto" alt="imagen">
+                    <img src="/images/productos/<%= producto.imagenes[0].imagen %>" class="imagen-producto" alt="imagen">
                 </div>
                 <div class="detalle">
-                    <h2 class="nombre-producto"><%= catalogo[i].nombre.slice(0,30) %></h2>
+                    <h2 class="nombre-producto"><%= producto.nombre.slice(0,30) %></h2>
                     <div class="informacion-princiapl">
-                        <p>PRECIO: $ <%= catalogo[i].precio %></p>
-                        <p>STOCK: <%= catalogo[i].stock %></p>
-                        <p>ESTADO: <%= catalogo[i].estado %></p>
+                        <p>PRECIO: $ <%= producto.precio %></p>
+                        <p>STOCK: <%= producto.stock %></p>
+                        <p>ESTADO: <%= producto.estados.estado %></p>
                     </div>
-                    <a href="/products/prodMaster/edit/<%= catalogo[i].id %>" class="editar">Editar</a>
+                    <a href="/products/prodMaster/edit/<%= producto.id %>" class="editar">Editar</a>
                 </div>
             </li>
-            <% } %>
-        <% } %>
+        <% }) %>
     </ul>
 </main>
 
