@@ -21,6 +21,15 @@ const newProdValidations=[
     if(!req.files || req.files.length <2){
       throw new Error('Debe cargar al menos dos imagenes')
     }
+
+    let formatos = ['.JPG','.jpg','.JPEG','.jpeg','.PNG','.png','.GIF','.gif']
+
+    req.files.forEach(imagen =>{
+      if(!formatos.includes(path.extname(imagen.originalname))){
+        throw new Error('Las imagenes deben ser jpg, jpeg, png, o gif')
+      }
+    })
+
     return true
   })
 ]
@@ -38,6 +47,24 @@ const editProdValidations=[
   body('tamanos').notEmpty().withMessage('Debe Indicar al menos un tamaño'),
 ]
 
+const nuevasImagenes=[
+  body('nuevasImagenes').custom((value,{req})=>{
+    if(!req.files || req.files.length <2){
+      throw new Error('Debe cargar al menos dos imagenes')
+    }
+
+    let formatos = ['.JPG','.jpg','.JPEG','.jpeg','.PNG','.png','.GIF','.gif']
+
+    req.files.forEach(imagen =>{
+      if(!formatos.includes(path.extname(imagen.originalname))){
+        throw new Error('Las imagenes deben ser jpg, jpeg, png, o gif')
+      }
+    })
+
+    return true
+  })
+]
+
 const router = express.Router()
 
 const productsController = require("../controllers/productsController")
@@ -51,7 +78,7 @@ router.get("/prodMaster/list", adminMiddleware, productsController.master)
 /*** EDITAR PRODUCTO ***/ 
 router.get("/prodMaster/edit/:idProd", adminMiddleware,productsController.editProduct)
 router.put("/prodMaster/edit/:idProd", fileUpload.array("nuevasImagenes"),editProdValidations, adminMiddleware, productsController.update); 
-router.post("/prodMaster/edit/:idProd/img", fileUpload.array("nuevasImagenes"), adminMiddleware, productsController.addImg); 
+router.post("/prodMaster/edit/:idProd/img", fileUpload.array("nuevasImagenes"), nuevasImagenes, adminMiddleware, productsController.addImg); 
 router.delete("/prodMaster/edit/:idProd/img/:idImg", adminMiddleware, productsController.deleteImg); 
 
 /*** CREAR PRODUCTO ***/

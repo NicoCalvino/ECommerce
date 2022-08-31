@@ -2,11 +2,11 @@
 
 <main>
     <div class="espacio-header"></div>
-    <form action="/user/login" method="POST">
+    <form action="/user/login" method="POST" id="login">
         <div class="info-personal">
             <h3 class="titulo-seccion">Iniciar Sesión</h3>
-            <input type="email" name="email" placeholder="Correo Electrónico" required <%=locals.email  ? "value=" + locals.email : '' %>>
-            <input type="password" name="contrasena" placeholder="Contraseña" required>
+            <input type="email" name="email" id="email" placeholder="Correo Electrónico" <%=locals.email  ? "value=" + locals.email : '' %>>
+            <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña">
         </div>
         <% if (locals.error){ %>
             <span class="feedback"><%= locals.error %></span>
@@ -21,5 +21,5 @@
         <a href="#">Olvide mi contraseña</a>
     </form>
 </main>
-
+<script src="/js/login.js"></script>
 <%- include ("../partials/footer") %>

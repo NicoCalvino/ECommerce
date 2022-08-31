@@ -8,7 +8,7 @@
         <a href="/products/prodMaster/list" class="boton-volver"><button><i class="fa-solid fa-arrow-left"></i>VOLVER AL MAESTRO</button></a>
     </div>
     <div class="info-producto">
-        <form action="/products/prodMaster/newProduct" method="POST" enctype="multipart/form-data">
+        <form action="/products/prodMaster/newProduct" method="POST" enctype="multipart/form-data" id="infoProducto">
             <h2>NUEVO PRODUCTO</h2>
             <div class="info-prod">
                 <label class="titulo-campo" for="nombreProducto">NOMBRE:</label>
@@ -17,6 +17,7 @@
             <% if (locals.mensajesError && locals.mensajesError.nombreProducto){ %>
                 <p class="feedback"><%=mensajesError.nombreProducto.msg %></p>
             <% } %>
+            <span class="feedback errorFront errNom">Este campo debe tener como mínimo 5 caracteres</span>
             <div class="info-prod">
                 <label class="titulo-campo" for="categoria">CATEGORIA:</label>
                 <select class="campo-informacion" name="categoria" id="categoria">
@@ -94,6 +95,7 @@
             <% if (locals.mensajesError && locals.mensajesError.caracteristicas){ %>
                 <p class="feedback"><%=mensajesError.caracteristicas.msg %></p>
             <% } %>
+            <span class="feedback errorFront errCar">Este campo debe tener como mínimo 20 caracteres</span>
             <h3 class="tituloCaracteristica">TAMAÑOS</h3>
             <ul class="opciones-prod">
                 <% tamanos.forEach(elemento => { %>
@@ -141,5 +143,6 @@
         </form>
     </div>
 </main>
+<script src="/js/newProduct.js"></script>
 
 <%- include ("../partials/footer") %>

@@ -138,6 +138,12 @@ main .login a button:hover{
     background-color: #4c6b3b;
 }
 
+
+.campoConError{
+    border: rgb(71, 4, 4) 2px solid;
+    background-color: rgb(248, 118, 118);
+}
+
 @media(min-width:576px){
     main form {
         width:70%;

@@ -244,7 +244,7 @@ const controller={
                     res.redirect("/products/prodMaster/list")
                 )
         }else{
-            return res.render(rutaBase + '/productNew',{categorias,subcategorias,marcas,estados,tamanos,colores,mensajesError:erroresProducto.mapped(),producto:req.body})
+            return res.render(rutaBase + '/productNew',{categorias,subcategorias,marcas,estados,tamanos,colores,mensajesError:erroresProducto.mapped(),oldInfo:req.body})
         }
     },
     master:async (req,res)=>{
@@ -340,14 +340,28 @@ const controller={
     addImg: async(req,res)=>{
         const idProd = req.params.idProd
         
-        await req.files.forEach(elemento =>{
-             db.Imagen.create({
-                imagen:elemento.filename,
-                producto_id:idProd
+        let erroresProducto = validationResult(req)
+        if (erroresProducto.isEmpty()){
+            await req.files.forEach(elemento =>{
+                db.Imagen.create({
+                    imagen:elemento.filename,
+                    producto_id:idProd
+                })
             })
-        })
 
-        res.redirect("/products/prodMaster/edit/" + idProd)
+            res.redirect("/products/prodMaster/edit/" + idProd)
+        }else{
+            const producto = await db.Producto.findByPk(idProd,{
+                include:['imagenes','estados','colores','categorias','subcategorias','marcas','tamanos']
+            });
+            const categorias = await db.Categoria.findAll()
+            const subcategorias = await db.Subcategoria.findAll()
+            const marcas = await db.Marca.findAll()
+            const estados = await db.Estado.findAll()
+            const tamanos = await db.Tamano.findAll()
+            const colores = await db.Color.findAll()
+            res.render(rutaBase + "/productData",{producto,categorias,subcategorias,marcas,estados,tamanos,colores,mensajesError:erroresProducto.mapped()})
+        }
     },
     delete:async (req,res)=>{
         const idProd = req.params.idProd

@@ -21,6 +21,7 @@
             <% if (locals.mensajesError && locals.mensajesError.nombreProducto){ %>
                 <p class="feedback"><%=mensajesError.nombreProducto.msg %></p>
             <% } %>
+            <span class="feedback errorFront errNom">Este campo debe tener como mínimo 5 caracteres</span>
             <div class="info-prod">
                 <label class="titulo-campo" for="categoria">CATEGORIA:</label>
                 <select class="campo-informacion" name="categoria" id="categoria">
@@ -97,6 +98,7 @@
             <% if (locals.mensajesError && locals.mensajesError.caracteristicas){ %>
                 <p class="feedback"><%=mensajesError.caracteristicas.msg %></p>
             <% } %>
+            <span class="feedback errorFront errCar">Este campo debe tener como mínimo 20 caracteres</span>
             <h3 class="tituloCaracteristica">TAMAÑOS</h3>
             <ul class="opciones-prod">
                 <% let tamaProd = [] %>
@@ -154,9 +156,12 @@
             <form class="edicionImagen" action="/products/prodMaster/edit/<%= producto.id %>/img" method="POST" enctype="multipart/form-data">
                 <input type="file" name="nuevasImagenes" id="nuevasImagenes" multiple>
                 <input type="submit" value="AGREGAR"> 
+                <% if (locals.mensajesError && locals.mensajesError.nuevasImagenes){ %>
+                    <p class="feedback"><%=mensajesError.nuevasImagenes.msg %></p>
+                <% } %>
             </form>
         </div>
     </div>
 </main>
-
+<script src="/js/newProduct.js"></script>
 <%- include ("../partials/footer") %>

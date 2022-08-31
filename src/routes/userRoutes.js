@@ -26,6 +26,15 @@ const formValidations = [
       return true
   }),
   body('intereses').notEmpty().withMessage('Debe Indicar al menos un interes'),
+  body('imagen').custom((value,{req})=>{
+    let formatos = ['.JPG','.jpg','.JPEG','.jpeg','.PNG','.png','.GIF','.gif']
+    if(req.file){
+      if(!formatos.includes(path.extname(req.file.originalname))){
+        throw new Error('Las imagenes deben ser jpg, jpeg, png, o gif')
+      }
+    }
+    return true
+  }),
   body('contrasena').notEmpty().withMessage('La contraseña no es válida'),
   body('termCond').notEmpty().withMessage('Debe aceptar los términos y condiciones'),
   body('captcha').custom((value, {req}) => {
