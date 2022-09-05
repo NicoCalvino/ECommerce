@@ -1,3 +1,57 @@
+Retrospectiva Sprint 7 Proyecto Ecommerce Grupo 6
+-------------------------------------------------
+Nuestra reflexión sobre lo ocurrido durante el Sprint arroja los siguientes resultados, en base a un análisis tipo estrella de mar.
+
+* Comenzar a hacer
+
+1. Reuniones periódicas para despejar dudas y entender el avance del trabajo. 
+
+* Hacer más
+
+1. Mantener Trello actualizado.
+2. Comunicar avances e ideas. 
+
+* Continuar haciendo
+
+1. Dividir las tareas.
+2. Cumplir los plazos de entrega.
+
+* Hacer menos
+
+1. Nuclear tareas en una misma persona.
+
+* Dejar de hacer
+
+1. Dejar varias tareas pendientes hasta fechas próximas a la entrega. .
+ 
+
+Retrospectiva Sprint 6 Proyecto Ecommerce Grupo 6
+-------------------------------------------------
+Nuestra reflexión sobre lo ocurrido durante el Sprint arroja los siguientes resultados, en base a un análisis tipo estrella de mar.
+
+* Comenzar a hacer
+
+1. Reuniones periódicas para despejar dudas y entender el avance del trabajo. 
+
+* Hacer más
+
+1. Mantener Trello actualizado.
+2. Comunicar avances e ideas. 
+
+* Continuar haciendo
+
+1. Dividir las tareas.
+2. Cumplir los plazos de entrega.
+
+* Hacer menos
+
+1. Nuclear tareas en una misma persona.
+
+* Dejar de hacer
+
+1. Dejar varias tareas pendientes hasta fechas próximas a la entrega. .
+ 
+
 Retrospectiva Sprint 5 Proyecto Ecommerce Grupo 6
 -------------------------------------------------
 Nuestra reflexión sobre lo ocurrido durante el Sprint arroja los siguientes resultados, en base a un análisis tipo estrella de mar.

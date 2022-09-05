@@ -5,7 +5,6 @@ const path = require("path")
 const guestMiddleware= require("../middlewares/guestMiddleware")
 const authMiddleware= require("../middlewares/authMiddleware")
 const adminMiddleware= require("../middlewares/adminMiddleware")
-//const UserModel = require("../models/userModel")
 const db = require('../database/models')
 const sequelize = db.sequelize
 
@@ -92,8 +91,6 @@ router.get("/usersMaster/list", authMiddleware, adminMiddleware,userController.u
 router.get("/usersMaster/edit/:idUser", authMiddleware, adminMiddleware,userController.userData)
 router.put("/usersMaster/edit/:idUser", userDataValidations, authMiddleware, adminMiddleware,userController.userEdit)
 router.delete("/delete/:idUser", authMiddleware, adminMiddleware, userController.delete)
-
-
 
 
 module.exports = router

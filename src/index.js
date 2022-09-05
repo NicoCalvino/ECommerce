@@ -11,6 +11,7 @@ const productsRoutes = require("./routes/productsRoutes")
 const userRoutes = require("./routes/userRoutes")
 const mainRoutes = require("./routes/mainRoutes")
 const comuRoutes = require("./routes/comuRoutes")
+const apiRoutes = require("./routes/apiRoutes")
 
 app.set("view engine","ejs")
 app.set("views", path.join(__dirname,"views"))
@@ -27,6 +28,7 @@ app.use(userLoggedMiddleware)
 app.use("/user", userRoutes)
 app.use("/products", productsRoutes)
 app.use("/comunidad", comuRoutes)
+app.use("/api", apiRoutes)
 app.use("/", mainRoutes)
 
 app.listen(PORT, function(){console.log("Servidor corriendo 4000")});
