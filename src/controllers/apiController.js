@@ -14,12 +14,40 @@ const controller = {
                 name:usuario.nombre,
                 lastName:usuario.apellido,
                 email:usuario.email,
-                detail: req.protocol + "://" + req.get("host") + "/usersMaster/edit/" + usuario.id
+                detail: req.protocol + "://" + req.get("host") + "/api/users/" + usuario.id
             }
            
         })
 
-        res.json(usuariosApi)
+        let usuariosGold = usuarios.filter(user =>{
+            return user.categoria_de_usuario_id == 1 
+        })
+
+        let usuariosSilver = usuarios.filter(user =>{
+            return user.categoria_de_usuario_id == 3 
+        })
+
+        let usuariosBronze = usuarios.filter(user =>{
+            return user.categoria_de_usuario_id == 4 
+        })
+
+        let usuariosNew = usuarios.filter(user =>{
+            return user.categoria_de_usuario_id == 2 
+        })
+
+        resultadoApi = {
+            meta:{
+                status:200,
+                total:usuarios.length,
+                goldUsers:usuariosGold.length,
+                silverUsers:usuariosSilver.length,
+                bronzeUsers:usuariosBronze.length,
+                newUsers:usuariosNew.length,
+            },
+            data:usuariosApi
+        } 
+
+        res.json(resultadoApi)
     },
     userDataApi: async (req,res)=>{
         const idUser = req.params.idUser
@@ -39,7 +67,7 @@ const controller = {
             apellido:usuario.apellido,
             fechaDeNacimientp:usuario.fechaDeNacimientp,
             email:usuario.email,
-            imagen:usuario.imagen,
+            imagen:"/images/usuarios/" + usuario.imagen,
             categoria:usuario.categoriasUsuarios.categoria_de_usuario,
             created_at:usuario.created_at,
             intereses:intereses
@@ -49,6 +77,9 @@ const controller = {
         res.json(userApi)
     },
     productsApi:async (req, res) =>{
+
+        const categorias = await db.Categoria.findAll()
+
         const productos = await db.Producto.findAll({
             include:['imagenes','estados','colores','categorias','subcategorias','marcas','tamanos']
         })
@@ -74,12 +105,35 @@ const controller = {
                 tamanos:tamanos,
                 estado:producto.estados.estado,
                 
-                detail: req.protocol + "://" + req.get("host") + "/prodMaster/edit/" + producto.id
+                detail: req.protocol + '://' + req.get("host") + '/api/products/' + producto.id
             }
            
         })
 
-        res.json(productosApi)
+        let prodNorm = productos.filter(prod =>{
+            return prod.estado_id == 1
+        })
+
+        let prodOferta = productos.filter(prod =>{
+            return prod.estado_id == 2
+        })
+
+        let prodNovedad = productos.filter(prod =>{
+            return prod.estado_id == 3
+        })
+
+        resultadoApi = {
+            meta:{
+                status:200,
+                total:productosApi.length,
+                prodNorm:prodNorm.length,
+                prodOferta:prodOferta.length,
+                prodNovedad:prodNovedad.length
+            },
+            categorias:categorias,
+            data:productosApi
+        } 
+        res.json(resultadoApi)
     },
     prodApi:async(req, res) =>{
         const idProd = req.params.idProd
@@ -106,7 +160,7 @@ const controller = {
             colores:colores,
             tamanos:tamanos,
             estado:producto.estados.estado,
-            imagen:producto.imagenes[0]
+            imagen:"/images/usuarios/" + producto.imagenes[0].imagen
         }
            
         res.json(productoApi)       

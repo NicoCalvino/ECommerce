@@ -11,9 +11,9 @@ const router = express.Router()
 const apiController = require("../controllers/apiController")
 
 
-router.get("/users", authMiddleware, adminMiddleware, apiController.userApi)
-router.get("/users/:idUser", authMiddleware, adminMiddleware, apiController.userDataApi)
-router.get("/products", authMiddleware, adminMiddleware, apiController.productsApi)
-router.get("/products/:idProd", authMiddleware, adminMiddleware, apiController.prodApi)
+router.get("/users", apiController.userApi)
+router.get("/users/:idUser", apiController.userDataApi)
+router.get("/products", apiController.productsApi)
+router.get("/products/:idProd", apiController.prodApi)
 
 module.exports = router
