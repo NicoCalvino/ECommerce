@@ -1,10 +1,10 @@
 import React from "react";
-import Avatar from '../../Assets/images/jordan-walke.png';
+import Avatar from '../../Assets/images/TROY.jpg';
 
 function Topbar() {
     return (
         <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+            <p>DASHBOARD BICIPAL</p>
             {/* <!-- Sidebar Toggle (Topbar) --> */}
             <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
                 <i className="fa fa-bars"></i>
@@ -36,7 +36,7 @@ function Topbar() {
                 {/* <!-- Nav Item - User Information --> */}
                 <li className="nav-item dropdown no-arrow">
                     <a className="nav-link dropdown-toggle" href="/" id="userDropdown">
-                        <span className="mr-2 d-none d-lg-inline text-gray-600 small">Jordan Walke</span>
+                        <span className="mr-2 d-none d-lg-inline text-gray-600 small">TROY POLAMALU</span>
                         <img className="img-profile rounded-circle" src={Avatar} alt="Jordan Walke - Creador de React" width="60" />
                     </a>
                 </li>

@@ -1,20 +1,18 @@
 import './Assets/css/app.css';
-import ContentWrapper from './Components/ContentWrapper/ContentWrapper';
-import SideBar from './Components/SideBar/SideBar';
+import Main from './Components/Main';
+import ProductWrapper from './Components/ContentWrapper/ProductWrapper'
+import DetalleUser from './Components/DetalleUsuario/DetalleUser'
+import {BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
 function App() {
   
   return (
     <div id="wrapper">
-
-		{/* <!-- Sidebar --> */}
-		<SideBar />
-		{/* <!-- End of Sidebar --> */}
-
-		{/* <!-- Content Wrapper --> */}
-		<ContentWrapper />
-		{/* <!-- End of Content Wrapper --> */}
-
+		<Switch>
+			<Route path="/" exact component={Main} />
+			<Route path="/productos/:id" exact component={ProductWrapper} />
+			<Route path="/usuarios/:id" exact component={DetalleUser} />
+		</Switch>
 	</div>
   );
 }

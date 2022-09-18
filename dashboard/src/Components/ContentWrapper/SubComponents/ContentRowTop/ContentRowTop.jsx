@@ -1,8 +1,10 @@
 import React from "react";
 import { useEffect, useState } from 'react'
 import Categorias from "../../../GenresInDB/Categorias";
+import Table from "../../../Table/Table";
 import ContentRowTarjetas from "./ContentRowTarjetas";
 import UltimoProducto from "./UltimoProducto";
+import UltimoUsuario from "./UltimoUsuario";
 
 function ContentRowTop() {
 	const [datosProd, setDataProd] = useState([])
@@ -23,26 +25,26 @@ function ContentRowTop() {
 	let tarjetasProductos = [
 		{
 			title: "Total Productos",
-			color: "border-left-primary",
-			icon: "fas fa-film",
+			color: "border-bottom-primary",
+			icon: "fas fa-bicycle",
 			value: datosProd[0]
 		},
 		{
 			title: "Total Regulares",
-			color: "border-left-success",
-			icon: "fas fa-award",
+			color: "border-bottom-success",
+			icon: "fas fa-store",
 			value: datosProd[1]
 		},
 		{
 			title: "Total Novedad",
-			color: "border-left-warning",
-			icon: "fas fa-user",
+			color: "border-bottom-primary",
+			icon: "fas fa-star",
 			value: datosProd[2]
 		},
 		{
 			title: "Total en Oferta",
-			color: "border-left-warning",
-			icon: "fas fa-user",
+			color: "border-bottom-success",
+			icon: "fas fa-percentage",
 			value: datosProd[3]
 		}
 	]
@@ -50,32 +52,32 @@ function ContentRowTop() {
 	let tarjetasUsuarios = [
 		{
 			title: "Total Usuarios",
-			color: "border-left-primary",
-			icon: "fas fa-film",
+			color: "border-bottom-primary",
+			icon: "fas fa-user",
 			value: datosUsers[0]
 		},
 		{
 			title: "Gold",
-			color: "border-left-success",
-			icon: "fas fa-award",
+			color: "border-bottom-success",
+			icon: "fas fa-crown",
 			value: datosUsers[1]
 		},
 		{
 			title: "Silver",
-			color: "border-left-warning",
-			icon: "fas fa-user",
+			color: "border-bottom-primary",
+			icon: "fas fa-trophy",
 			value: datosUsers[2]
 		},
 		{
 			title: "Bronze",
-			color: "border-left-warning",
-			icon: "fas fa-user",
+			color: "border-bottom-success",
+			icon: "fas fa-award",
 			value: datosUsers[3]
 		},
 		{
 			title: "Nuevos",
-			color: "border-left-warning",
-			icon: "fas fa-user",
+			color: "border-bottom-primary",
+			icon: "fas fa-child",
 			value: datosUsers[4]
 		}
 	]
@@ -83,7 +85,7 @@ function ContentRowTop() {
     return(
         <div className="container-fluid">
 					<div className="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 className="h3 mb-0 text-gray-800">App Dashboard</h1>
+						<h1 className="h3 mb-0 text-gray-800">BICIPAL</h1>
 					</div>
 				
 					<div className="row">
@@ -102,7 +104,9 @@ function ContentRowTop() {
 					</div>
 		
 					<div className="row">
+						
 						<UltimoProducto />
+						<UltimoUsuario />
 						<Categorias />
 					</div>
 				</div>

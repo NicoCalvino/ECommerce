@@ -21,10 +21,10 @@
                 <img src="/images/productos/<%= producto.imagenes[0].imagen %>" alt="Imagen 1">
             </div>
             <div class="imagenes-secundarias">
-                <img src="/images/productos/<%= producto.imagenes[1].imagen %>" alt="Imagen 2" class="imagenes-seleccionables">
-                <img src="/images/productos/<%= producto.imagenes[2].imagen %>" alt="Imagen 3" class="imagenes-seleccionables">
-                <img src="/images/productos/<%= producto.imagenes[3].imagen %>" alt="Imagen 4" class="imagenes-seleccionables">
-                <img src="/images/productos/<%= producto.imagenes[4].imagen %>" alt="Imagen 5" class="imagenes-seleccionables">
+                <% producto.imagenes.forEach((imagen,i) =>{ 
+                    if(i > 0){ console.log(i)%> 
+                        <img src="/images/productos/<%= imagen.imagen %>" alt="Imagen 2" class="imagenes-seleccionables">        
+                <% }}) %>
             </div>
         </article>
         <article class="informacion">

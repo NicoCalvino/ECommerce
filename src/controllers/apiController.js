@@ -14,10 +14,13 @@ const controller = {
                 name:usuario.nombre,
                 lastName:usuario.apellido,
                 email:usuario.email,
-                detail: req.protocol + "://" + req.get("host") + "/api/users/" + usuario.id
+                detail: req.protocol + "://" + req.get("host") + "/api/users/" + usuario.id,
+                picture: req.protocol + '://' + req.get("host") + '/images/usuarios/' + usuario.imagen
             }
            
         })
+
+        let ultimoUsuario = usuariosApi[usuariosApi.length - 1]
 
         let usuariosGold = usuarios.filter(user =>{
             return user.categoria_de_usuario_id == 1 
@@ -44,6 +47,7 @@ const controller = {
                 bronzeUsers:usuariosBronze.length,
                 newUsers:usuariosNew.length,
             },
+            ultimoUsuario:ultimoUsuario,
             data:usuariosApi
         } 
 
@@ -67,21 +71,70 @@ const controller = {
             apellido:usuario.apellido,
             fechaDeNacimientp:usuario.fechaDeNacimientp,
             email:usuario.email,
-            imagen:"/images/usuarios/" + usuario.imagen,
+            eliminar:req.protocol + '://' + req.get("host") + "/user/delete/" + usuario.id + "?_method=DELETE",
+            imagen:req.protocol + '://' + req.get("host") + '/images/usuarios/' + usuario.imagen,
             categoria:usuario.categoriasUsuarios.categoria_de_usuario,
             created_at:usuario.created_at,
             intereses:intereses
-
         }
 
         res.json(userApi)
     },
     productsApi:async (req, res) =>{
+        
+        const catalogoCompleto = await db.Producto.findAll({
+            include:['imagenes','categorias'],
+        })
+
+        let totalProd = catalogoCompleto.length - 1
+
+        let ultimoProd = {
+            id:catalogoCompleto[totalProd].id,
+            name:catalogoCompleto[totalProd].nombre,
+            description:catalogoCompleto[totalProd].caracteristicas,
+            
+            detail: req.protocol + '://' + req.get("host") + '/api/products/' + catalogoCompleto[totalProd].id,
+            picture: req.protocol + '://' + req.get("host") + '/images/productos/' + catalogoCompleto[totalProd].imagenes[0].imagen
+
+        }
+
+        let prodNorm = catalogoCompleto.filter(prod =>{
+            return prod.estado_id == 1
+        })
+
+        let prodOferta = catalogoCompleto.filter(prod =>{
+            return prod.estado_id == 2
+        })
+
+        let prodNovedad = catalogoCompleto.filter(prod =>{
+            return prod.estado_id == 3
+        })
 
         const categorias = await db.Categoria.findAll()
 
+        let categoriasApi =[]
+
+        categorias.forEach(categoria => {
+            let rango = catalogoCompleto.filter(prod => {
+                return prod.categorias.id == categoria.id
+            })
+            categoriasApi.push({
+                categoria:categoria.categoria,
+                total:rango.length
+            })    
+        } )
+
+        let pageNum = Number(req.query.pageNum)
+        let totalPaginas = Math.ceil(catalogoCompleto.length/10)
+
+        if (!pageNum){
+            pageNum = 1
+        }
+        
         const productos = await db.Producto.findAll({
-            include:['imagenes','estados','colores','categorias','subcategorias','marcas','tamanos']
+            include:['imagenes','estados','colores','categorias','subcategorias','marcas','tamanos'],
+            limit:10,
+            offset:(pageNum-1)*10
         })
 
         let productosApi = productos.map(producto => {
@@ -104,22 +157,11 @@ const controller = {
                 colores:colores,
                 tamanos:tamanos,
                 estado:producto.estados.estado,
-                
-                detail: req.protocol + '://' + req.get("host") + '/api/products/' + producto.id
+
+                detail: req.protocol + '://' + req.get("host") + '/api/products/' + producto.id,
+                picture: req.protocol + '://' + req.get("host") + '/images/productos/' + producto.imagenes[0].imagen
             }
            
-        })
-
-        let prodNorm = productos.filter(prod =>{
-            return prod.estado_id == 1
-        })
-
-        let prodOferta = productos.filter(prod =>{
-            return prod.estado_id == 2
-        })
-
-        let prodNovedad = productos.filter(prod =>{
-            return prod.estado_id == 3
         })
 
         resultadoApi = {
@@ -128,10 +170,12 @@ const controller = {
                 total:productosApi.length,
                 prodNorm:prodNorm.length,
                 prodOferta:prodOferta.length,
-                prodNovedad:prodNovedad.length
+                prodNovedad:prodNovedad.length,
+                paginas:totalPaginas
             },
-            categorias:categorias,
-            data:productosApi
+            categorias:categoriasApi,
+            ultimoProd:ultimoProd,
+            data:productosApi,
         } 
         res.json(resultadoApi)
     },
@@ -160,7 +204,10 @@ const controller = {
             colores:colores,
             tamanos:tamanos,
             estado:producto.estados.estado,
-            imagen:"/images/usuarios/" + producto.imagenes[0].imagen
+            detalleBicipal: req.protocol + '://' + req.get("host") + '/products/' + producto.id,
+            edicionBicipal: req.protocol + '://' + req.get("host") + '/products/prodMaster/edit/' + producto.id,
+            eliminar:req.protocol + '://' + req.get("host") + "/products/delete/" + producto.id + "?_method=DELETE",
+            imagen:req.protocol + '://' + req.get("host") + '/images/productos/' + producto.imagenes[0].imagen
         }
            
         res.json(productoApi)       

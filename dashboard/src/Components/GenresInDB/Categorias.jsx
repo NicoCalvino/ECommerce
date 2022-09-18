@@ -11,10 +11,10 @@ function Categorias() {
 			})},[])
 
     return (
-        <div className="col-lg-6 mb-4">
+        <div className="col-lg-10 mb-4">
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
-                    <h5 className="m-0 font-weight-bold text-gray-800" onMouseOver={ (e) => e.target.parentNode.nextElementSibling.classList.add("bg-secondary") } >Categorias</h5>
+                    <h5 className="m-0 font-weight-bold text-gray-800" >Categorias</h5>
                 </div>
                 <div className="card-body">
                     <div className="row">
@@ -23,7 +23,7 @@ function Categorias() {
                             categorias.length == 0 && <h3>Cargando...</h3>
                         }
                         {
-                            categorias.map(categoria =><Categoria key={categoria.id} name={categoria.categoria} />)
+                            categorias.map(categoria =><Categoria key={categoria.id} name={categoria.categoria} total={categoria.total}/>)
                             
                         }
 
