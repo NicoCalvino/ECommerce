@@ -1,0 +1,36 @@
+/*Celeste: 01adff
+negro:333333
+blanco:ffffff
+Azul Oscuro: 08355A
+Azul Claro: 0f6992
+verde: 70bb49
+*/
+
+.tituloPrincipal{
+    font-size: 60px;
+    color:black;
+    font-weight: 600;
+    margin: auto;
+}
+
+.filaTarjetas{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tarjetaProductos{
+    background-color:#08355A;
+    color:white;
+    border-bottom: 6px #70bb49 solid;
+}
+
+.tarjetaUsuarios{
+    background-color:#0f6992;
+    color:white;
+    border-bottom: 6px #70bb49 solid;
+}
+
+.tituloTarjetas{
+    color:white
+}

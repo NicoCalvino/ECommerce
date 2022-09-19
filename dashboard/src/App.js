@@ -1,7 +1,7 @@
 import './Assets/css/app.css';
-import Main from './Components/Main';
-import ProductWrapper from './Components/ContentWrapper/ProductWrapper'
-import DetalleUser from './Components/DetalleUsuario/DetalleUser'
+import Principal from './Components/Principal/Principal';
+import ProductWrapper from './Components/PaginaDetalles/Producto/ProductWrapper'
+import UserWrapper from './Components/PaginaDetalles/Usuario/UserWrapper'
 import {BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
 function App() {
@@ -9,9 +9,9 @@ function App() {
   return (
     <div id="wrapper">
 		<Switch>
-			<Route path="/" exact component={Main} />
+			<Route path="/" exact component={Principal} />
 			<Route path="/productos/:id" exact component={ProductWrapper} />
-			<Route path="/usuarios/:id" exact component={DetalleUser} />
+			<Route path="/usuarios/:id" exact component={UserWrapper} />
 		</Switch>
 	</div>
   );

@@ -1,0 +1,33 @@
+.cabeceraDetalle{
+    background-color: rgb(241, 237, 237);
+    border: rgb(219, 217, 217) 1px solid;
+    padding:5px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 15%;
+}
+
+.imagenDetalle{
+    border: rgb(219, 217, 217) 1px solid;  
+}
+
+.imagenProducto{
+    width:100%;
+    padding:20px
+}
+
+.detalleProducto{
+    border-left: rgb(219, 217, 217) 1px solid;
+    border-right: rgb(219, 217, 217) 1px solid;
+    padding:10px
+}
+
+.botonDetalle{
+    border-left: rgb(219, 217, 217) 1px solid;
+    border-right: rgb(219, 217, 217) 1px solid;
+    border-bottom: rgb(219, 217, 217) 1px solid;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,98 @@
+/*Celeste: 01adff
+negro:333333
+blanco:ffffff
+Azul Oscuro: 08355A
+Azul Claro: 0f6992
+verde: 70bb49
+*/ 
+
+.paginaDetalle{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.tituloProducto{
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    color:#0f6992
+}
+
+.detalleDelProducto{
+    display:flex;
+    flex-wrap: wrap;
+    margin:auto;
+    justify-content: space-around;
+    width:70%
+}
+.divImagenProducto{
+    width:50%;
+}
+
+.imagenProducto{
+    width:100%
+}
+
+.limpiarVinculos{
+    color:white
+}
+
+.infoProducto{
+    padding:50px;
+    width:50%
+}
+
+.botones{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.botonVenta{
+    width:45%;
+    background-color: #70bb49;
+    border-radius: 10px;
+    margin-top:20px;
+    padding:10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.botonEdicion{
+    width:45%;
+    background-color: #0f6992;
+    margin-top:20px;
+    border-radius: 10px;
+    padding:10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.botonVolver{
+    width:45%;
+    background-color: #08355A;
+    margin-top:20px;
+    border-radius: 10px;
+    padding:10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.botonEliminar{
+    width:45%;
+    background-color: red;
+    border-radius: 10px;
+    margin-top:5px;
+    padding:5px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.botonEliminar form button{
+    border: none;
+    color:white;
+    background-color: red;
+
+}
+

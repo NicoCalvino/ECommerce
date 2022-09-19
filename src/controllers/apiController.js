@@ -73,6 +73,7 @@ const controller = {
             email:usuario.email,
             eliminar:req.protocol + '://' + req.get("host") + "/user/delete/" + usuario.id + "?_method=DELETE",
             imagen:req.protocol + '://' + req.get("host") + '/images/usuarios/' + usuario.imagen,
+            edicionBicipal:req.protocol + '://' + req.get("host") + "/user/usersMaster/edit/" + usuario.id,
             categoria:usuario.categoriasUsuarios.categoria_de_usuario,
             created_at:usuario.created_at,
             intereses:intereses

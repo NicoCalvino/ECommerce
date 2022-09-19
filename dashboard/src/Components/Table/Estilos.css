@@ -1,0 +1,25 @@
+.botonesPrincipal{
+    margin:auto;
+    margin-top:20px;
+    width:15%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tituloTabla{
+    text-align: center;
+    color:black;
+    font-weight: 800;
+}
+
+.tablaProductos{
+    margin:auto;
+    width:50%
+}
+
+.filaTabla{
+    line-height: 36px;
+    border-bottom: rgb(219, 217, 217) 1px solid;
+    border-top: rgb(219, 217, 217) 1px solid;
+}

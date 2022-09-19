@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-
+import Header from "../../Header/Header";
+import Footer from "../../Footer/Footer";
+import DetalleProd from "./DetalleProd"
 
 function ProductWrapper(props) {
     return(
@@ -9,7 +9,7 @@ function ProductWrapper(props) {
 
             <div id="content">
                 <Header />
-                
+                <DetalleProd idProd={props.match.params.id}/>
             </div>
             <Footer />
         </div>

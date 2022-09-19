@@ -27,7 +27,7 @@ const controller = {
         if (check){
             req.session.userLogged = req.body.email
             if (req.body.recordar == "on"){
-                res.cookie("emailLogged", req.body.email,{maxAge: 50000 * 60})
+                res.cookie("emailLogged", req.body.email,{maxAge: 100000 * 60})
             }
             res.redirect("/user/userProfile")
         }else{
