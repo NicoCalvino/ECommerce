@@ -31,7 +31,7 @@ function TablaProductos(props) {
     
     return(
         <div>
-            <h2 className="tituloTabla">PRODUCTOS</h2>
+            <h2 className="tituloTabla">PRODUCTO S</h2>
             <Table pag={nroPagina} />
             <div className="botonesPrincipal">
                 <button className="btn btn-primary" onClick={() => setPagina(anterior())}>Anterior</button>

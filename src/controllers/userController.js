@@ -116,6 +116,7 @@ const controller = {
     },
     addToCart: async (req,res)=>{
         const idProd = req.params.idProd
+        console.log(idProd)
         let emailLogged = req.session.userLogged
 
         let usuario = await db.Usuario.findAll({
@@ -130,14 +131,25 @@ const controller = {
 
         const idUser = usuario[0].id
 
-        await db.Carrito.create({
-            cantidad:req.body.cantidad,
-            imagen:infoProd.imagenes[0].imagen,
-            usuario_id:idUser,
-            producto_id:idProd,
-            tamano_id:req.body.tamano,
-            color_id:req.body.color
+        const existe = await db.Carrito.findAll({
+            where:{
+                usuario_id:idUser,
+                producto_id:idProd
+            }
         })
+
+        console.log(existe)
+
+        if(existe.length == 0){
+            await db.Carrito.create({
+                cantidad:req.body.cantidad,
+                imagen:infoProd.imagenes[0].imagen,
+                usuario_id:idUser,
+                producto_id:idProd,
+                tamano_id:req.body.tamano,
+                color_id:req.body.color
+            })
+        }
         
         res.redirect("/user/productCart")
         

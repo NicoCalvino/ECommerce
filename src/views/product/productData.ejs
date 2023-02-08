@@ -6,6 +6,7 @@
     <div class="espacio-header"></div>
     <div class="volver-tachito">
         <a href="/products/prodMaster/list" class="boton-volver"><button><i class="fa-solid fa-arrow-left"></i>VOLVER AL MAESTRO</button></a>
+        <a href="/products/<%= producto.id %>" class="boton-volver"><button>VISTA DE VENTA</button></a>
         <form action="/products/delete/<%= producto.id %>?_method=DELETE" class="boton-eliminar" method="POST">
             <button type="submit" class=""><i class="fa-solid fa-trash-can"></i></button>
         </form>
